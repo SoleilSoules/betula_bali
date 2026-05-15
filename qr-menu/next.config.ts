@@ -14,12 +14,6 @@ const nextConfig: NextConfig = {
   env: {
     NEXT_PUBLIC_BASE_PATH: basePath,
   },
-  // Include the seeded SQLite + Prisma schema into the serverless
-  // bundle so server functions can copy /prisma/dev.db → /tmp at
-  // cold start. Without this Next/Vercel strips data files.
-  outputFileTracingIncludes: {
-    "/**/*": ["./prisma/dev.db", "./prisma/schema.prisma"],
-  },
 };
 
 export default nextConfig;

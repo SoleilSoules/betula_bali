@@ -7,23 +7,26 @@ const globalForPrisma = globalThis as unknown as {
   prisma: PrismaClient | undefined;
 };
 
-// On Vercel serverless the filesystem is read-only except /tmp. The
-// seeded SQLite file ships in the repo at prisma/dev.db; on the first
-// cold-start of a container we copy it into /tmp so better-sqlite3 can
-// open it read/write. Writes don't persist between containers, which
-// is fine for a read-only demo showcase.
+// The seeded SQLite ships under public/dev.db because Vercel guarantees
+// public/ files are copied into every serverless function bundle. On a
+// Vercel cold-start we copy it into /tmp (the only writable directory
+// in the runtime) so better-sqlite3 can open it read/write within that
+// container. Writes don't persist across containers, which is fine for
+// a read-only demo showcase.
 function resolveDbPath(): string {
-  const bundled = path.join(process.cwd(), "prisma", "dev.db");
+  const publicSrc = path.join(process.cwd(), "public", "dev.db");
+  const legacySrc = path.join(process.cwd(), "prisma", "dev.db");
+  const rootSrc = path.join(process.cwd(), "dev.db");
+  const source = [publicSrc, legacySrc, rootSrc].find((p) => existsSync(p));
 
   if (process.env.VERCEL) {
     const runtimePath = "/tmp/dev.db";
-    if (!existsSync(runtimePath) && existsSync(bundled)) {
-      copyFileSync(bundled, runtimePath);
+    if (!existsSync(runtimePath) && source) {
+      copyFileSync(source, runtimePath);
     }
     return runtimePath;
   }
 
-  // Local dev / VPS — respect DATABASE_URL if set
   const fromEnv = process.env.DATABASE_URL?.replace(/^file:/, "");
   if (fromEnv) {
     return path.isAbsolute(fromEnv)
@@ -31,7 +34,7 @@ function resolveDbPath(): string {
       : path.join(process.cwd(), fromEnv);
   }
 
-  return bundled;
+  return source ?? rootSrc;
 }
 
 function createClient() {
