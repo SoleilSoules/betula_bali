@@ -6,10 +6,23 @@ import { db } from "@/lib/db";
 const COOKIE_NAME = "qr_session";
 const SESSION_TTL_DAYS = 30;
 
+// AUTH_SECRET должен быть задан в продакшене для реальной авторизации.
+// Допускаем hard-coded fallback, чтобы demo-деплой (Vercel preview) и
+// build не падали из-за отсутствия env. Реальный AUTH_SECRET ставится
+// в Vercel → Settings → Environment Variables.
+let warnedMissingSecret = false;
 function getSecret() {
   const secret = process.env.AUTH_SECRET;
   if (!secret) {
-    throw new Error("AUTH_SECRET не задан в .env");
+    if (!warnedMissingSecret) {
+      console.warn(
+        "[auth] AUTH_SECRET не задан — используется fallback. Для прода поставь AUTH_SECRET в Vercel env vars.",
+      );
+      warnedMissingSecret = true;
+    }
+    return new TextEncoder().encode(
+      "betula-demo-fallback-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    );
   }
   return new TextEncoder().encode(secret);
 }
