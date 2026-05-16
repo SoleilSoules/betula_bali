@@ -1,0 +1,381 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Bali Betula — Social Hideout &amp; Eatery</title>
+<meta name="description" content="Bali Betula — Social Hideout &amp; Eatery in Pererenan. Hand-rolled dumplings, slow-cooked stews, the Indian Ocean around the corner." />
+<meta property="og:title" content="Bali Betula" />
+<meta property="og:description" content="Social Hideout &amp; Eatery · Pererenan, Bali" />
+<meta property="og:image" content="assets/hero-1.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#A7735F;          /* terracotta */
+    --cream:#F7F1E8;       /* text on terracotta */
+    --card:#f1f1f1;        /* light placeholder */
+    --burgundy:#7d3a4c;
+    --gzhel:#1e4a6b;
+    --sans:'Manrope',system-ui,-apple-system,sans-serif;
+    --serif:'Cormorant',Georgia,serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html,body{background:#3c2a23}
+  body{
+    font-family:var(--sans);
+    color:var(--cream);
+    line-height:1.4;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+  }
+  img{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+
+  /* phone-frame canvas: 430 max, centered, soft shadow on desktop */
+  .frame{
+    max-width:430px;margin:0 auto;background:var(--bg);
+    min-height:100svh;position:relative;overflow:hidden;
+  }
+  @media(min-width:480px){
+    .frame{margin:24px auto;border-radius:6px;
+      box-shadow:0 30px 60px -20px rgba(0,0,0,.45)}
+  }
+
+  /* ---------- HERO CAROUSEL ---------- */
+  .hero{position:relative;height:100svh;max-height:780px;min-height:600px}
+  .track{
+    display:flex;height:100%;overflow-x:auto;scroll-snap-type:x mandatory;
+    scrollbar-width:none;-ms-overflow-style:none;
+  }
+  .track::-webkit-scrollbar{display:none}
+  .slide{
+    position:relative;flex:0 0 100%;scroll-snap-align:start;
+    height:100%;overflow:hidden;background:#2c1f1a;
+  }
+  .slide img{
+    position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  }
+  .slide::after{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(178deg,rgba(0,0,0,.46) 0%,rgba(0,0,0,.12) 40%,rgba(0,0,0,0) 72%);
+  }
+  .topbar{
+    position:absolute;left:24px;right:20px;top:34px;z-index:3;
+    display:flex;align-items:center;justify-content:space-between;
+  }
+  .brand{display:flex;align-items:center;gap:10px}
+  .brand img{width:25px;height:25px}
+  .brand .wm{font-size:22px;letter-spacing:.06em;line-height:1;color:#fff;white-space:nowrap}
+  .brand .wm b{font-family:var(--serif);font-weight:700}
+  .brand .wm span{font-family:var(--sans);font-weight:500}
+  .badge{
+    display:inline-flex;align-items:center;gap:6px;
+    font-size:11px;letter-spacing:.06em;text-transform:uppercase;
+    color:#fff;background:rgba(0,0,0,.32);padding:5px 10px;border-radius:999px;
+    backdrop-filter:blur(4px);
+  }
+  .badge i{width:6px;height:6px;border-radius:999px;background:#5cc98a;display:inline-block}
+  .hero-copy{
+    position:absolute;left:20px;right:30px;top:82px;z-index:3;color:#fff;
+  }
+  .hero-copy h1{
+    font-family:var(--sans);font-weight:500;
+    font-size:clamp(48px,15vw,66px);line-height:.92;letter-spacing:-.025em;
+    white-space:pre-line;
+  }
+  .hero-copy p{
+    margin-top:14px;font-weight:500;
+    font-size:clamp(16px,4.4vw,20px);letter-spacing:.005em;
+  }
+  /* progress pill */
+  .dots{
+    position:absolute;left:50%;transform:translateX(-50%);bottom:42px;z-index:3;
+    display:flex;align-items:center;gap:6px;
+  }
+  .dots .pill{
+    width:60px;height:8px;border-radius:999px;background:rgba(255,255,255,.4);
+    position:relative;overflow:hidden;flex:0 0 auto;
+  }
+  .dots .pill i{
+    position:absolute;inset:0 auto 0 0;width:100%;background:#fff;border-radius:999px;
+    transform-origin:left center;transform:scaleX(0);
+  }
+  .dots .pill.active i{animation:fill 8s linear forwards}
+  .dots .d{width:8px;height:8px;border-radius:999px;background:rgba(255,255,255,.4);flex:0 0 auto}
+  @keyframes fill{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+
+  /* ---------- TWO TILES + MENU PAPER ---------- */
+  .tiles{position:relative;height:230px;margin-top:-2px}
+  .tile{
+    position:absolute;top:30px;height:159px;background:var(--card);
+    display:flex;align-items:flex-end;padding:0 0 14px 18px;
+    color:#170f13;font-weight:600;font-size:18px;
+  }
+  .tile.left{left:10px;width:203px}
+  .tile.right{right:10px;width:203px}
+  .menu-paper{
+    position:absolute;left:50%;top:-4px;transform:translateX(-50%) rotate(-4.8deg);
+    width:222px;height:316px;z-index:4;
+    box-shadow:0 12px 28px -10px rgba(0,0,0,.4);
+  }
+  .menu-paper img{width:100%;height:100%;object-fit:contain}
+
+  /* ---------- SECTIONS ---------- */
+  section{padding:0 16px}
+  .sec-h{margin:64px 0 0}
+  .sec-h h2{
+    font-weight:700;font-size:39px;line-height:1.05;letter-spacing:-.02em;color:var(--cream);
+  }
+  .sec-h .sub{margin-top:6px;font-size:17px;color:rgba(247,241,232,.6)}
+  .grid{margin-top:26px;display:grid;gap:6px}
+  .grid.sig{grid-template-columns:1fr 1fr;grid-auto-rows:204px}
+  .grid.sig .big{grid-row:span 2}
+  .grid.ph{grid-template-columns:1fr;gap:14px;margin-top:26px}
+
+  .pcard{
+    position:relative;overflow:hidden;background:#2c1f1a;
+  }
+  .pcard img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .pcard .v{
+    position:absolute;inset:0;
+    background:linear-gradient(180deg,rgba(0,0,0,0) 38%,rgba(0,0,0,.72) 100%);
+  }
+  .pcard .cap{position:absolute;left:14px;right:14px;bottom:13px;color:#fff;z-index:2}
+  .pcard .cap b{display:block;font-weight:600;font-size:17px;line-height:1.15}
+  .pcard .cap em{display:block;font-style:normal;font-size:13px;opacity:.82;margin-top:3px}
+
+  .ev{position:relative;overflow:hidden;height:176px;background:#2c1f1a}
+  .ev img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .ev .v{position:absolute;inset:0;
+    background:linear-gradient(90deg,rgba(0,0,0,.68) 0%,rgba(0,0,0,.18) 62%,rgba(0,0,0,0) 100%)}
+  .ev .cap{position:absolute;left:18px;right:18px;top:50%;transform:translateY(-50%);
+    max-width:62%;color:#fff;z-index:2}
+  .ev .cap .when{font-size:12px;letter-spacing:.08em;text-transform:uppercase;opacity:.85}
+  .ev .cap b{display:block;font-weight:600;font-size:21px;line-height:1.1;margin-top:6px}
+  .ev .cap em{display:block;font-style:normal;font-size:13px;opacity:.82;margin-top:6px;max-width:90%}
+  .ev-list{margin-top:26px;display:grid;gap:6px}
+  .ph .pcard{height:387px}
+  .ph .pcard .cap b{font-size:22px}
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    padding:90px 16px 70px;text-align:center;
+  }
+  footer .slogan{
+    font-family:var(--serif);font-weight:600;font-size:26px;color:var(--cream);
+  }
+  footer .slogan i{font-style:normal;color:#e7c9b6}
+  footer .addr{margin-top:22px;font-size:15px;color:rgba(247,241,232,.85);max-width:300px;margin-inline:auto;line-height:1.5}
+  footer .ig{margin-top:14px;display:inline-flex;align-items:center;gap:6px;font-size:15px;color:rgba(247,241,232,.85)}
+  footer .ig svg{width:15px;height:15px}
+  footer .hours{margin-top:8px;font-size:14px;letter-spacing:.02em;color:rgba(247,241,232,.62)}
+</style>
+</head>
+<body>
+<div class="frame">
+
+  <!-- ===== HERO CAROUSEL ===== -->
+  <div class="hero">
+    <div class="track" id="track">
+      <!-- slide template repeated -->
+      <div class="slide">
+        <img src="assets/hero-1.png" alt="Uzbek set" />
+        <div class="topbar">
+          <div class="brand">
+            <img src="assets/logo.svg" alt="" />
+            <span class="wm"><b>BALI</b> <span>BETULA</span></span>
+          </div>
+          <span class="badge"><i></i> Open</span>
+        </div>
+        <div class="hero-copy"><h1>Uzbek Set
+for two</h1><p>from Rp 295k</p></div>
+      </div>
+      <div class="slide">
+        <img src="assets/hero-2.jpg" alt="Borscht" />
+        <div class="topbar">
+          <div class="brand"><img src="assets/logo.svg" alt="" />
+            <span class="wm"><b>BALI</b> <span>BETULA</span></span></div>
+          <span class="badge"><i></i> Open</span>
+        </div>
+        <div class="hero-copy"><h1>Borscht
+&amp; rye</h1><p>with sour cream · Rp 95k</p></div>
+      </div>
+      <div class="slide">
+        <img src="assets/hero-3.jpg" alt="Sunday feast" />
+        <div class="topbar">
+          <div class="brand"><img src="assets/logo.svg" alt="" />
+            <span class="wm"><b>BALI</b> <span>BETULA</span></span></div>
+          <span class="badge"><i></i> Open</span>
+        </div>
+        <div class="hero-copy"><h1>Sunday
+feast</h1><p>family table · Rp 220k/pp</p></div>
+      </div>
+      <div class="slide">
+        <img src="assets/hero-4.jpg" alt="Stroganoff" />
+        <div class="topbar">
+          <div class="brand"><img src="assets/logo.svg" alt="" />
+            <span class="wm"><b>BALI</b> <span>BETULA</span></span></div>
+          <span class="badge"><i></i> Open</span>
+        </div>
+        <div class="hero-copy"><h1>Stroganoff
+&amp; mash</h1><p>from Rp 165k</p></div>
+      </div>
+      <div class="slide">
+        <img src="assets/hero-5.jpg" alt="Almond croissant" />
+        <div class="topbar">
+          <div class="brand"><img src="assets/logo.svg" alt="" />
+            <span class="wm"><b>BALI</b> <span>BETULA</span></span></div>
+          <span class="badge"><i></i> Open</span>
+        </div>
+        <div class="hero-copy"><h1>Almond
+croissant</h1><p>with ice latte · Rp 75k</p></div>
+      </div>
+    </div>
+    <div class="dots" id="dots">
+      <div class="pill active"><i></i></div>
+      <div class="d"></div><div class="d"></div><div class="d"></div><div class="d"></div>
+    </div>
+  </div>
+
+  <!-- ===== TWO TILES + MENU PAPER ===== -->
+  <div class="tiles">
+    <a class="tile left" href="#signatures">Show menu</a>
+    <a class="tile right" href="https://wa.me/6282144556677?text=Hi%20Betula!%20I'd%20like%20to%20book%20a%20table%20for%20..." target="_blank" rel="noreferrer">Reserve a table</a>
+    <div class="menu-paper"><img src="assets/menu-paper.png" alt="Menu" /></div>
+  </div>
+
+  <!-- ===== SIGNATURES ===== -->
+  <section id="signatures">
+    <div class="sec-h">
+      <h2>Signatures</h2>
+      <div class="sub">What guests come back for</div>
+    </div>
+    <div class="grid sig">
+      <a class="pcard big" href="https://www.instagram.com/betula_restaurant/" target="_blank" rel="noreferrer">
+        <img src="assets/sig-syrniki.jpg" alt="Syrniki" /><div class="v"></div>
+        <div class="cap"><b>Syrniki</b><em>Cottage cheese pancakes · Rp 75k</em></div>
+      </a>
+      <a class="pcard" href="https://www.instagram.com/betula_restaurant/" target="_blank" rel="noreferrer">
+        <img src="assets/sig-beshbarmak.jpg" alt="Beshbarmak" /><div class="v"></div>
+        <div class="cap"><b>Beshbarmak</b><em>Noodles &amp; beef · Rp 145k</em></div>
+      </a>
+      <a class="pcard" href="https://www.instagram.com/betula_restaurant/" target="_blank" rel="noreferrer">
+        <img src="assets/sig-borscht.jpg" alt="Borscht" /><div class="v"></div>
+        <div class="cap"><b>Borscht</b><em>Sour cream &amp; rye · Rp 95k</em></div>
+      </a>
+      <a class="pcard" href="https://www.instagram.com/betula_restaurant/" target="_blank" rel="noreferrer" style="grid-column:1 / -1;grid-row:auto;min-height:204px">
+        <img src="assets/sig-manty.jpg" alt="Manty" /><div class="v"></div>
+        <div class="cap"><b>Manty</b><em>Hand-folded daily · Rp 110k</em></div>
+      </a>
+    </div>
+  </section>
+
+  <!-- ===== EVENTS ===== -->
+  <section>
+    <div class="sec-h"><h2>Events</h2></div>
+    <div class="ev-list">
+      <a class="ev" href="https://wa.me/6282144556677?text=I'd%20like%20to%20join%20pelmeni%20night%20on%2021%20May" target="_blank" rel="noreferrer">
+        <img src="assets/ev-pelmeni.jpg" alt="" /><div class="v"></div>
+        <div class="cap"><div class="when">Wed · 21 May · 7pm</div><b>Pelmeni night</b>
+          <em>Roll them together, eat them together. One shot of nastoyka on the house.</em></div>
+      </a>
+      <a class="ev" href="https://wa.me/6282144556677?text=Booking%20a%20table%20for%20Borscht%20Friday" target="_blank" rel="noreferrer">
+        <img src="assets/ev-borscht.jpg" alt="" /><div class="v"></div>
+        <div class="cap"><div class="when">Fri · 23 May · 12–10pm</div><b>Borscht Friday</b>
+          <em>Every kind of borscht — 60k IDR all day. Sour cream and salo on the side.</em></div>
+      </a>
+      <a class="ev" href="https://wa.me/6282144556677?text=Booking%20Sunday%20brunch" target="_blank" rel="noreferrer">
+        <img src="assets/ev-brunch.jpg" alt="" /><div class="v"></div>
+        <div class="cap"><div class="when">Sun · 25 May · 10am–2pm</div><b>Sunday brunch</b>
+          <em>Syrniki, eggs, fresh juices. Family-style on long tables.</em></div>
+      </a>
+    </div>
+  </section>
+
+  <!-- ===== PRIVATE HIRE ===== -->
+  <section>
+    <div class="sec-h">
+      <h2>Private hire</h2>
+      <div class="sub">Make the place yours</div>
+    </div>
+    <div class="grid ph">
+      <a class="pcard" href="https://wa.me/6282144556677?text=I'd%20like%20to%20book%20the%20big%20table" target="_blank" rel="noreferrer">
+        <img src="assets/ph-table.jpg" alt="" /><div class="v"></div>
+        <div class="cap"><b>Big table for a group</b><em>Up to 12 people · family-style dinner with a tasting set</em></div>
+      </a>
+      <a class="pcard" href="https://wa.me/6282144556677?text=I'd%20like%20to%20rent%20the%20venue" target="_blank" rel="noreferrer">
+        <img src="assets/ph-venue.jpg" alt="" /><div class="v"></div>
+        <div class="cap"><b>Whole-venue hire</b><em>Birthdays, team off-sites — the place is yours for the evening</em></div>
+      </a>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="slogan">good food <i>·</i> good people <i>·</i> good vibes</div>
+    <a class="addr" href="https://www.google.com/maps/search/?api=1&amp;query=Bali+Betula+Kerobokan" target="_blank" rel="noreferrer">
+      Jl. Raya Kesambi, Kerobokan, Bali 80361
+    </a>
+    <div class="hours">Open daily · 12:00 – 23:00</div>
+    <a class="ig" href="https://www.instagram.com/betula_restaurant/" target="_blank" rel="noreferrer">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+      betula_restaurant
+    </a>
+  </footer>
+
+</div>
+
+<script>
+  (function(){
+    var track=document.getElementById('track');
+    var dots=document.getElementById('dots');
+    var pill=dots.querySelector('.pill');
+    var slides=track.children.length;
+    var idx=0, timer=null, paused=false;
+
+    function render(){
+      // move active pill to position idx; reset its fill animation
+      var kids=dots.children;
+      for(var i=0;i<kids.length;i++){
+        kids[i].classList.remove('pill','active');
+        kids[i].classList.add(i===idx?'pill':'d');
+        if(i===idx){kids[i].innerHTML='<i></i>';kids[i].classList.add('active');}
+        else kids[i].innerHTML='';
+      }
+      // restart fill animation
+      var fill=dots.children[idx].querySelector('i');
+      if(fill){fill.style.animation='none';void fill.offsetWidth;
+        fill.style.animation=paused?'none':'fill 8s linear forwards';}
+    }
+    function go(n){
+      idx=(n+slides)%slides;
+      track.scrollTo({left:idx*track.clientWidth,behavior:'smooth'});
+      render();
+    }
+    function schedule(){
+      clearTimeout(timer);
+      if(paused) return;
+      timer=setTimeout(function(){go(idx+1);},8000);
+    }
+    // track manual scroll → update idx
+    var st;
+    track.addEventListener('scroll',function(){
+      clearTimeout(st);
+      st=setTimeout(function(){
+        var n=Math.round(track.scrollLeft/track.clientWidth);
+        if(n!==idx){idx=Math.max(0,Math.min(slides-1,n));render();schedule();}
+      },120);
+    },{passive:true});
+    track.addEventListener('touchstart',function(){paused=true;clearTimeout(timer);render();},{passive:true});
+    track.addEventListener('touchend',function(){paused=false;render();schedule();},{passive:true});
+
+    render(); schedule();
+    // re-schedule whenever a slide settles
+    var mo=setInterval(schedule,8200);
+    window.addEventListener('beforeunload',function(){clearInterval(mo);clearTimeout(timer);});
+  })();
+</script>
+</body>
+</html>
