@@ -92,12 +92,12 @@
   .hero-copy h1{
     font-family:var(--sans);font-weight:500;
     font-size:clamp(48px,15vw,66px);line-height:.92;letter-spacing:-.025em;
-    white-space:pre-line;animation:rise .7s .12s both;
+    white-space:pre-line;animation:hero-text-in 800ms cubic-bezier(.22,1,.36,1) both;
   }
   .hero-copy p{
     margin-top:14px;font-weight:500;
     font-size:clamp(16px,4.4vw,20px);letter-spacing:.005em;
-    animation:rise .7s .24s both;
+    animation:hero-sub-in 700ms cubic-bezier(.22,1,.36,1) 180ms both;
   }
   /* progress pill */
   .dots{
@@ -116,6 +116,14 @@
   .dots .d{width:8px;height:8px;border-radius:999px;background:rgba(255,255,255,.4);flex:0 0 auto}
   @keyframes fill{from{transform:scaleX(0)}to{transform:scaleX(1)}}
   @keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+  @keyframes hero-text-in{
+    from{opacity:0;transform:translateY(16px);letter-spacing:.04em}
+    to{opacity:1;transform:translateY(0);letter-spacing:-.028em}
+  }
+  @keyframes hero-sub-in{
+    from{opacity:0;transform:translateY(10px)}
+    to{opacity:1;transform:translateY(0)}
+  }
   @media(prefers-reduced-motion:reduce){
     .brand,.hero-copy h1,.hero-copy p{animation:none!important}
   }
@@ -203,26 +211,27 @@
   .sticky .s-menu{background:var(--cream);color:#170f13}
   .sticky .s-book{background:var(--burgundy);color:#fff}
 
-  /* ---------- FOOTER (with birch watermark) ---------- */
+  /* ---------- FOOTER (birch — matches /test prod) ---------- */
   footer{
-    position:relative;overflow:hidden;
-    padding:45px 16px 80px;text-align:center;
+    position:relative;overflow:hidden;background:#f1ece2;
+    border-top:1px dashed rgba(0,0,0,.18);
+    padding:54px 16px 72px;text-align:center;
   }
   footer .birch{
-    position:absolute;top:-10px;height:520px;width:auto;opacity:.14;
-    pointer-events:none;filter:brightness(0) invert(1);
+    position:absolute;top:0;height:360px;width:auto;opacity:.08;
+    pointer-events:none;
   }
-  footer .birch.l{left:-235px}
-  footer .birch.r{right:-235px}
+  footer .birch.l{left:-170px}
+  footer .birch.r{right:-170px}
   footer > .fc{position:relative;z-index:1}
   footer .slogan{
-    font-family:var(--serif);font-weight:600;font-size:23px;color:var(--cream);
+    font-family:var(--serif);font-weight:600;font-size:23px;color:var(--burgundy);
   }
-  footer .slogan i{font-style:normal;color:#e7c9b6}
-  footer .addr{margin-top:22px;font-size:15px;color:rgba(247,241,232,.85);max-width:300px;margin-inline:auto;line-height:1.5}
-  footer .ig{margin-top:14px;display:inline-flex;align-items:center;gap:6px;font-size:15px;color:rgba(247,241,232,.85)}
+  footer .slogan i{font-style:normal;color:#b98a72}
+  footer .addr{display:block;margin-top:20px;font-size:15px;color:rgba(23,15,19,.75);max-width:300px;margin-inline:auto;line-height:1.5}
+  footer .ig{margin-top:16px;display:inline-flex;align-items:center;gap:6px;font-size:15px;color:rgba(23,15,19,.7)}
   footer .ig svg{width:15px;height:15px}
-  footer .hours{margin-top:8px;font-size:14px;letter-spacing:.02em;color:rgba(247,241,232,.62)}
+  footer .hours{margin-top:8px;font-size:14px;letter-spacing:.02em;color:rgba(23,15,19,.55)}
 
   /* ---------- INTERACTIVE MENU (opened by "Show menu" after hero) ---------- */
   .menu-ov{
@@ -512,8 +521,8 @@ croissant</h1><p>with ice latte · Rp 75k</p></div>
 
   <!-- ===== FOOTER ===== -->
   <footer>
-    <img class="birch l" src="assets/logo.svg" alt="" aria-hidden="true" />
-    <img class="birch r" src="assets/logo.svg" alt="" aria-hidden="true" />
+    <img class="birch l" src="assets/birch.svg" alt="" aria-hidden="true" />
+    <img class="birch r" src="assets/birch.svg" alt="" aria-hidden="true" />
     <div class="fc">
       <div class="slogan">good food <i>·</i> good people <i>·</i> good vibes</div>
       <a class="addr" href="https://www.google.com/maps/search/?api=1&amp;query=Bali+Betula+Kerobokan" target="_blank" rel="noreferrer">
