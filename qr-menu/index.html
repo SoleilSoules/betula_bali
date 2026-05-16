@@ -69,7 +69,8 @@
     position:absolute;left:24px;right:20px;top:34px;z-index:3;
     display:flex;align-items:center;justify-content:space-between;
   }
-  .brand{display:flex;align-items:center;gap:9px;min-width:0;margin-left: 30px}
+  .brand{display:flex;align-items:center;gap:9px;min-width:0;margin-left:30px;
+    animation:rise .65s .05s both}
   .brand img{width:25px;height:25px;flex:0 0 25px;display:block;object-fit:contain;
     filter:drop-shadow(0 1px 4px rgba(0,0,0,.55))}
   .brand .wm{font-size:21px;letter-spacing:.05em;line-height:1;color:#fff;white-space:nowrap;
@@ -84,17 +85,19 @@
   }
   .badge i{width:6px;height:6px;border-radius:999px;background:#2f8a3e;
     box-shadow:0 0 6px rgba(47,138,62,.6);display:inline-block;flex:0 0 auto}
+  .badge.closed i{background:#bb5140;box-shadow:none}
   .hero-copy{
     position:absolute;left:20px;right:30px;top:82px;z-index:3;color:#fff;
   }
   .hero-copy h1{
     font-family:var(--sans);font-weight:500;
     font-size:clamp(48px,15vw,66px);line-height:.92;letter-spacing:-.025em;
-    white-space:pre-line;
+    white-space:pre-line;animation:rise .7s .12s both;
   }
   .hero-copy p{
     margin-top:14px;font-weight:500;
     font-size:clamp(16px,4.4vw,20px);letter-spacing:.005em;
+    animation:rise .7s .24s both;
   }
   /* progress pill */
   .dots{
@@ -112,24 +115,25 @@
   .dots .pill.active i{animation:fill 8s linear forwards}
   .dots .d{width:8px;height:8px;border-radius:999px;background:rgba(255,255,255,.4);flex:0 0 auto}
   @keyframes fill{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+  @keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+  @media(prefers-reduced-motion:reduce){
+    .brand,.hero-copy h1,.hero-copy p{animation:none!important}
+  }
 
-  /* ---------- TWO TILES + MENU PAPER ----------
-     Paper sits on TOP, centered, sticking up; tiles sit BELOW it with
-     their labels at the very bottom so the paper never covers text. */
-  .tiles{position:relative;height:300px;margin-top:-2px}
-  .menu-paper{
-    position:absolute;left:50%;top:6px;transform:translateX(-50%) rotate(-4.8deg);
-    width:152px;height:214px;z-index:4;
-    box-shadow:0 12px 28px -10px rgba(0,0,0,.4);
-  }
-  .menu-paper img{width:100%;height:100%;object-fit:contain}
+  /* ---------- TWO TILES (Show menu / Reserve) ---------- */
+  .tiles{display:flex;gap:6px;padding:20px 10px 4px}
   .tile{
-    position:absolute;top:196px;height:90px;background:var(--card);
-    display:flex;align-items:flex-end;
-    color:#170f13;font-weight:600;font-size:17px;
+    flex:1;min-height:110px;display:flex;flex-direction:column;justify-content:center;
+    padding:0 20px;font-family:var(--sans);
   }
-  .tile.left{left:10px;width:203px;justify-content:flex-start;padding:0 0 14px 16px}
-  .tile.right{right:10px;width:203px;justify-content:flex-end;padding:0 16px 14px 0}
+  .tile .t-k{
+    font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+    opacity:.5;margin-bottom:9px;
+  }
+  .tile .t-v{font-weight:700;font-size:20px;line-height:1.12;letter-spacing:-.01em}
+  .tile.left{background:var(--card);color:#170f13}
+  .tile.right{background:var(--burgundy);color:#fff}
+  .tile.right .t-k{opacity:.72}
 
   /* ---------- SECTIONS ---------- */
   section{padding:0 16px}
@@ -186,7 +190,8 @@
   /* ---------- STICKY CTA ---------- */
   .sticky{
     position:fixed;left:50%;transform:translateX(-50%) translateY(260%);
-    bottom:calc(16px + env(safe-area-inset-bottom,0px));width:min(100% - 28px,402px);z-index:50;
+    bottom:max(20px,calc(env(safe-area-inset-bottom,0px) + 14px));
+    width:min(100% - 28px,402px);z-index:50;
     display:flex;gap:10px;transition:transform .28s ease;pointer-events:none;
   }
   .sticky.show{pointer-events:auto}
@@ -204,11 +209,11 @@
     padding:45px 16px 80px;text-align:center;
   }
   footer .birch{
-    position:absolute;top:0;height:340px;width:auto;opacity:.08;
+    position:absolute;top:-10px;height:520px;width:auto;opacity:.14;
     pointer-events:none;filter:brightness(0) invert(1);
   }
-  footer .birch.l{left:-170px}
-  footer .birch.r{right:-170px}
+  footer .birch.l{left:-235px}
+  footer .birch.r{right:-235px}
   footer > .fc{position:relative;z-index:1}
   footer .slogan{
     font-family:var(--serif);font-weight:600;font-size:23px;color:var(--cream);
@@ -263,7 +268,9 @@
     flex:0 0 92px;width:92px;height:92px;border-radius:10px;background:#e7ddc9;
     color:var(--burgundy);display:flex;align-items:center;justify-content:center;
     font-family:var(--serif);font-weight:700;font-size:26px;align-self:flex-start;
+    overflow:hidden;
   }
+  .dish-th img{width:100%;height:100%;object-fit:cover}
   .dish-main{flex:1;min-width:0}
   .dish-name{font-weight:700;font-size:19px;line-height:1.2;color:#2a1f1a}
   .dish-desc{margin-top:5px;font-size:13.5px;line-height:1.45;color:#8a7563}
@@ -282,7 +289,7 @@
   .stepper b{min-width:22px;text-align:center;font-size:15px;font-weight:700;color:#2a1f1a}
   .cart-bar{
     position:fixed;left:50%;transform:translateX(-50%) translateY(220%);
-    bottom:calc(14px + env(safe-area-inset-bottom,0px));width:min(100% - 28px,402px);z-index:140;
+    bottom:max(18px,calc(env(safe-area-inset-bottom,0px) + 12px));width:min(100% - 28px,402px);z-index:140;
     background:var(--burgundy);color:#fff;border-radius:999px;padding:15px 22px;
     display:flex;align-items:center;justify-content:space-between;
     font-weight:600;font-size:15px;cursor:pointer;transition:transform .26s ease;
@@ -386,11 +393,14 @@ croissant</h1><p>with ice latte · Rp 75k</p></div>
     </div>
   </div>
 
-  <!-- ===== TWO TILES + MENU PAPER ===== -->
+  <!-- ===== TWO TILES (Show menu / Reserve) ===== -->
   <div class="tiles">
-    <a class="tile left" href="#" id="openMenu">Show menu</a>
-    <a class="tile right" href="https://wa.me/+6287783977753?text=Hi%20Betula!%20I'd%20like%20to%20book%20a%20table%20for%20..." target="_blank" rel="noreferrer">Reserve a table</a>
-    <div class="menu-paper"><img src="assets/menu-paper.png" alt="Menu" /></div>
+    <a class="tile left" href="#" id="openMenu">
+      <span class="t-k">Menu</span><span class="t-v">Show menu</span>
+    </a>
+    <a class="tile right" href="https://wa.me/+6287783977753?text=Hi%20Betula!%20I'd%20like%20to%20book%20a%20table%20for%20..." target="_blank" rel="noreferrer">
+      <span class="t-k">Reserve</span><span class="t-v">Reserve a table</span>
+    </a>
   </div>
 
   <!-- ===== SIGNATURES ===== -->
@@ -553,7 +563,7 @@ croissant</h1><p>with ice latte · Rp 75k</p></div>
       // move active pill to position idx; reset its fill animation
       var kids=dots.children;
       for(var i=0;i<kids.length;i++){
-        kids[i].classList.remove('pill','active');
+        kids[i].classList.remove('pill','active','d');
         kids[i].classList.add(i===idx?'pill':'d');
         if(i===idx){kids[i].innerHTML='<i></i>';kids[i].classList.add('active');}
         else kids[i].innerHTML='';
@@ -599,10 +609,27 @@ croissant</h1><p>with ice latte · Rp 75k</p></div>
     }
     window.addEventListener('scroll',onScroll,{passive:true});
     onScroll();
+
+    // OPEN / CLOSED badge — Bali time (UTC+8), open daily 12:00–23:00
+    function setOpen(){
+      var n=new Date();
+      var bali=new Date(n.getTime()+n.getTimezoneOffset()*60000+8*3600000);
+      var h=bali.getHours()+bali.getMinutes()/60;
+      var open=h>=12 && h<23;
+      var bs=document.querySelectorAll('.badge');
+      for(var i=0;i<bs.length;i++){
+        bs[i].classList.toggle('closed',!open);
+        bs[i].innerHTML='<i></i> '+(open?'Open':'Closed');
+      }
+    }
+    setOpen();
+    setInterval(setOpen,60000);
   })();
 </script>
 <script>
 (function(){
+  // Фото блюда: добавь к пункту поле img, напр. {n:"Borsch",d:"...",p:"...",img:"assets/dishes/borsch.jpg"}
+  // Без img рисуется монограмма. Кроп квадрат ~400×400, ≤120 КБ.
   var MENU=[
     {c:"Starters",items:[
       {n:"Cheese Burger",d:"100% beef patty, double cheese, pickles on a soft bun.",p:"110000 IDR"},
@@ -746,7 +773,9 @@ croissant</h1><p>with ice latte · Rp 75k</p></div>
     sec.appendChild(h);
     cat.items.forEach(function(it){
       var row=document.createElement('div');row.className='dish';
-      var th=document.createElement('div');th.className='dish-th';th.textContent=mono(it.n);
+      var th=document.createElement('div');th.className='dish-th';
+      if(it.img){var di=document.createElement('img');di.src=it.img;di.alt=it.n;di.loading='lazy';th.appendChild(di);}
+      else th.textContent=mono(it.n);
       var mn=document.createElement('div');mn.className='dish-main';
       var nm=document.createElement('div');nm.className='dish-name';nm.textContent=it.n;mn.appendChild(nm);
       if(it.d){var de=document.createElement('div');de.className='dish-desc';de.textContent=it.d;mn.appendChild(de);}
