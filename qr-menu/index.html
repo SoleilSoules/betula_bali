@@ -181,10 +181,11 @@
 
   /* ---------- STICKY CTA ---------- */
   .sticky{
-    position:fixed;left:50%;transform:translateX(-50%) translateY(120%);
-    bottom:16px;width:min(100% - 28px,402px);z-index:50;
-    display:flex;gap:10px;transition:transform .28s ease;
+    position:fixed;left:50%;transform:translateX(-50%) translateY(260%);
+    bottom:calc(16px + env(safe-area-inset-bottom,0px));width:min(100% - 28px,402px);z-index:50;
+    display:flex;gap:10px;transition:transform .28s ease;pointer-events:none;
   }
+  .sticky.show{pointer-events:auto}
   .sticky.show{transform:translateX(-50%) translateY(0)}
   .sticky a{
     flex:1;text-align:center;padding:15px 10px;border-radius:4px;
@@ -255,15 +256,64 @@
   .dish{display:flex;gap:14px;align-items:flex-start;padding:18px 0;border-bottom:1px solid rgba(42,31,26,.1)}
   .dish:last-child{border-bottom:0}
   .dish-th{
-    flex:0 0 60px;width:60px;height:60px;border-radius:8px;background:#e7ddc9;
+    flex:0 0 92px;width:92px;height:92px;border-radius:10px;background:#e7ddc9;
     color:var(--burgundy);display:flex;align-items:center;justify-content:center;
-    font-family:var(--serif);font-weight:700;font-size:21px;
+    font-family:var(--serif);font-weight:700;font-size:26px;align-self:flex-start;
   }
   .dish-main{flex:1;min-width:0}
   .dish-name{font-weight:700;font-size:19px;line-height:1.2;color:#2a1f1a}
   .dish-desc{margin-top:5px;font-size:13.5px;line-height:1.45;color:#8a7563}
   .dish-price{margin-top:8px;font-weight:700;font-size:15px;color:#2a1f1a}
   .menu-note{text-align:center;font-size:13px;color:#8a7563;padding:34px 22px 8px;letter-spacing:.02em}
+
+  /* ---------- CART (my order → show waiter) ---------- */
+  .dish-add{flex:0 0 auto;align-self:center;margin-left:6px}
+  .add-btn{
+    width:36px;height:36px;border-radius:999px;border:1.5px solid var(--burgundy);
+    background:transparent;color:var(--burgundy);font-size:21px;line-height:1;cursor:pointer;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .stepper{display:flex;align-items:center;border:1.5px solid var(--burgundy);border-radius:999px}
+  .stepper button{width:32px;height:36px;border:0;background:transparent;color:var(--burgundy);font-size:18px;line-height:1;cursor:pointer}
+  .stepper b{min-width:22px;text-align:center;font-size:15px;font-weight:700;color:#2a1f1a}
+  .cart-bar{
+    position:fixed;left:50%;transform:translateX(-50%) translateY(220%);
+    bottom:calc(14px + env(safe-area-inset-bottom,0px));width:min(100% - 28px,402px);z-index:140;
+    background:var(--burgundy);color:#fff;border-radius:999px;padding:15px 22px;
+    display:flex;align-items:center;justify-content:space-between;
+    font-weight:600;font-size:15px;cursor:pointer;transition:transform .26s ease;
+    box-shadow:0 14px 30px -12px rgba(0,0,0,.5);
+  }
+  .cart-bar.show{transform:translateX(-50%) translateY(0)}
+  .cart-bar .cb-c{display:flex;align-items:center;gap:9px}
+  .cart-bar .cb-n{
+    background:#fff;color:var(--burgundy);border-radius:999px;min-width:22px;height:22px;
+    padding:0 6px;display:inline-flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;
+  }
+  .cart-sheet{
+    position:fixed;inset:0;z-index:150;background:#f1ece2;color:#2a1f1a;
+    display:none;overflow-y:auto;-webkit-overflow-scrolling:touch;
+  }
+  .cart-sheet.open{display:block}
+  .cs-inner{max-width:430px;margin:0 auto;min-height:100%;padding:30px 22px 140px}
+  .cs-inner h3{font-family:var(--serif);font-weight:700;font-size:34px;color:var(--burgundy);line-height:1.05}
+  .cs-sub{margin-top:6px;font-size:14px;color:#8a7563}
+  .cs-row{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;padding:15px 0;border-bottom:1px solid rgba(42,31,26,.1)}
+  .cs-row .qn{font-weight:700;font-size:17px;color:#2a1f1a}
+  .cs-row .qd{font-size:13px;color:#8a7563;margin-top:3px}
+  .cs-row .qp{font-weight:700;font-size:15px;white-space:nowrap}
+  .cs-tot{margin-top:18px;font-size:15px}
+  .cs-tot .ln{display:flex;justify-content:space-between;padding:5px 0;color:#6f5d50}
+  .cs-tot .gr{display:flex;justify-content:space-between;padding:12px 0 0;font-size:22px;font-weight:700;font-family:var(--serif);color:var(--burgundy)}
+  .cs-note{margin-top:10px;font-size:12.5px;color:#8a7563;text-align:center}
+  .cs-act{
+    position:fixed;left:50%;transform:translateX(-50%);bottom:0;width:min(100%,430px);
+    display:flex;gap:10px;padding:14px 22px calc(22px + env(safe-area-inset-bottom,0px));
+    background:linear-gradient(180deg,rgba(241,236,226,0),#f1ece2 26%);
+  }
+  .cs-act button{flex:1;padding:15px;border-radius:8px;border:0;font-weight:700;font-size:15px;cursor:pointer}
+  .cs-clear{background:transparent;border:1.5px solid rgba(42,31,26,.3)!important;color:#2a1f1a}
+  .cs-back{background:var(--burgundy);color:#fff}
 </style>
 </head>
 <body>
@@ -647,6 +697,35 @@ croissant</h1><p>with ice latte · Rp 75k</p></div>
     var w=name.replace(/[^A-Za-z ]/g,' ').trim().split(/\s+/);
     return (((w[0]||'')[0]||'')+((w[1]||'')[0]||'')).toUpperCase();
   }
+
+  // ---- cart state ----
+  function unitPrice(p){var m=String(p).match(/\d[\d.,]*/);return m?parseInt(m[0].replace(/[.,]/g,''),10):0;}
+  function fmt(n){return String(n).replace(/\B(?=(\d{3})+(?!\d))/g,',');}
+  var addEls={},byName={},cart={};
+  try{cart=JSON.parse(localStorage.getItem('bb_cart_v1')||'{}')||{};}catch(e){cart={};}
+  function saveCart(){try{localStorage.setItem('bb_cart_v1',JSON.stringify(cart));}catch(e){}}
+  function setQty(name,q){
+    if(q<=0)delete cart[name];else cart[name]=q;
+    saveCart();paintAdd(name);if(typeof renderBar==='function')renderBar();
+  }
+  function paintAdd(name){
+    var el=addEls[name];if(!el)return;
+    var q=cart[name]||0;el.innerHTML='';
+    if(q<=0){
+      var b=document.createElement('button');b.type='button';b.className='add-btn';
+      b.textContent='+';b.setAttribute('aria-label','Add '+name);
+      b.onclick=function(){setQty(name,1);};el.appendChild(b);
+    }else{
+      var s=document.createElement('div');s.className='stepper';
+      var m=document.createElement('button');m.type='button';m.textContent='−';
+      m.setAttribute('aria-label','Less');m.onclick=function(){setQty(name,(cart[name]||0)-1);};
+      var c=document.createElement('b');c.textContent=q;
+      var p=document.createElement('button');p.type='button';p.textContent='+';
+      p.setAttribute('aria-label','More');p.onclick=function(){setQty(name,(cart[name]||0)+1);};
+      s.appendChild(m);s.appendChild(c);s.appendChild(p);el.appendChild(s);
+    }
+  }
+
   MENU.forEach(function(cat,i){
     var tab=document.createElement('button');
     tab.type='button';
@@ -668,13 +747,16 @@ croissant</h1><p>with ice latte · Rp 75k</p></div>
       var nm=document.createElement('div');nm.className='dish-name';nm.textContent=it.n;mn.appendChild(nm);
       if(it.d){var de=document.createElement('div');de.className='dish-desc';de.textContent=it.d;mn.appendChild(de);}
       var pr=document.createElement('div');pr.className='dish-price';pr.textContent=it.p;mn.appendChild(pr);
-      row.appendChild(th);row.appendChild(mn);sec.appendChild(row);
+      var ad=document.createElement('div');ad.className='dish-add';
+      addEls[it.n]=ad;byName[it.n]={p:it.p,u:unitPrice(it.p)};
+      paintAdd(it.n);
+      row.appendChild(th);row.appendChild(mn);row.appendChild(ad);sec.appendChild(row);
     });
     bodyEl.appendChild(sec);
   });
 
-  function openMenu(e){if(e)e.preventDefault();ov.classList.add('open');document.body.classList.add('locked');ov.setAttribute('aria-hidden','false');ov.scrollTop=0;}
-  function closeMenu(){ov.classList.remove('open');document.body.classList.remove('locked');ov.setAttribute('aria-hidden','true');}
+  function openMenu(e){if(e)e.preventDefault();ov.classList.add('open');document.body.classList.add('locked');ov.setAttribute('aria-hidden','false');ov.scrollTop=0;if(typeof renderBar==='function')renderBar();}
+  function closeMenu(){ov.classList.remove('open');document.body.classList.remove('locked');ov.setAttribute('aria-hidden','true');var cs=document.getElementById('cartSheet');if(cs)cs.classList.remove('open');var cb=document.getElementById('cartBar');if(cb)cb.classList.remove('show');}
   var ob=document.getElementById('openMenu');if(ob)ob.addEventListener('click',openMenu);
   document.getElementById('menuClose').addEventListener('click',closeMenu);
   document.addEventListener('keydown',function(e){if(e.key==='Escape'&&ov.classList.contains('open'))closeMenu();});
@@ -684,6 +766,54 @@ croissant</h1><p>with ice latte · Rp 75k</p></div>
     var sec=document.getElementById('mc'+t.dataset.i);
     if(sec)sec.scrollIntoView({behavior:'smooth',block:'start'});
   });
+
+  // ---- cart bar + waiter summary ----
+  var cbar=document.createElement('div');cbar.className='cart-bar';cbar.id='cartBar';
+  cbar.innerHTML='<span class="cb-c"><span class="cb-n" id="cbN">0</span><span>in your order</span></span><span id="cbT">Show waiter →</span>';
+  ov.appendChild(cbar);
+  var sheet=document.createElement('div');sheet.className='cart-sheet';sheet.id='cartSheet';
+  var si=document.createElement('div');si.className='cs-inner';
+  si.innerHTML='<h3>Your order</h3><div class="cs-sub">Show this screen to your waiter</div><div class="cs-list" id="csList"></div><div class="cs-tot" id="csTot"></div><div class="cs-note">Approximate — the final amount is confirmed on your bill.</div>';
+  var sa=document.createElement('div');sa.className='cs-act';
+  sa.innerHTML='<button type="button" class="cs-clear" id="csClear">Clear</button><button type="button" class="cs-back" id="csBack">Back to menu</button>';
+  sheet.appendChild(si);sheet.appendChild(sa);ov.appendChild(sheet);
+
+  function cartCount(){var n=0;for(var k in cart)n+=cart[k];return n;}
+  function cartSubtotal(){var s=0;for(var k in cart){var b=byName[k];if(b)s+=b.u*cart[k];}return s;}
+  function renderBar(){
+    var n=cartCount(),sub=cartSubtotal();
+    document.getElementById('cbN').textContent=n;
+    document.getElementById('cbT').textContent=(sub?('~ '+fmt(Math.round(sub*1.16))+' IDR'):'Show waiter')+' →';
+    cbar.classList.toggle('show', ov.classList.contains('open') && n>0 && !sheet.classList.contains('open'));
+  }
+  function openSummary(){
+    var list=document.getElementById('csList');list.innerHTML='';
+    var keys=Object.keys(cart);
+    if(!keys.length){var em=document.createElement('div');em.className='cs-sub';em.style.padding='22px 0';em.textContent='No items yet — tap + on dishes you want.';list.appendChild(em);}
+    keys.forEach(function(k){
+      var b=byName[k]||{p:'',u:0},q=cart[k];
+      var r=document.createElement('div');r.className='cs-row';
+      var L=document.createElement('div');
+      var qn=document.createElement('div');qn.className='qn';qn.textContent=q+' × '+k;
+      var qd=document.createElement('div');qd.className='qd';qd.textContent=b.p||'';
+      L.appendChild(qn);L.appendChild(qd);
+      var R=document.createElement('div');R.className='qp';R.textContent=fmt(b.u*q)+' IDR';
+      r.appendChild(L);r.appendChild(R);list.appendChild(r);
+    });
+    var sub=cartSubtotal();
+    document.getElementById('csTot').innerHTML=
+      '<div class="ln"><span>Subtotal</span><span>'+fmt(sub)+' IDR</span></div>'+
+      '<div class="ln"><span>Tax 10%</span><span>'+fmt(Math.round(sub*0.10))+' IDR</span></div>'+
+      '<div class="ln"><span>Service 6%</span><span>'+fmt(Math.round(sub*0.06))+' IDR</span></div>'+
+      '<div class="gr"><span>Approx total</span><span>'+fmt(Math.round(sub*1.16))+' IDR</span></div>';
+    sheet.classList.add('open');renderBar();
+  }
+  cbar.addEventListener('click',openSummary);
+  document.getElementById('csBack').addEventListener('click',function(){sheet.classList.remove('open');renderBar();});
+  document.getElementById('csClear').addEventListener('click',function(){
+    cart={};saveCart();Object.keys(addEls).forEach(paintAdd);sheet.classList.remove('open');renderBar();
+  });
+  renderBar();
 
   var cats=[].slice.call(document.querySelectorAll('.menu-cat'));
   var io=new IntersectionObserver(function(es){
