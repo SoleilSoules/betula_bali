@@ -628,7 +628,7 @@ croissant</h1><p>with ice latte · Rp 75k</p></div>
       var bs=document.querySelectorAll('.badge');
       for(var i=0;i<bs.length;i++){
         bs[i].classList.toggle('closed',!open);
-        bs[i].innerHTML='<i></i> '+(open?'Open':'Closed');
+        bs[i].innerHTML='<i></i> '+(open?'Open till 23:00':'Opens at 12:00');
       }
     }
     setOpen();
