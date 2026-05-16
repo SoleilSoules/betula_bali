@@ -181,10 +181,11 @@
 
   /* ---------- STICKY CTA ---------- */
   .sticky{
-    position:fixed;left:50%;transform:translateX(-50%) translateY(120%);
-    bottom:16px;width:min(100% - 28px,402px);z-index:50;
-    display:flex;gap:10px;transition:transform .28s ease;
+    position:fixed;left:50%;transform:translateX(-50%) translateY(260%);
+    bottom:calc(16px + env(safe-area-inset-bottom,0px));width:min(100% - 28px,402px);z-index:50;
+    display:flex;gap:10px;transition:transform .28s ease;pointer-events:none;
   }
+  .sticky.show{pointer-events:auto}
   .sticky.show{transform:translateX(-50%) translateY(0)}
   .sticky a{
     flex:1;text-align:center;padding:15px 10px;border-radius:4px;
@@ -213,6 +214,106 @@
   footer .ig{margin-top:14px;display:inline-flex;align-items:center;gap:6px;font-size:15px;color:rgba(247,241,232,.85)}
   footer .ig svg{width:15px;height:15px}
   footer .hours{margin-top:8px;font-size:14px;letter-spacing:.02em;color:rgba(247,241,232,.62)}
+
+  /* ---------- INTERACTIVE MENU (opened by "Show menu" after hero) ---------- */
+  .menu-ov{
+    position:fixed;inset:0;z-index:100;background:#f1ece2;color:#2a1f1a;
+    display:none;overflow-y:auto;-webkit-overflow-scrolling:touch;
+  }
+  .menu-ov.open{display:block}
+  body.locked{overflow:hidden}
+  .menu-inner{max-width:430px;margin:0 auto;min-height:100%;background:#f1ece2;padding-bottom:64px}
+  .menu-top{position:sticky;top:0;z-index:5;background:#f1ece2;padding:30px 22px 0}
+  .menu-top .wm2{
+    font-family:var(--serif);font-weight:700;font-size:15px;
+    letter-spacing:.22em;text-transform:uppercase;color:#2a1f1a;
+  }
+  .menu-top h2{
+    font-family:var(--serif);font-weight:700;font-size:62px;line-height:1;
+    color:var(--burgundy);margin-top:6px;letter-spacing:-.01em;
+  }
+  .menu-x{
+    position:absolute;top:26px;right:18px;width:38px;height:38px;border:0;
+    border-radius:999px;background:rgba(42,31,26,.07);color:#2a1f1a;
+    display:flex;align-items:center;justify-content:center;font-size:18px;cursor:pointer;
+  }
+  .menu-tabs{display:flex;gap:9px;overflow-x:auto;scrollbar-width:none;padding:20px 0 16px;margin-top:4px}
+  .menu-tabs::-webkit-scrollbar{display:none}
+  .menu-tab{
+    flex:0 0 auto;padding:11px 18px;border-radius:999px;
+    border:1px solid rgba(42,31,26,.25);background:transparent;color:#2a1f1a;
+    font-family:var(--sans);font-weight:600;font-size:15px;white-space:nowrap;cursor:pointer;
+  }
+  .menu-tab.on{background:var(--burgundy);color:#fff;border-color:var(--burgundy)}
+  .menu-top::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:rgba(42,31,26,.14)}
+  .menu-body{padding:0 22px}
+  .menu-cat{padding-top:34px;scroll-margin-top:194px}
+  .menu-cat h3{
+    display:flex;align-items:center;gap:14px;
+    font-family:var(--serif);font-weight:700;font-size:30px;color:#2a1f1a;
+  }
+  .menu-cat h3::after{content:"";flex:1;height:1px;background:rgba(30,74,107,.4)}
+  .dish{display:flex;gap:14px;align-items:flex-start;padding:18px 0;border-bottom:1px solid rgba(42,31,26,.1)}
+  .dish:last-child{border-bottom:0}
+  .dish-th{
+    flex:0 0 92px;width:92px;height:92px;border-radius:10px;background:#e7ddc9;
+    color:var(--burgundy);display:flex;align-items:center;justify-content:center;
+    font-family:var(--serif);font-weight:700;font-size:26px;align-self:flex-start;
+  }
+  .dish-main{flex:1;min-width:0}
+  .dish-name{font-weight:700;font-size:19px;line-height:1.2;color:#2a1f1a}
+  .dish-desc{margin-top:5px;font-size:13.5px;line-height:1.45;color:#8a7563}
+  .dish-price{margin-top:8px;font-weight:700;font-size:15px;color:#2a1f1a}
+  .menu-note{text-align:center;font-size:13px;color:#8a7563;padding:34px 22px 8px;letter-spacing:.02em}
+
+  /* ---------- CART (my order → show waiter) ---------- */
+  .dish-add{flex:0 0 auto;align-self:center;margin-left:6px}
+  .add-btn{
+    width:36px;height:36px;border-radius:999px;border:1.5px solid var(--burgundy);
+    background:transparent;color:var(--burgundy);font-size:21px;line-height:1;cursor:pointer;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .stepper{display:flex;align-items:center;border:1.5px solid var(--burgundy);border-radius:999px}
+  .stepper button{width:32px;height:36px;border:0;background:transparent;color:var(--burgundy);font-size:18px;line-height:1;cursor:pointer}
+  .stepper b{min-width:22px;text-align:center;font-size:15px;font-weight:700;color:#2a1f1a}
+  .cart-bar{
+    position:fixed;left:50%;transform:translateX(-50%) translateY(220%);
+    bottom:calc(14px + env(safe-area-inset-bottom,0px));width:min(100% - 28px,402px);z-index:140;
+    background:var(--burgundy);color:#fff;border-radius:999px;padding:15px 22px;
+    display:flex;align-items:center;justify-content:space-between;
+    font-weight:600;font-size:15px;cursor:pointer;transition:transform .26s ease;
+    box-shadow:0 14px 30px -12px rgba(0,0,0,.5);
+  }
+  .cart-bar.show{transform:translateX(-50%) translateY(0)}
+  .cart-bar .cb-c{display:flex;align-items:center;gap:9px}
+  .cart-bar .cb-n{
+    background:#fff;color:var(--burgundy);border-radius:999px;min-width:22px;height:22px;
+    padding:0 6px;display:inline-flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;
+  }
+  .cart-sheet{
+    position:fixed;inset:0;z-index:150;background:#f1ece2;color:#2a1f1a;
+    display:none;overflow-y:auto;-webkit-overflow-scrolling:touch;
+  }
+  .cart-sheet.open{display:block}
+  .cs-inner{max-width:430px;margin:0 auto;min-height:100%;padding:30px 22px 140px}
+  .cs-inner h3{font-family:var(--serif);font-weight:700;font-size:34px;color:var(--burgundy);line-height:1.05}
+  .cs-sub{margin-top:6px;font-size:14px;color:#8a7563}
+  .cs-row{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;padding:15px 0;border-bottom:1px solid rgba(42,31,26,.1)}
+  .cs-row .qn{font-weight:700;font-size:17px;color:#2a1f1a}
+  .cs-row .qd{font-size:13px;color:#8a7563;margin-top:3px}
+  .cs-row .qp{font-weight:700;font-size:15px;white-space:nowrap}
+  .cs-tot{margin-top:18px;font-size:15px}
+  .cs-tot .ln{display:flex;justify-content:space-between;padding:5px 0;color:#6f5d50}
+  .cs-tot .gr{display:flex;justify-content:space-between;padding:12px 0 0;font-size:22px;font-weight:700;font-family:var(--serif);color:var(--burgundy)}
+  .cs-note{margin-top:10px;font-size:12.5px;color:#8a7563;text-align:center}
+  .cs-act{
+    position:fixed;left:50%;transform:translateX(-50%);bottom:0;width:min(100%,430px);
+    display:flex;gap:10px;padding:14px 22px calc(22px + env(safe-area-inset-bottom,0px));
+    background:linear-gradient(180deg,rgba(241,236,226,0),#f1ece2 26%);
+  }
+  .cs-act button{flex:1;padding:15px;border-radius:8px;border:0;font-weight:700;font-size:15px;cursor:pointer}
+  .cs-clear{background:transparent;border:1.5px solid rgba(42,31,26,.3)!important;color:#2a1f1a}
+  .cs-back{background:var(--burgundy);color:#fff}
 </style>
 </head>
 <body>
@@ -283,8 +384,8 @@ croissant</h1><p>with ice latte · Rp 75k</p></div>
 
   <!-- ===== TWO TILES + MENU PAPER ===== -->
   <div class="tiles">
-    <a class="tile left" href="#signatures">Show menu</a>
-    <a class="tile right" href="https://wa.me/6287783977753?text=Hi%20Betula!%20I'd%20like%20to%20book%20a%20table%20for%20..." target="_blank" rel="noreferrer">Reserve a table</a>
+    <a class="tile left" href="#" id="openMenu">Show menu</a>
+    <a class="tile right" href="https://wa.me/6282144556677?text=Hi%20Betula!%20I'd%20like%20to%20book%20a%20table%20for%20..." target="_blank" rel="noreferrer">Reserve a table</a>
     <div class="menu-paper"><img src="assets/menu-paper.png" alt="Menu" /></div>
   </div>
 
@@ -318,17 +419,17 @@ croissant</h1><p>with ice latte · Rp 75k</p></div>
   <section>
     <div class="sec-h"><h2>Events</h2></div>
     <div class="ev-list">
-      <a class="ev" href="https://wa.me/6287783977753?text=I'd%20like%20to%20join%20pelmeni%20night%20on%2021%20May" target="_blank" rel="noreferrer">
+      <a class="ev" href="https://wa.me/6282144556677?text=I'd%20like%20to%20join%20pelmeni%20night%20on%2021%20May" target="_blank" rel="noreferrer">
         <img src="assets/ev-pelmeni.jpg" alt="" /><div class="v"></div>
         <div class="cap"><div class="when">Wed · 21 May · 7pm</div><b>Pelmeni night</b>
           <em>Roll them together, eat them together. One shot of nastoyka on the house.</em></div>
       </a>
-      <a class="ev" href="https://wa.me/6287783977753?text=Booking%20a%20table%20for%20Borscht%20Friday" target="_blank" rel="noreferrer">
+      <a class="ev" href="https://wa.me/6282144556677?text=Booking%20a%20table%20for%20Borscht%20Friday" target="_blank" rel="noreferrer">
         <img src="assets/ev-borscht.jpg" alt="" /><div class="v"></div>
         <div class="cap"><div class="when">Fri · 23 May · 12–10pm</div><b>Borscht Friday</b>
           <em>Every kind of borscht — 60k IDR all day. Sour cream and salo on the side.</em></div>
       </a>
-      <a class="ev" href="https://wa.me/6287783977753?text=Booking%20Sunday%20brunch" target="_blank" rel="noreferrer">
+      <a class="ev" href="https://wa.me/6282144556677?text=Booking%20Sunday%20brunch" target="_blank" rel="noreferrer">
         <img src="assets/ev-brunch.jpg" alt="" /><div class="v"></div>
         <div class="cap"><div class="when">Sun · 25 May · 10am–2pm</div><b>Sunday brunch</b>
           <em>Syrniki, eggs, fresh juices. Family-style on long tables.</em></div>
@@ -343,11 +444,11 @@ croissant</h1><p>with ice latte · Rp 75k</p></div>
       <div class="sub">Make the place yours</div>
     </div>
     <div class="grid ph">
-      <a class="pcard" href="https://wa.me/6287783977753?text=I'd%20like%20to%20book%20the%20big%20table" target="_blank" rel="noreferrer">
+      <a class="pcard" href="https://wa.me/6282144556677?text=I'd%20like%20to%20book%20the%20big%20table" target="_blank" rel="noreferrer">
         <img src="assets/ph-table.jpg" alt="" /><div class="v"></div>
         <div class="cap"><b>Big table for a group</b><em>Up to 12 people · family-style dinner with a tasting set</em></div>
       </a>
-      <a class="pcard" href="https://wa.me/6287783977753?text=I'd%20like%20to%20rent%20the%20venue" target="_blank" rel="noreferrer">
+      <a class="pcard" href="https://wa.me/6282144556677?text=I'd%20like%20to%20rent%20the%20venue" target="_blank" rel="noreferrer">
         <img src="assets/ph-venue.jpg" alt="" /><div class="v"></div>
         <div class="cap"><b>Whole-venue hire</b><em>Birthdays, team off-sites — the place is yours for the evening</em></div>
       </a>
@@ -415,8 +516,22 @@ croissant</h1><p>with ice latte · Rp 75k</p></div>
 
   <!-- ===== STICKY CTA (appears after hero) ===== -->
   <div class="sticky" id="sticky">
-    <a class="s-menu" href="#signatures">Show menu</a>
-    <a class="s-book" href="https://wa.me/6287783977753?text=Hi%20Betula!%20I'd%20like%20to%20book%20a%20table%20for%20..." target="_blank" rel="noreferrer">Reserve a table</a>
+    <a class="s-menu" href="assets/bali-betula-menu.pdf" target="_blank" rel="noreferrer">View PDF menu</a>
+    <a class="s-book" href="https://wa.me/6282144556677?text=Hi%20Betula!%20I'd%20like%20to%20book%20a%20table%20for%20..." target="_blank" rel="noreferrer">Reserve a table</a>
+  </div>
+
+  <!-- ===== INTERACTIVE MENU (opened by "Show menu" after hero) ===== -->
+  <div class="menu-ov" id="menuOv" aria-hidden="true">
+    <div class="menu-inner">
+      <div class="menu-top">
+        <button class="menu-x" id="menuClose" type="button" aria-label="Close menu">✕</button>
+        <div class="wm2">Bali Betula</div>
+        <h2>Menu</h2>
+        <div class="menu-tabs" id="menuTabs"></div>
+      </div>
+      <div class="menu-body" id="menuBody"></div>
+      <div class="menu-note">All prices in IDR · tax 10% · service 6%</div>
+    </div>
   </div>
 
 </div>
@@ -481,6 +596,238 @@ croissant</h1><p>with ice latte · Rp 75k</p></div>
     window.addEventListener('scroll',onScroll,{passive:true});
     onScroll();
   })();
+</script>
+<script>
+(function(){
+  var MENU=[
+    {c:"Starters",items:[
+      {n:"Cheese Burger",d:"100% beef patty, double cheese, pickles on a soft bun.",p:"110000 IDR"},
+      {n:"Club Sandwich",d:"Grilled chicken, smoked bacon, egg, lettuce, tomato on toasted bread.",p:"85000 IDR"},
+      {n:"Cheburek",d:"Deep-fried turnover filled with juicy seasoned minced meat and herbs.",p:"70000 IDR"},
+      {n:"Syrniki",d:"Pan-fried cottage cheese pancakes, sour cream or berry jam.",p:"100000 IDR"}
+    ]},
+    {c:"Soups",items:[
+      {n:"Borsch",d:"Beet-based soup slow-simmered with tender beef, vegetables, sour cream.",p:"90000 IDR"},
+      {n:"Solyanka",d:"Rich tangy soup with smoked meats, pickles, olives and lemon.",p:"95000 IDR"},
+      {n:"Pelmeni",d:"Handmade meat dumplings — with sour cream or in clear broth. 15 / 25 pcs.",p:"80000 / 120000 IDR"}
+    ]},
+    {c:"Salads",items:[
+      {n:"Crispy Eggplant",d:"Deep-fried eggplant in sweet chili glaze, cilantro, sesame.",p:"110000 IDR"},
+      {n:"Tuna with Mango",d:"A vibrant stack of fresh tuna and mango.",p:"95000 IDR"},
+      {n:"Tuna Tartare",d:"Hand-chopped premium tuna, citrus, soy, served with avocado.",p:"145000 IDR"},
+      {n:"Achichuk",d:"Uzbek salad of ripe tomatoes, onions and chili — pairs with Plov.",p:"80000 IDR"},
+      {n:"Lebanon Eggplants",d:"Crispy fried eggplant drizzled with rich sesame sauce.",p:"105000 IDR"}
+    ]},
+    {c:"Mains",items:[
+      {n:"Beshbarmak",d:"Hand-rolled dough, slow-cooked Australian beef short ribs, onion glaze.",p:"250000 IDR"},
+      {n:"Plov",d:"Fragrant rice pilaf with beef brisket, sweet carrots and spices.",p:"130000 IDR"},
+      {n:"Chicken Schnitzel",d:"Golden-brown breaded chicken breast with mashed potato.",p:"105000 IDR"},
+      {n:"Beef Stroganoff",d:"Sautéed beef in a velvety sour cream and mushroom sauce.",p:"105000 IDR"},
+      {n:"Mushroom Chicken Creamy Pasta",d:"Pasta with juicy chicken and mushrooms in a cream sauce.",p:"95000 IDR"},
+      {n:"Nasi Goreng",d:"Indonesian fried rice with chicken, vegetables and a fried egg.",p:"65000 IDR"},
+      {n:"Chicken Liver & Mash",d:"Golden chicken liver with velvet mash and garden herbs.",p:"90000 IDR"},
+      {n:"Tsomyan (Fried Lagman)",d:"Hand-stretched noodles wok-tossed with sliced beef and greens.",p:"110000 IDR"},
+      {n:"Manty",d:"Steamed dumplings, meat & onion filling, 5 pcs. Preorder 60 mins.",p:"110000 IDR"},
+      {n:"Kazan Kebab",d:"Cauldron-fried beef and potatoes, cumin, fresh onion garnish.",p:"220000 IDR"},
+      {n:"Tuna Steak",d:"Creamy mushroom style, or Sambal with onions and fresh chili.",p:"120000 IDR"},
+      {n:"Pepper Steak",d:"Pepper-crusted beef steak with a buttery pepper sauce.",p:"250000 IDR"},
+      {n:"Shrimp Pasta",d:"Juicy prawns and pasta in buttery garlic sauce, chili flakes.",p:"125000 IDR"}
+    ]},
+    {c:"Bowls",items:[
+      {n:"Chicken Bowl",d:"Grilled chicken, avocado, edamame, cucumber, teriyaki glaze.",p:"85000 IDR"},
+      {n:"Tuna Bowl",d:"Sashimi-grade tuna, radish, green onion, soy-sesame dressing.",p:"90000 IDR"},
+      {n:"Dragon Power",d:"Dragon fruit, banana, mixed berries, papaya, granola, chia.",p:"75000 IDR"},
+      {n:"Berries Smoothie",d:"Blueberries, banana, melon, papaya, granola, chia.",p:"75000 IDR"},
+      {n:"Pure Sweetness",d:"Strawberry, banana, mango, melon, granola, chia.",p:"75000 IDR"}
+    ]},
+    {c:"Signature Coffee",items:[
+      {n:"Betula Creamy Coffee",d:"Espresso, fresh milk, rum syrup, brown sugar, ice.",p:"55000 IDR"},
+      {n:"Creamy Kintamani",d:"Espresso, fresh milk, condensed milk, vanilla, ice.",p:"55000 IDR"},
+      {n:"SourBee Coffee",d:"Orange juice, honey, espresso, slice of orange.",p:"55000 IDR"},
+      {n:"Midnight Citrus",d:"Orange juice, honey, pineapple juice, espresso, ice.",p:"55000 IDR"},
+      {n:"The Apple of Ice",d:"Espresso, honey, apple juice, syrup, ice.",p:"40000 IDR"}
+    ]},
+    {c:"Coffee",items:[
+      {n:"Espresso",d:"",p:"28000 IDR"},
+      {n:"Americano",d:"hot / iced",p:"30000 / 33000 IDR"},
+      {n:"Macchiato",d:"",p:"30000 IDR"},
+      {n:"Piccolo",d:"",p:"33000 IDR"},
+      {n:"Latte",d:"hot / iced",p:"35000 / 38000 IDR"},
+      {n:"Cappuccino",d:"hot / iced",p:"35000 / 38000 IDR"},
+      {n:"Flat White",d:"",p:"35000 IDR"},
+      {n:"Mochaccino",d:"hot / iced",p:"40000 / 43000 IDR"},
+      {n:"Frappuccino",d:"Coffee, choco, matcha or taro.",p:"45000 IDR"},
+      {n:"Ice Tea / Peach / Lychee",d:"",p:"20000 / 30000 / 30000 IDR"}
+    ]},
+    {c:"Non-coffee",items:[
+      {n:"Matcha Latte",d:"hot / iced",p:"35000 / 38000 IDR"},
+      {n:"Chocolate",d:"hot / iced",p:"35000 / 38000 IDR"},
+      {n:"Taro Latte",d:"hot / iced",p:"35000 / 38000 IDR"},
+      {n:"Creamy Nusantara",d:"hot / iced",p:"35000 / 38000 IDR"},
+      {n:"Loose Leaf Tea",d:"English breakfast, earl grey, green, peppermint, chamomile.",p:"35000 IDR"},
+      {n:"Tashkent Tea",d:"Pot of spiced black tea.",p:"75000 IDR"},
+      {n:"Mineral Water",d:"",p:"35000 IDR"},
+      {n:"Sparkling Water",d:"",p:"40000 IDR"}
+    ]},
+    {c:"Mocktails",items:[
+      {n:"Yellow Frenzy",d:"Pineapple, elderberry, peach, soda.",p:"35000 IDR"},
+      {n:"Red Spark",d:"Strawberry, passion fruit, orange, soda.",p:"35000 IDR"},
+      {n:"Green Bali Betula",d:"Kiwi, jasmine, orange, soda.",p:"35000 IDR"}
+    ]},
+    {c:"Soft Drinks",items:[
+      {n:"Cola",d:"",p:"25000 IDR"},
+      {n:"Cola Zero",d:"",p:"20000 IDR"},
+      {n:"Sprite",d:"",p:"25000 IDR"},
+      {n:"Bintang",d:"",p:"40000 IDR"},
+      {n:"Black Sand Lager",d:"",p:"50000 IDR"},
+      {n:"Black Sand IPA",d:"",p:"75000 IDR"},
+      {n:"Island Brewing",d:"",p:"50000 IDR"},
+      {n:"Summer Pale Ale",d:"",p:"50000 IDR"},
+      {n:"Everyday Weekend — Mango & Passion",d:"",p:"40000 IDR"},
+      {n:"Everyday Weekend — Lime & Soda",d:"",p:"40000 IDR"}
+    ]}
+  ];
+
+  var tabsEl=document.getElementById('menuTabs');
+  var bodyEl=document.getElementById('menuBody');
+  var ov=document.getElementById('menuOv');
+  if(!tabsEl||!bodyEl||!ov) return;
+
+  function mono(name){
+    var w=name.replace(/[^A-Za-z ]/g,' ').trim().split(/\s+/);
+    return (((w[0]||'')[0]||'')+((w[1]||'')[0]||'')).toUpperCase();
+  }
+
+  // ---- cart state ----
+  function unitPrice(p){var m=String(p).match(/\d[\d.,]*/);return m?parseInt(m[0].replace(/[.,]/g,''),10):0;}
+  function fmt(n){return String(n).replace(/\B(?=(\d{3})+(?!\d))/g,',');}
+  var addEls={},byName={},cart={};
+  try{cart=JSON.parse(localStorage.getItem('bb_cart_v1')||'{}')||{};}catch(e){cart={};}
+  function saveCart(){try{localStorage.setItem('bb_cart_v1',JSON.stringify(cart));}catch(e){}}
+  function setQty(name,q){
+    if(q<=0)delete cart[name];else cart[name]=q;
+    saveCart();paintAdd(name);if(typeof renderBar==='function')renderBar();
+  }
+  function paintAdd(name){
+    var el=addEls[name];if(!el)return;
+    var q=cart[name]||0;el.innerHTML='';
+    if(q<=0){
+      var b=document.createElement('button');b.type='button';b.className='add-btn';
+      b.textContent='+';b.setAttribute('aria-label','Add '+name);
+      b.onclick=function(){setQty(name,1);};el.appendChild(b);
+    }else{
+      var s=document.createElement('div');s.className='stepper';
+      var m=document.createElement('button');m.type='button';m.textContent='−';
+      m.setAttribute('aria-label','Less');m.onclick=function(){setQty(name,(cart[name]||0)-1);};
+      var c=document.createElement('b');c.textContent=q;
+      var p=document.createElement('button');p.type='button';p.textContent='+';
+      p.setAttribute('aria-label','More');p.onclick=function(){setQty(name,(cart[name]||0)+1);};
+      s.appendChild(m);s.appendChild(c);s.appendChild(p);el.appendChild(s);
+    }
+  }
+
+  MENU.forEach(function(cat,i){
+    var tab=document.createElement('button');
+    tab.type='button';
+    tab.className='menu-tab'+(i===0?' on':'');
+    tab.textContent=cat.c;
+    tab.dataset.i=i;
+    tabsEl.appendChild(tab);
+
+    var sec=document.createElement('div');
+    sec.className='menu-cat';
+    sec.id='mc'+i;
+    var h=document.createElement('h3');
+    h.textContent=cat.c;
+    sec.appendChild(h);
+    cat.items.forEach(function(it){
+      var row=document.createElement('div');row.className='dish';
+      var th=document.createElement('div');th.className='dish-th';th.textContent=mono(it.n);
+      var mn=document.createElement('div');mn.className='dish-main';
+      var nm=document.createElement('div');nm.className='dish-name';nm.textContent=it.n;mn.appendChild(nm);
+      if(it.d){var de=document.createElement('div');de.className='dish-desc';de.textContent=it.d;mn.appendChild(de);}
+      var pr=document.createElement('div');pr.className='dish-price';pr.textContent=it.p;mn.appendChild(pr);
+      var ad=document.createElement('div');ad.className='dish-add';
+      addEls[it.n]=ad;byName[it.n]={p:it.p,u:unitPrice(it.p)};
+      paintAdd(it.n);
+      row.appendChild(th);row.appendChild(mn);row.appendChild(ad);sec.appendChild(row);
+    });
+    bodyEl.appendChild(sec);
+  });
+
+  function openMenu(e){if(e)e.preventDefault();ov.classList.add('open');document.body.classList.add('locked');ov.setAttribute('aria-hidden','false');ov.scrollTop=0;if(typeof renderBar==='function')renderBar();}
+  function closeMenu(){ov.classList.remove('open');document.body.classList.remove('locked');ov.setAttribute('aria-hidden','true');var cs=document.getElementById('cartSheet');if(cs)cs.classList.remove('open');var cb=document.getElementById('cartBar');if(cb)cb.classList.remove('show');}
+  var ob=document.getElementById('openMenu');if(ob)ob.addEventListener('click',openMenu);
+  document.getElementById('menuClose').addEventListener('click',closeMenu);
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&ov.classList.contains('open'))closeMenu();});
+
+  tabsEl.addEventListener('click',function(e){
+    var t=e.target.closest('.menu-tab');if(!t)return;
+    var sec=document.getElementById('mc'+t.dataset.i);
+    if(sec)sec.scrollIntoView({behavior:'smooth',block:'start'});
+  });
+
+  // ---- cart bar + waiter summary ----
+  var cbar=document.createElement('div');cbar.className='cart-bar';cbar.id='cartBar';
+  cbar.innerHTML='<span class="cb-c"><span class="cb-n" id="cbN">0</span><span>in your order</span></span><span id="cbT">Show waiter →</span>';
+  ov.appendChild(cbar);
+  var sheet=document.createElement('div');sheet.className='cart-sheet';sheet.id='cartSheet';
+  var si=document.createElement('div');si.className='cs-inner';
+  si.innerHTML='<h3>Your order</h3><div class="cs-sub">Show this screen to your waiter</div><div class="cs-list" id="csList"></div><div class="cs-tot" id="csTot"></div><div class="cs-note">Approximate — the final amount is confirmed on your bill.</div>';
+  var sa=document.createElement('div');sa.className='cs-act';
+  sa.innerHTML='<button type="button" class="cs-clear" id="csClear">Clear</button><button type="button" class="cs-back" id="csBack">Back to menu</button>';
+  sheet.appendChild(si);sheet.appendChild(sa);ov.appendChild(sheet);
+
+  function cartCount(){var n=0;for(var k in cart)n+=cart[k];return n;}
+  function cartSubtotal(){var s=0;for(var k in cart){var b=byName[k];if(b)s+=b.u*cart[k];}return s;}
+  function renderBar(){
+    var n=cartCount(),sub=cartSubtotal();
+    document.getElementById('cbN').textContent=n;
+    document.getElementById('cbT').textContent=(sub?('~ '+fmt(Math.round(sub*1.16))+' IDR'):'Show waiter')+' →';
+    cbar.classList.toggle('show', ov.classList.contains('open') && n>0 && !sheet.classList.contains('open'));
+  }
+  function openSummary(){
+    var list=document.getElementById('csList');list.innerHTML='';
+    var keys=Object.keys(cart);
+    if(!keys.length){var em=document.createElement('div');em.className='cs-sub';em.style.padding='22px 0';em.textContent='No items yet — tap + on dishes you want.';list.appendChild(em);}
+    keys.forEach(function(k){
+      var b=byName[k]||{p:'',u:0},q=cart[k];
+      var r=document.createElement('div');r.className='cs-row';
+      var L=document.createElement('div');
+      var qn=document.createElement('div');qn.className='qn';qn.textContent=q+' × '+k;
+      var qd=document.createElement('div');qd.className='qd';qd.textContent=b.p||'';
+      L.appendChild(qn);L.appendChild(qd);
+      var R=document.createElement('div');R.className='qp';R.textContent=fmt(b.u*q)+' IDR';
+      r.appendChild(L);r.appendChild(R);list.appendChild(r);
+    });
+    var sub=cartSubtotal();
+    document.getElementById('csTot').innerHTML=
+      '<div class="ln"><span>Subtotal</span><span>'+fmt(sub)+' IDR</span></div>'+
+      '<div class="ln"><span>Tax 10%</span><span>'+fmt(Math.round(sub*0.10))+' IDR</span></div>'+
+      '<div class="ln"><span>Service 6%</span><span>'+fmt(Math.round(sub*0.06))+' IDR</span></div>'+
+      '<div class="gr"><span>Approx total</span><span>'+fmt(Math.round(sub*1.16))+' IDR</span></div>';
+    sheet.classList.add('open');renderBar();
+  }
+  cbar.addEventListener('click',openSummary);
+  document.getElementById('csBack').addEventListener('click',function(){sheet.classList.remove('open');renderBar();});
+  document.getElementById('csClear').addEventListener('click',function(){
+    cart={};saveCart();Object.keys(addEls).forEach(paintAdd);sheet.classList.remove('open');renderBar();
+  });
+  renderBar();
+
+  var cats=[].slice.call(document.querySelectorAll('.menu-cat'));
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(en){
+      if(en.isIntersecting){
+        var i=en.target.id.replace('mc','');
+        [].forEach.call(tabsEl.children,function(b){b.classList.toggle('on',b.dataset.i===i);});
+        var on=tabsEl.querySelector('.menu-tab.on');
+        if(on)on.scrollIntoView({inline:'center',block:'nearest'});
+      }
+    });
+  },{root:ov,rootMargin:'-188px 0px -62% 0px',threshold:0});
+  cats.forEach(function(c){io.observe(c);});
+})();
 </script>
 </body>
 </html>
