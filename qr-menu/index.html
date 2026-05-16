@@ -107,7 +107,7 @@
   @keyframes fill{from{transform:scaleX(0)}to{transform:scaleX(1)}}
 
   /* ---------- TWO TILES + MENU PAPER ---------- */
-  .tiles{position:relative;height:230px;margin-top:-2px}
+  .tiles{position:relative;height:300px;margin-top:-2px}
   .tile{
     position:absolute;top:30px;height:159px;background:var(--card);
     display:flex;align-items:flex-end;padding:0 0 14px 18px;
@@ -158,6 +158,29 @@
   .ev-list{margin-top:26px;display:grid;gap:6px}
   .ph .pcard{height:387px}
   .ph .pcard .cap b{font-size:22px}
+
+  /* ---------- INSTAGRAM ---------- */
+  .ig-embeds{margin-top:26px;display:flex;flex-direction:column;gap:14px}
+  .ig-embeds .instagram-media{margin:0 auto!important;min-width:auto!important;width:100%!important}
+  .ig-fallback{
+    display:block;border:1px solid rgba(247,241,232,.35);border-radius:4px;
+    padding:18px;text-align:center;color:var(--cream);font-size:15px;
+    background:rgba(0,0,0,.12);
+  }
+
+  /* ---------- STICKY CTA ---------- */
+  .sticky{
+    position:fixed;left:50%;transform:translateX(-50%) translateY(120%);
+    bottom:16px;width:min(100% - 28px,402px);z-index:50;
+    display:flex;gap:10px;transition:transform .28s ease;
+  }
+  .sticky.show{transform:translateX(-50%) translateY(0)}
+  .sticky a{
+    flex:1;text-align:center;padding:15px 10px;border-radius:4px;
+    font-weight:600;font-size:15px;letter-spacing:.01em;
+  }
+  .sticky .s-menu{background:var(--cream);color:#170f13}
+  .sticky .s-book{background:var(--burgundy);color:#fff}
 
   /* ---------- FOOTER ---------- */
   footer{
@@ -312,6 +335,34 @@ croissant</h1><p>with ice latte · Rp 75k</p></div>
     </div>
   </section>
 
+  <!-- ===== LIFE AT BETULA (Instagram) ===== -->
+  <section>
+    <div class="sec-h">
+      <h2>Life at Betula</h2>
+      <div class="sub">Latest from Instagram</div>
+    </div>
+    <div class="ig-embeds">
+      <blockquote class="instagram-media" data-instgrm-captioned
+        data-instgrm-permalink="https://www.instagram.com/p/CrCB6dxocBh/"
+        style="background:#FFF;border:0;border-radius:3px;margin:0;padding:0;width:100%">
+        <a href="https://www.instagram.com/p/CrCB6dxocBh/" target="_blank" rel="noreferrer"
+           class="ig-fallback">View this post on Instagram →</a>
+      </blockquote>
+      <blockquote class="instagram-media" data-instgrm-captioned
+        data-instgrm-permalink="https://www.instagram.com/p/CqxSJ7Yo28W/"
+        style="background:#FFF;border:0;border-radius:3px;margin:0;padding:0;width:100%">
+        <a href="https://www.instagram.com/p/CqxSJ7Yo28W/" target="_blank" rel="noreferrer"
+           class="ig-fallback">View this post on Instagram →</a>
+      </blockquote>
+      <blockquote class="instagram-media" data-instgrm-captioned
+        data-instgrm-permalink="https://www.instagram.com/p/CqswAtHIwXh/"
+        style="background:#FFF;border:0;border-radius:3px;margin:0;padding:0;width:100%">
+        <a href="https://www.instagram.com/p/CqswAtHIwXh/" target="_blank" rel="noreferrer"
+           class="ig-fallback">View this post on Instagram →</a>
+      </blockquote>
+    </div>
+  </section>
+
   <!-- ===== FOOTER ===== -->
   <footer>
     <div class="slogan">good food <i>·</i> good people <i>·</i> good vibes</div>
@@ -325,8 +376,15 @@ croissant</h1><p>with ice latte · Rp 75k</p></div>
     </a>
   </footer>
 
+  <!-- ===== STICKY CTA (appears after hero) ===== -->
+  <div class="sticky" id="sticky">
+    <a class="s-menu" href="#signatures">Show menu</a>
+    <a class="s-book" href="https://wa.me/6282144556677?text=Hi%20Betula!%20I'd%20like%20to%20book%20a%20table%20for%20..." target="_blank" rel="noreferrer">Reserve a table</a>
+  </div>
+
 </div>
 
+<script async src="//www.instagram.com/embed.js"></script>
 <script>
   (function(){
     var track=document.getElementById('track');
@@ -375,6 +433,16 @@ croissant</h1><p>with ice latte · Rp 75k</p></div>
     // re-schedule whenever a slide settles
     var mo=setInterval(schedule,8200);
     window.addEventListener('beforeunload',function(){clearInterval(mo);clearTimeout(timer);});
+
+    // sticky CTA — show once the hero is mostly scrolled past
+    var sticky=document.getElementById('sticky');
+    var hero=document.querySelector('.hero');
+    function onScroll(){
+      var past=hero.getBoundingClientRect().bottom < 80;
+      sticky.classList.toggle('show',past);
+    }
+    window.addEventListener('scroll',onScroll,{passive:true});
+    onScroll();
   })();
 </script>
 </body>
