@@ -59,24 +59,27 @@
   }
   .slide::after{
     content:"";position:absolute;inset:0;
-    background:linear-gradient(178deg,rgba(0,0,0,.46) 0%,rgba(0,0,0,.12) 40%,rgba(0,0,0,0) 72%);
+    background:linear-gradient(178deg,rgba(0,0,0,.58) 0%,rgba(0,0,0,.32) 22%,rgba(0,0,0,.08) 48%,rgba(0,0,0,0) 75%);
   }
   .topbar{
     position:absolute;left:24px;right:20px;top:34px;z-index:3;
     display:flex;align-items:center;justify-content:space-between;
   }
-  .brand{display:flex;align-items:center;gap:10px}
-  .brand img{width:25px;height:25px}
-  .brand .wm{font-size:22px;letter-spacing:.06em;line-height:1;color:#fff;white-space:nowrap}
+  .brand{display:flex;align-items:center;gap:9px;min-width:0}
+  .brand img{width:25px;height:25px;flex:0 0 25px;display:block;object-fit:contain;
+    filter:drop-shadow(0 1px 4px rgba(0,0,0,.55))}
+  .brand .wm{font-size:21px;letter-spacing:.05em;line-height:1;color:#fff;white-space:nowrap;
+    text-shadow:0 1px 8px rgba(0,0,0,.55)}
   .brand .wm b{font-family:var(--serif);font-weight:700}
   .brand .wm span{font-family:var(--sans);font-weight:500}
+  /* OPEN badge — cream pill, dark text (matches the Next OpenBadge) */
   .badge{
-    display:inline-flex;align-items:center;gap:6px;
-    font-size:11px;letter-spacing:.06em;text-transform:uppercase;
-    color:#fff;background:rgba(0,0,0,.32);padding:5px 10px;border-radius:999px;
-    backdrop-filter:blur(4px);
+    display:inline-flex;align-items:center;gap:5px;flex:0 0 auto;
+    font-size:10px;letter-spacing:.08em;text-transform:uppercase;font-weight:600;
+    color:#170f13;background:rgba(247,242,232,.92);padding:4px 9px;border-radius:999px;
   }
-  .badge i{width:6px;height:6px;border-radius:999px;background:#5cc98a;display:inline-block}
+  .badge i{width:6px;height:6px;border-radius:999px;background:#2f8a3e;
+    box-shadow:0 0 6px rgba(47,138,62,.6);display:inline-block;flex:0 0 auto}
   .hero-copy{
     position:absolute;left:20px;right:30px;top:82px;z-index:3;color:#fff;
   }
@@ -106,21 +109,23 @@
   .dots .d{width:8px;height:8px;border-radius:999px;background:rgba(255,255,255,.4);flex:0 0 auto}
   @keyframes fill{from{transform:scaleX(0)}to{transform:scaleX(1)}}
 
-  /* ---------- TWO TILES + MENU PAPER ---------- */
+  /* ---------- TWO TILES + MENU PAPER ----------
+     Paper sits on TOP, centered, sticking up; tiles sit BELOW it with
+     their labels at the very bottom so the paper never covers text. */
   .tiles{position:relative;height:300px;margin-top:-2px}
-  .tile{
-    position:absolute;top:30px;height:159px;background:var(--card);
-    display:flex;align-items:flex-end;padding:0 0 14px 18px;
-    color:#170f13;font-weight:600;font-size:18px;
-  }
-  .tile.left{left:10px;width:203px}
-  .tile.right{right:10px;width:203px}
   .menu-paper{
-    position:absolute;left:50%;top:-4px;transform:translateX(-50%) rotate(-4.8deg);
-    width:222px;height:316px;z-index:4;
+    position:absolute;left:50%;top:6px;transform:translateX(-50%) rotate(-4.8deg);
+    width:152px;height:214px;z-index:4;
     box-shadow:0 12px 28px -10px rgba(0,0,0,.4);
   }
   .menu-paper img{width:100%;height:100%;object-fit:contain}
+  .tile{
+    position:absolute;top:196px;height:90px;background:var(--card);
+    display:flex;align-items:flex-end;
+    color:#170f13;font-weight:600;font-size:17px;
+  }
+  .tile.left{left:10px;width:203px;justify-content:flex-start;padding:0 0 14px 16px}
+  .tile.right{right:10px;width:203px;justify-content:flex-end;padding:0 16px 14px 0}
 
   /* ---------- SECTIONS ---------- */
   section{padding:0 16px}
@@ -167,6 +172,12 @@
     padding:18px;text-align:center;color:var(--cream);font-size:15px;
     background:rgba(0,0,0,.12);
   }
+  .ig-follow{
+    margin-top:16px;display:flex;align-items:center;justify-content:center;gap:8px;
+    padding:15px;border-radius:4px;background:var(--cream);color:#170f13;
+    font-weight:600;font-size:15px;
+  }
+  .ig-follow svg{width:17px;height:17px}
 
   /* ---------- STICKY CTA ---------- */
   .sticky{
@@ -182,10 +193,18 @@
   .sticky .s-menu{background:var(--cream);color:#170f13}
   .sticky .s-book{background:var(--burgundy);color:#fff}
 
-  /* ---------- FOOTER ---------- */
+  /* ---------- FOOTER (with birch watermark) ---------- */
   footer{
+    position:relative;overflow:hidden;
     padding:90px 16px 70px;text-align:center;
   }
+  footer .birch{
+    position:absolute;top:0;height:340px;width:auto;opacity:.08;
+    pointer-events:none;filter:brightness(0) invert(1);
+  }
+  footer .birch.l{left:-170px}
+  footer .birch.r{right:-170px}
+  footer > .fc{position:relative;z-index:1}
   footer .slogan{
     font-family:var(--serif);font-weight:600;font-size:26px;color:var(--cream);
   }
@@ -341,39 +360,56 @@ croissant</h1><p>with ice latte · Rp 75k</p></div>
       <h2>Life at Betula</h2>
       <div class="sub">Latest from Instagram</div>
     </div>
+    <!--
+      Instagram-посты через официальный embed.js (как сделал Вадим:
+      «вставил ссылку поста — завелось»). Чтобы поменять/обновить —
+      замени URL в data-instgrm-permalink И в href fallback-ссылке
+      на нужный пост с https://www.instagram.com/balibetula/
+      Формат ссылки поста: https://www.instagram.com/p/XXXXXXXXXXX/
+      Скрипт //www.instagram.com/embed.js (внизу страницы) сам
+      превратит каждый blockquote в живой пост.
+    -->
     <div class="ig-embeds">
       <blockquote class="instagram-media" data-instgrm-captioned
-        data-instgrm-permalink="https://www.instagram.com/p/CrCB6dxocBh/"
+        data-instgrm-permalink="https://www.instagram.com/balibetula/"
         style="background:#FFF;border:0;border-radius:3px;margin:0;padding:0;width:100%">
-        <a href="https://www.instagram.com/p/CrCB6dxocBh/" target="_blank" rel="noreferrer"
-           class="ig-fallback">View this post on Instagram →</a>
+        <a href="https://www.instagram.com/balibetula/" target="_blank" rel="noreferrer"
+           class="ig-fallback">View @balibetula on Instagram →</a>
       </blockquote>
       <blockquote class="instagram-media" data-instgrm-captioned
-        data-instgrm-permalink="https://www.instagram.com/p/CqxSJ7Yo28W/"
+        data-instgrm-permalink="https://www.instagram.com/balibetula/"
         style="background:#FFF;border:0;border-radius:3px;margin:0;padding:0;width:100%">
-        <a href="https://www.instagram.com/p/CqxSJ7Yo28W/" target="_blank" rel="noreferrer"
-           class="ig-fallback">View this post on Instagram →</a>
+        <a href="https://www.instagram.com/balibetula/" target="_blank" rel="noreferrer"
+           class="ig-fallback">View @balibetula on Instagram →</a>
       </blockquote>
       <blockquote class="instagram-media" data-instgrm-captioned
-        data-instgrm-permalink="https://www.instagram.com/p/CqswAtHIwXh/"
+        data-instgrm-permalink="https://www.instagram.com/balibetula/"
         style="background:#FFF;border:0;border-radius:3px;margin:0;padding:0;width:100%">
-        <a href="https://www.instagram.com/p/CqswAtHIwXh/" target="_blank" rel="noreferrer"
-           class="ig-fallback">View this post on Instagram →</a>
+        <a href="https://www.instagram.com/balibetula/" target="_blank" rel="noreferrer"
+           class="ig-fallback">View @balibetula on Instagram →</a>
       </blockquote>
     </div>
+    <a class="ig-follow" href="https://www.instagram.com/balibetula/" target="_blank" rel="noreferrer">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+      Follow @balibetula
+    </a>
   </section>
 
   <!-- ===== FOOTER ===== -->
   <footer>
-    <div class="slogan">good food <i>·</i> good people <i>·</i> good vibes</div>
-    <a class="addr" href="https://www.google.com/maps/search/?api=1&amp;query=Bali+Betula+Kerobokan" target="_blank" rel="noreferrer">
-      Jl. Raya Kesambi, Kerobokan, Bali 80361
-    </a>
-    <div class="hours">Open daily · 12:00 – 23:00</div>
-    <a class="ig" href="https://www.instagram.com/betula_restaurant/" target="_blank" rel="noreferrer">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
-      betula_restaurant
-    </a>
+    <img class="birch l" src="assets/logo.svg" alt="" aria-hidden="true" />
+    <img class="birch r" src="assets/logo.svg" alt="" aria-hidden="true" />
+    <div class="fc">
+      <div class="slogan">good food <i>·</i> good people <i>·</i> good vibes</div>
+      <a class="addr" href="https://www.google.com/maps/search/?api=1&amp;query=Bali+Betula+Kerobokan" target="_blank" rel="noreferrer">
+        Jl. Raya Kesambi, Kerobokan, Bali 80361
+      </a>
+      <div class="hours">Open daily · 12:00 – 23:00</div>
+      <a class="ig" href="https://www.instagram.com/balibetula/" target="_blank" rel="noreferrer">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+        balibetula
+      </a>
+    </div>
   </footer>
 
   <!-- ===== STICKY CTA (appears after hero) ===== -->
