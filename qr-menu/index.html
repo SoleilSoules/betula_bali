@@ -65,21 +65,22 @@
     position:absolute;left:24px;right:20px;top:34px;z-index:3;
     display:flex;align-items:center;justify-content:space-between;
   }
-  .brand{display:flex;align-items:center;gap:9px;min-width:0}
-  .brand img{width:25px;height:25px;flex:0 0 25px;display:block;object-fit:contain;
+  .brand{display:flex;align-items:center;gap:11px;min-width:0}
+  .brand img{height:30px;width:auto;flex:0 0 auto;display:block;
     filter:drop-shadow(0 1px 4px rgba(0,0,0,.55))}
-  .brand .wm{font-size:21px;letter-spacing:.05em;line-height:1;color:#fff;white-space:nowrap;
-    text-shadow:0 1px 8px rgba(0,0,0,.55)}
-  .brand .wm b{font-family:var(--serif);font-weight:700}
-  .brand .wm span{font-family:var(--sans);font-weight:500}
-  /* OPEN badge — cream pill, dark text (matches the Next OpenBadge) */
+  .brand .wm{font-family:var(--serif);font-weight:700;font-size:23px;letter-spacing:.06em;
+    line-height:1;color:#fff;white-space:nowrap;text-shadow:0 1px 8px rgba(0,0,0,.55)}
+  .brand .wm b{font-weight:700}
+  .brand .wm span{font-weight:700}
+  /* OPEN badge — cream pill, live by Bali time (WITA) */
   .badge{
-    display:inline-flex;align-items:center;gap:5px;flex:0 0 auto;
-    font-size:10px;letter-spacing:.08em;text-transform:uppercase;font-weight:600;
-    color:#170f13;background:rgba(247,242,232,.92);padding:4px 9px;border-radius:999px;
+    display:inline-flex;align-items:center;gap:6px;flex:0 0 auto;
+    font-size:10px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;
+    color:#170f13;background:rgba(247,242,232,.94);padding:5px 11px;border-radius:999px;
   }
   .badge i{width:6px;height:6px;border-radius:999px;background:#2f8a3e;
     box-shadow:0 0 6px rgba(47,138,62,.6);display:inline-block;flex:0 0 auto}
+  .badge.closed i{background:#c0563c;box-shadow:none}
   .hero-copy{
     position:absolute;left:20px;right:30px;top:82px;z-index:3;color:#fff;
   }
@@ -112,20 +113,21 @@
   /* ---------- TWO TILES + MENU PAPER ----------
      Paper sits on TOP, centered, sticking up; tiles sit BELOW it with
      their labels at the very bottom so the paper never covers text. */
-  .tiles{position:relative;height:300px;margin-top:-2px}
+  .tiles{position:relative;height:320px;margin-top:-2px}
   .menu-paper{
-    position:absolute;left:50%;top:6px;transform:translateX(-50%) rotate(-4.8deg);
-    width:152px;height:214px;z-index:4;
-    box-shadow:0 12px 28px -10px rgba(0,0,0,.4);
+    position:absolute;left:50%;top:2px;transform:translateX(-50%) rotate(-4.8deg);
+    width:164px;height:219px;z-index:4;
+    box-shadow:0 14px 30px -10px rgba(0,0,0,.42);
   }
-  .menu-paper img{width:100%;height:100%;object-fit:contain}
+  .menu-paper img{width:100%;height:100%;object-fit:cover;border-radius:2px}
   .tile{
-    position:absolute;top:196px;height:90px;background:var(--card);
-    display:flex;align-items:flex-end;
-    color:#170f13;font-weight:600;font-size:17px;
+    position:absolute;top:196px;height:118px;background:var(--card);
+    display:flex;align-items:flex-end;gap:8px;
+    color:#170f13;font-weight:700;font-size:18px;
   }
-  .tile.left{left:10px;width:203px;justify-content:flex-start;padding:0 0 14px 16px}
-  .tile.right{right:10px;width:203px;justify-content:flex-end;padding:0 16px 14px 0}
+  .tile .arr{opacity:.5;font-weight:700}
+  .tile.left{left:10px;width:203px;justify-content:flex-start;padding:0 0 16px 18px}
+  .tile.right{right:10px;width:203px;justify-content:flex-start;padding:0 0 16px 18px}
 
   /* ---------- SECTIONS ---------- */
   section{padding:0 16px}
@@ -200,11 +202,11 @@
     padding:90px 16px 70px;text-align:center;
   }
   footer .birch{
-    position:absolute;top:0;height:340px;width:auto;opacity:.08;
+    position:absolute;top:8px;height:392px;width:148px;opacity:.15;
     pointer-events:none;filter:brightness(0) invert(1);
   }
-  footer .birch.l{left:-170px}
-  footer .birch.r{right:-170px}
+  footer .birch.l{left:-22px}
+  footer .birch.r{right:-22px;transform:scaleX(-1)}
   footer > .fc{position:relative;z-index:1}
   footer .slogan{
     font-family:var(--serif);font-weight:600;font-size:26px;color:var(--cream);
@@ -267,7 +269,7 @@
   .menu-note{text-align:center;font-size:13px;color:#8a7563;padding:34px 22px 8px;letter-spacing:.02em}
 
   /* ---------- CART (my order → show waiter) ---------- */
-  .dish-add{flex:0 0 auto;align-self:center;margin-left:6px}
+  .dish-add{flex:0 0 98px;display:flex;justify-content:flex-end;align-self:center;margin-left:6px}
   .add-btn{
     width:36px;height:36px;border-radius:999px;border:1.5px solid var(--burgundy);
     background:transparent;color:var(--burgundy);font-size:21px;line-height:1;cursor:pointer;
@@ -327,10 +329,10 @@
         <img src="assets/hero-1.png" alt="Uzbek set" />
         <div class="topbar">
           <div class="brand">
-            <img src="assets/logo.svg" alt="" />
+            <img src="assets/logo-final.svg" alt="" />
             <span class="wm"><b>BALI</b> <span>BETULA</span></span>
           </div>
-          <span class="badge"><i></i> Open</span>
+          <span class="badge" data-bb><i></i><span class="bt">OPEN</span></span>
         </div>
         <div class="hero-copy"><h1>Uzbek Set
 for two</h1><p>from Rp 295k</p></div>
@@ -338,9 +340,9 @@ for two</h1><p>from Rp 295k</p></div>
       <div class="slide">
         <img src="assets/hero-2.jpg" alt="Borscht" />
         <div class="topbar">
-          <div class="brand"><img src="assets/logo.svg" alt="" />
+          <div class="brand"><img src="assets/logo-final.svg" alt="" />
             <span class="wm"><b>BALI</b> <span>BETULA</span></span></div>
-          <span class="badge"><i></i> Open</span>
+          <span class="badge" data-bb><i></i><span class="bt">OPEN</span></span>
         </div>
         <div class="hero-copy"><h1>Borscht
 &amp; rye</h1><p>with sour cream · Rp 95k</p></div>
@@ -348,9 +350,9 @@ for two</h1><p>from Rp 295k</p></div>
       <div class="slide">
         <img src="assets/hero-3.jpg" alt="Sunday feast" />
         <div class="topbar">
-          <div class="brand"><img src="assets/logo.svg" alt="" />
+          <div class="brand"><img src="assets/logo-final.svg" alt="" />
             <span class="wm"><b>BALI</b> <span>BETULA</span></span></div>
-          <span class="badge"><i></i> Open</span>
+          <span class="badge" data-bb><i></i><span class="bt">OPEN</span></span>
         </div>
         <div class="hero-copy"><h1>Sunday
 feast</h1><p>family table · Rp 220k/pp</p></div>
@@ -358,9 +360,9 @@ feast</h1><p>family table · Rp 220k/pp</p></div>
       <div class="slide">
         <img src="assets/hero-4.jpg" alt="Stroganoff" />
         <div class="topbar">
-          <div class="brand"><img src="assets/logo.svg" alt="" />
+          <div class="brand"><img src="assets/logo-final.svg" alt="" />
             <span class="wm"><b>BALI</b> <span>BETULA</span></span></div>
-          <span class="badge"><i></i> Open</span>
+          <span class="badge" data-bb><i></i><span class="bt">OPEN</span></span>
         </div>
         <div class="hero-copy"><h1>Stroganoff
 &amp; mash</h1><p>from Rp 165k</p></div>
@@ -368,9 +370,9 @@ feast</h1><p>family table · Rp 220k/pp</p></div>
       <div class="slide">
         <img src="assets/hero-5.jpg" alt="Almond croissant" />
         <div class="topbar">
-          <div class="brand"><img src="assets/logo.svg" alt="" />
+          <div class="brand"><img src="assets/logo-final.svg" alt="" />
             <span class="wm"><b>BALI</b> <span>BETULA</span></span></div>
-          <span class="badge"><i></i> Open</span>
+          <span class="badge" data-bb><i></i><span class="bt">OPEN</span></span>
         </div>
         <div class="hero-copy"><h1>Almond
 croissant</h1><p>with ice latte · Rp 75k</p></div>
@@ -384,9 +386,9 @@ croissant</h1><p>with ice latte · Rp 75k</p></div>
 
   <!-- ===== TWO TILES + MENU PAPER ===== -->
   <div class="tiles">
-    <a class="tile left" href="#" id="openMenu">Show menu</a>
-    <a class="tile right" href="https://wa.me/6282144556677?text=Hi%20Betula!%20I'd%20like%20to%20book%20a%20table%20for%20..." target="_blank" rel="noreferrer">Reserve a table</a>
-    <div class="menu-paper"><img src="assets/menu-paper.png" alt="Menu" /></div>
+    <a class="tile left" href="#" id="openMenu"><span>Show menu</span><span class="arr">→</span></a>
+    <a class="tile right" href="https://wa.me/6282144556677?text=Hi%20Betula!%20I'd%20like%20to%20book%20a%20table%20for%20..." target="_blank" rel="noreferrer"><span>Reserve a table</span><span class="arr">→</span></a>
+    <div class="menu-paper"><img src="assets/menu-paper-asset.png" alt="Menu" /></div>
   </div>
 
   <!-- ===== SIGNATURES ===== -->
@@ -498,8 +500,8 @@ croissant</h1><p>with ice latte · Rp 75k</p></div>
 
   <!-- ===== FOOTER ===== -->
   <footer>
-    <img class="birch l" src="assets/logo.svg" alt="" aria-hidden="true" />
-    <img class="birch r" src="assets/logo.svg" alt="" aria-hidden="true" />
+    <img class="birch l" src="assets/logo-vec.svg" alt="" aria-hidden="true" />
+    <img class="birch r" src="assets/logo-vec.svg" alt="" aria-hidden="true" />
     <div class="fc">
       <div class="slogan">good food <i>·</i> good people <i>·</i> good vibes</div>
       <a class="addr" href="https://www.google.com/maps/search/?api=1&amp;query=Bali+Betula+Kerobokan" target="_blank" rel="noreferrer">
@@ -827,6 +829,26 @@ croissant</h1><p>with ice latte · Rp 75k</p></div>
     });
   },{root:ov,rootMargin:'-188px 0px -62% 0px',threshold:0});
   cats.forEach(function(c){io.observe(c);});
+})();
+</script>
+<script>
+(function(){
+  // Live OPEN/CLOSED by Bali time (WITA, UTC+8, no DST). Hours 12:00–23:00.
+  function refresh(){
+    var d=new Date();
+    var wita=new Date(d.getTime()+(d.getTimezoneOffset()*60000)+(8*3600000));
+    var h=wita.getHours();
+    var open=(h>=12&&h<23);
+    var txt=open?'OPEN · UNTIL 23:00':'CLOSED · OPENS 12:00';
+    var els=document.querySelectorAll('[data-bb]');
+    for(var i=0;i<els.length;i++){
+      els[i].classList.toggle('closed',!open);
+      var t=els[i].querySelector('.bt');
+      if(t)t.textContent=txt;
+    }
+  }
+  refresh();
+  setInterval(refresh,60000);
 })();
 </script>
 </body>
