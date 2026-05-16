@@ -12,7 +12,6 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { OpenBadge } from "@/components/open-badge";
-import { ThemeToggle } from "@/components/theme-toggle";
 
 const PX = (n: number) => `calc(${n} * var(--scale, 1px))`;
 
@@ -216,7 +215,6 @@ function HeroSlideView({
           Sits slightly above the BALI BETULA wordmark on the same row. */}
       <div className="absolute flex items-center" style={{ right: PX(20), top: PX(32), gap: PX(6) }}>
         <OpenBadge openHour={12} closeHour={23} />
-        <ThemeToggle />
       </div>
 
       {/* Logo + wordmark — same place on every slide */}
