@@ -109,7 +109,7 @@ export function Showcase(props: {
 
   if (useFigmaLayout) {
     return (
-      <main className="relative min-h-svh bg-white text-black">
+      <main className="relative min-h-svh bg-[#A7735F] text-white">
         <div className="mx-auto md:my-6 md:shadow-[0_30px_60px_-20px_rgb(0_0_0_/_0.25)]" style={{ width: "min(100%, 430px)" }}>
           <FigmaHomepage
             brand={name.toUpperCase()}

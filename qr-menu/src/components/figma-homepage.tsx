@@ -179,7 +179,7 @@ export function FigmaHomepage({
 
   return (
     <div
-      className="relative mx-auto w-full bg-white overflow-x-hidden"
+      className="relative mx-auto w-full bg-[#A7735F] overflow-x-hidden"
       style={{
         maxWidth: 430,
         ["--scale" as string]: "min(1px, calc(100vw / 430))",
@@ -395,7 +395,7 @@ export function FigmaHomepage({
           <div className="relative flex flex-col items-center justify-center h-full">
           {address && (
             <div
-              className="text-[#170f13]/75"
+              className="text-[#F7F1E8]/85"
               style={{
                 fontFamily: "var(--font-hero), system-ui, sans-serif",
                 fontSize: PX(15),
@@ -413,7 +413,7 @@ export function FigmaHomepage({
             </div>
           )}
           <div
-            className="mt-2 text-[#170f13]/55"
+            className="mt-2 text-[#F7F1E8]/65"
             style={{
               fontFamily: "var(--font-hero), system-ui, sans-serif",
               fontSize: PX(14),
@@ -428,7 +428,7 @@ export function FigmaHomepage({
               href={instagramUrl}
               target="_blank"
               rel="noreferrer"
-              className="mt-4 inline-flex items-center gap-1.5 text-[#170f13]/70"
+              className="mt-4 inline-flex items-center gap-1.5 text-[#F7F1E8]/80"
               style={{
                 fontFamily: "var(--font-hero), system-ui, sans-serif",
                 fontSize: PX(15),
@@ -468,7 +468,7 @@ function SectionHeader({
   return (
     <>
       <p
-        className="absolute text-black whitespace-nowrap"
+        className="absolute text-[#F7F1E8] whitespace-nowrap"
         style={{
           left: PX(14),
           top: PX(top),
@@ -483,7 +483,7 @@ function SectionHeader({
       </p>
       {subtitle && (
         <p
-          className="absolute text-[#170f13]/40 whitespace-nowrap"
+          className="absolute text-[#F7F1E8]/60 whitespace-nowrap"
           style={{
             left: PX(16),
             top: PX(top + 52),
