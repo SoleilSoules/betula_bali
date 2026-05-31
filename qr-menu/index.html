@@ -10,23 +10,23 @@
 <meta property="og:image" content="assets/hero-1.webp" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Caprasimo&family=Cormorant:ital,wght@0,600;0,700;1,500;1,600;1,700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
 <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
 <link rel="manifest" href="/site.webmanifest">
 <style>
   :root{
-    --bg:#a57461;          /* terracotta */
-    --cream:#F7F1E8;       /* text on terracotta */
-    --card:#f1f1f1;        /* light placeholder */
-    --burgundy:#7d3a4c;
-    --gzhel:#1e4a6b;
+    --bg:#1F3D2E;          /* forest green */
+    --cream:#F5F1E8;       /* cream text on forest */
+    --card:#ECE3CC;        /* cream-warm placeholder */
+    --burgundy:#E89BB0;    /* matcha rose CTA */
+    --gzhel:#C97A8A;       /* pink-deep accents */
     --sans:'Manrope',system-ui,-apple-system,sans-serif;
     --serif:'Cormorant',Georgia,serif;
   }
   *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-  html,body{background:#ffded1}
+  html,body{background:#F5F1E8}
   body{
     font-family:var(--sans);
     color:var(--cream);
@@ -72,9 +72,9 @@
   .brand{display:flex;align-items:center;width:100%;min-width:0;
     animation:rise .65s .05s both}
   .brand img{width:25px;height:25px;flex:0 0 25px;display:block;object-fit:contain;
-    filter:drop-shadow(0 1px 4px rgba(0,0,0,.55))}
+    filter:drop-shadow(0 1px 4px rgba(0,0,0,.55));transform:translate(0px,-1px)}
   .brand .wm{font-size:21px;letter-spacing:.05em;line-height:1;color:#fff;white-space:nowrap;
-    text-shadow:0 1px 8px rgba(0,0,0,.55);margin-left: 30px}
+    text-shadow:0 1px 8px rgba(0,0,0,.55);margin-left: 36px}
   .brand .wm b{font-family:var(--serif);font-weight:700}
   .brand .wm span{font-family:var(--sans);font-weight:500}
   /* OPEN badge — cream pill, dark text (matches the Next OpenBadge) */
@@ -150,10 +150,10 @@
     font-weight:700;font-size:39px;line-height:1.05;letter-spacing:-.02em;color:var(--cream);
   }
   .sec-h .sub{margin-top:6px;font-size:17px;color:rgba(247,241,232,.6)}
-  .grid{margin-top:26px;display:grid;gap:6px}
+  .grid{margin-top:26px;display:grid;gap:10px}
   .grid.sig{grid-template-columns:1fr 1fr;grid-auto-rows:204px}
   .grid.sig .big{grid-row:span 2}
-  .grid.ph{grid-template-columns:1fr;gap:14px;margin-top:26px}
+  .grid.ph{grid-template-columns:1fr;gap:10px;margin-top:26px}
 
   .pcard{
     position:relative;overflow:hidden;background:#2c1f1a;
@@ -176,12 +176,12 @@
   .ev .cap .when{font-size:12px;letter-spacing:.08em;text-transform:uppercase;opacity:.85}
   .ev .cap b{display:block;font-weight:600;font-size:21px;line-height:1.1;margin-top:6px}
   .ev .cap em{display:block;font-style:normal;font-size:13px;opacity:.82;margin-top:6px;max-width:90%}
-  .ev-list{margin-top:26px;display:grid;gap:6px}
+  .ev-list{margin-top:26px;display:grid;gap:10px}
   .ph .pcard{height:387px}
   .ph .pcard .cap b{font-size:22px}
 
   /* ---------- INSTAGRAM ---------- */
-  .ig-embeds{margin-top:26px;display:flex;flex-direction:column;gap:14px}
+  .ig-embeds{margin-top:26px;display:flex;flex-direction:column;gap:10px}
   .ig-embeds .instagram-media{margin:0 auto!important;min-width:auto!important;width:100%!important}
   .ig-fallback{
     display:block;border:1px solid rgba(247,241,232,.35);border-radius:4px;
@@ -334,6 +334,155 @@
   .cs-act button{flex:1;padding:15px;border-radius:8px;border:0;font-weight:700;font-size:15px;cursor:pointer}
   .cs-clear{background:transparent;border:1.5px solid rgba(42,31,26,.3)!important;color:#2a1f1a}
   .cs-back{background:var(--burgundy);color:#fff}
+
+  /* ========== GREEN WAVE — overrides ========== */
+  :root { --groovy:'Caprasimo', serif; --hand:'Cormorant', Georgia, serif; }
+
+  /* затемнение левого верхнего угла — читаемость заголовка/подзаголовка на светлых фото */
+  .slide::after{
+    background:
+      radial-gradient(130% 88% at -8% -8%, rgba(0,0,0,.52) 0%, rgba(0,0,0,.24) 36%, rgba(0,0,0,0) 66%),
+      linear-gradient(178deg, rgba(0,0,0,.40) 0%, rgba(0,0,0,.12) 26%, rgba(0,0,0,0) 60%);
+  }
+
+  /* hero — groovy retro headline */
+  .hero-copy h1{
+    font-family:var(--groovy); font-weight:400;
+    font-size:clamp(58px,16vw,82px); line-height:.92;
+    letter-spacing:-.005em;
+    color:#fff;
+    text-shadow:0 2px 16px rgba(0,0,0,.45);
+  }
+  /* длинные названия (Stroganoff, croissant) — точечно меньше, чтобы влезали */
+  .hero-copy h1.fit{font-size:clamp(46px,16vw,68px); line-height:.92}
+  .hero-copy p{
+    font-family:var(--sans); font-weight:500;
+    font-size:clamp(16px,4.4vw,20px); letter-spacing:.005em; color:#fff;
+  }
+
+  /* tile — iOS-style rounded cards */
+  .tiles{padding:16px 16px 6px; gap:10px}
+  .tile{
+    min-height:96px; padding:18px 16px;
+    border-radius:12px;
+    display:flex; flex-direction:column; justify-content:flex-end; align-items:flex-start; gap:2px;
+    text-align:left;
+  }
+  .tile.left{
+    background:#F1ECE2; color:#1F3D2E;
+  }
+  .tile.right{
+    background:#E0B3B9; color:#1F3D2E;
+  }
+  .tile .t-k{font-family:var(--sans); font-weight:600; font-size:11px; opacity:.7; text-transform:uppercase; letter-spacing:.14em; margin-bottom:6px}
+  .tile .t-v{font-family:var(--groovy); font-weight:400; font-size:21px; letter-spacing:0; line-height:1.05; white-space:nowrap}
+
+  /* ticker — clickable, day-aware */
+  .ticker{
+    display:block; text-decoration:none;
+    margin:24px -16px 0; padding:14px 0;
+    background:#142A1F; color:#F4C5CC;
+    font-family:var(--groovy); font-size:22px;
+    white-space:nowrap; overflow:hidden;
+    cursor:pointer;
+    transition:background .2s;
+  }
+  .ticker:active{background:#0e2317}
+  .ticker-track{display:inline-flex; gap:32px; animation:tk 24s linear infinite; padding-left:24px}
+  .ticker-track i{color:#E89BB0; font-style:normal; padding:0 4px}
+  @keyframes tk{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+  /* section heads */
+  .sec-h{margin-top:72px}
+  .sec-h h2{
+    font-family:var(--groovy); font-weight:400;
+    font-size:54px; line-height:.95; letter-spacing:-.01em;
+    color:#fff;
+  }
+  .sec-h .sub{font-family:var(--sans); font-weight:500; font-size:17px; color:rgba(255,255,255,.7); margin-top:8px; letter-spacing:.005em}
+
+  /* cards — rounded rect */
+  .grid.sig .pcard,
+  .grid.sig .pcard:nth-child(2n),
+  .grid.sig .pcard:nth-child(3n),
+  .grid.sig .pcard:nth-child(4n){
+    border-radius:20px;
+  }
+  .pcard .cap{left:20px; right:20px; bottom:20px; padding:0}
+  .pcard .cap b{font-family:var(--groovy); font-weight:400; font-size:24px; letter-spacing:0; line-height:1.05}
+  .pcard .cap em{font-family:var(--sans); font-weight:500; font-size:13px; opacity:.85; margin-top:6px; line-height:1.35}
+  .ph .pcard{border-radius:20px}
+  .ph .pcard .cap{left:20px; right:20px; bottom:20px; padding:0}
+  .ph .pcard .cap b{font-size:28px; line-height:1.1; display:block}
+  .ph .pcard .cap em{font-family:var(--sans); font-weight:500; font-size:14px; opacity:.85; margin-top:8px; display:block; line-height:1.4}
+
+  /* events: rounded rect */
+  .ev,
+  .ev:nth-child(2),
+  .ev:nth-child(3){border-radius:20px; height:170px}
+  .ev .cap{left:20px; right:20px; top:20px; bottom:20px; transform:none; padding:0; max-width:70%; display:flex; flex-direction:column}
+  .ev .cap .when{font-family:var(--sans); font-weight:600; font-size:11px; text-transform:uppercase; letter-spacing:.14em; opacity:.85; color:#fff}
+  .ev .cap b{font-family:var(--groovy); font-size:26px; font-weight:400; margin-top:auto; line-height:1.05}
+  .ev .cap em{font-family:var(--sans); font-weight:500; font-size:13px; margin-top:6px; line-height:1.4; opacity:.85}
+
+  /* IG */
+  .ig-fallback, .ig-follow{border-radius:999px}
+  .ig-follow{font-family:var(--groovy); font-weight:400; font-size:24px; padding:22px 28px; background:#F1ECE2; color:#1F3D2E; letter-spacing:0; gap:12px}
+  .ig-follow svg{width:22px; height:22px}
+
+  /* sticky bottom CTAs — как плитки под hero: rounded 12px + groovy, размер прежний */
+  .sticky{padding:12px 14px calc(12px + env(safe-area-inset-bottom,0px))}
+  .sticky a{
+    flex:1 1 0; min-width:0;
+    border-radius:12px; padding:20px 14px;
+    font-family:var(--groovy); font-weight:400; font-size:16px;
+    letter-spacing:0; text-transform:none; white-space:nowrap;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .sticky .s-menu{background:#F1ECE2; color:#1F3D2E}
+  .sticky .s-book{background:#E0B3B9; color:#1F3D2E}
+
+  /* private hire CTA buttons */
+  .private .cta a, .private a.btn{
+    border-radius:999px; padding:16px 22px;
+    font-family:var(--sans); font-weight:600; font-size:15px;
+    letter-spacing:0; text-transform:none;
+  }
+  .private .cta a:first-child, .private a.btn.menu{background:#F1ECE2; color:#1F3D2E}
+  .private .cta a:last-child, .private a.btn.book{background:#E0B3B9; color:#1F3D2E}
+
+  /* footer — forest with visible birch watermark */
+  footer{background:linear-gradient(180deg, #1F3D2E 0%, #142A1F 150px) !important; border-top:none !important; padding:88px 16px 64px; position:relative; overflow:hidden}
+  footer .birch{
+    filter:brightness(0) invert(1) sepia(.05) hue-rotate(320deg) saturate(.4);
+    opacity:.16 !important;
+    top:0 !important; height:380px !important;
+  }
+  footer .slogan{font-family:var(--groovy); font-weight:400; font-size:36px; color:#fff; line-height:1}
+  footer .slogan i{color:#E89BB0}
+  footer .addr{color:rgba(255,255,255,.8) !important}
+  footer .ig{color:rgba(255,255,255,.85) !important}
+
+  /* Menu modal */
+  .menu-top h2{font-family:var(--groovy); font-weight:400; font-size:58px; color:#1F3D2E; letter-spacing:-.01em}
+  .menu-cat h3{font-family:var(--groovy); font-weight:400; font-size:30px; color:#1F3D2E}
+  .menu-tab.on{background:#1F3D2E; border-color:#1F3D2E}
+
+  /* hero text — анимация при переходе слайдов (groovy: мягкий подъём + пружинка) */
+  .hero-copy h1, .hero-copy p{animation:none !important}
+  .slide.anim .hero-copy h1{animation:gv-title-in 720ms cubic-bezier(.34,1.46,.5,1) both !important}
+  .slide.anim .hero-copy p{animation:gv-sub-in 620ms cubic-bezier(.22,1,.36,1) 200ms both !important}
+  @keyframes gv-title-in{
+    0%{opacity:0; transform:translateY(34px) scale(.94)}
+    100%{opacity:1; transform:translateY(0) scale(1)}
+  }
+  @keyframes gv-sub-in{
+    0%{opacity:0; transform:translateY(16px)}
+    100%{opacity:1; transform:translateY(0)}
+  }
+  @media(prefers-reduced-motion:reduce){
+    .slide.anim .hero-copy h1, .slide.anim .hero-copy p{animation:none !important}
+  }
 </style>
 </head>
 <body>
@@ -352,8 +501,9 @@
           </div>
           <span class="badge"><i></i> Open</span>
         </div>
-        <div class="hero-copy"><h1>Uzbek Set
-for two</h1><p>from Rp 295k</p></div>
+        <div class="hero-copy"><h1>Uzbek
+Set for
+two</h1><p>from Rp 295k</p></div>
       </div>
       <div class="slide">
         <img src="assets/hero-2.webp" alt="Borscht" />
@@ -382,7 +532,7 @@ feast</h1><p>family table · Rp 220k/pp</p></div>
             <span class="wm"><b>BALI BETULA</b> <span> </span></span></div>
           <span class="badge"><i></i> Open</span>
         </div>
-        <div class="hero-copy"><h1>Stroganoff
+        <div class="hero-copy"><h1 class="fit">Stroganoff
 &amp; mash</h1><p>from Rp 165k</p></div>
       </div>
       <div class="slide">
@@ -392,7 +542,7 @@ feast</h1><p>family table · Rp 220k/pp</p></div>
             <span class="wm"><b>BALI BETULA</b> <span> </span></span></div>
           <span class="badge"><i></i> Open</span>
         </div>
-        <div class="hero-copy"><h1>Almond
+        <div class="hero-copy"><h1 class="fit">Almond
 croissant</h1><p>with ice latte · Rp 75k</p></div>
       </div>
     </div>
@@ -573,29 +723,34 @@ croissant</h1><p>with ice latte · Rp 75k</p></div>
       if(fill){fill.style.animation='none';void fill.offsetWidth;
         fill.style.animation=paused?'none':'fill 8s linear forwards';}
     }
+    function playAnim(i){
+      var kids=track.children;
+      for(var k=0;k<kids.length;k++){kids[k].classList.remove('anim');}
+      void kids[i].offsetWidth; // reflow → перезапуск анимации
+      kids[i].classList.add('anim');
+    }
     function go(n){
       idx=(n+slides)%slides;
       track.scrollTo({left:idx*track.clientWidth,behavior:'smooth'});
-      render();
+      render(); playAnim(idx);
     }
     function schedule(){
       clearTimeout(timer);
       if(paused) return;
       timer=setTimeout(function(){go(idx+1);},8000);
     }
-    // track manual scroll → update idx
+    // track manual scroll → update idx (анимация сразу при смене слайда, без задержки)
     var st;
     track.addEventListener('scroll',function(){
+      var n=Math.round(track.scrollLeft/track.clientWidth);
+      if(n!==idx && n>=0 && n<slides){idx=n;render();playAnim(idx);}
       clearTimeout(st);
-      st=setTimeout(function(){
-        var n=Math.round(track.scrollLeft/track.clientWidth);
-        if(n!==idx){idx=Math.max(0,Math.min(slides-1,n));render();schedule();}
-      },120);
+      st=setTimeout(schedule,120);
     },{passive:true});
     track.addEventListener('touchstart',function(){paused=true;clearTimeout(timer);render();},{passive:true});
     track.addEventListener('touchend',function(){paused=false;render();schedule();},{passive:true});
 
-    render(); schedule();
+    render(); playAnim(0); schedule();
     // re-schedule whenever a slide settles
     var mo=setInterval(schedule,8200);
     window.addEventListener('beforeunload',function(){clearInterval(mo);clearTimeout(timer);});
