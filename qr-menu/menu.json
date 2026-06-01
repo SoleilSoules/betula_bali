@@ -1,0 +1,748 @@
+{
+  "currency": "IDR",
+  "taxRate": 0.1,
+  "serviceRate": 0.06,
+  "categories": [
+    {
+      "c": "Starters",
+      "items": [
+        {
+          "id": "cheese-burger",
+          "n": "Cheese Burger",
+          "d": "100% beef patty, double cheese, pickles on a soft bun.",
+          "price": 110000,
+          "img": "assets/dishes/cheese-burger.webp",
+          "n_ru": "Чизбургер",
+          "d_ru": "Котлета из говядины 100%, двойной сыр, огурчики на мягкой булочке."
+        },
+        {
+          "id": "club-sandwich",
+          "n": "Club Sandwich",
+          "d": "Grilled chicken, smoked bacon, egg, lettuce, tomato on toasted bread.",
+          "price": 85000,
+          "img": "assets/dishes/club-sandwich.webp",
+          "n_ru": "Клаб-сэндвич",
+          "d_ru": "Курица гриль, копчёный бекон, яйцо, салат, томат на тостах."
+        },
+        {
+          "id": "cheburek",
+          "n": "Cheburek",
+          "d": "Deep-fried turnover filled with juicy seasoned minced meat and herbs.",
+          "price": 70000,
+          "img": "assets/dishes/cheburek.webp",
+          "n_ru": "Чебурек",
+          "d_ru": "Жареный пирожок с сочным мясным фаршем и зеленью."
+        },
+        {
+          "id": "syrniki",
+          "n": "Syrniki",
+          "d": "Pan-fried cottage cheese pancakes, sour cream or berry jam.",
+          "price": 100000,
+          "img": "assets/dishes/syrniki.webp",
+          "tags": [
+            "popular",
+            "veg"
+          ],
+          "n_ru": "Сырники",
+          "d_ru": "Творожные оладьи, сметана или ягодный джем."
+        }
+      ],
+      "c_ru": "Закуски",
+      "c_id": "Pembuka"
+    },
+    {
+      "c": "Soups",
+      "items": [
+        {
+          "id": "borsch",
+          "n": "Borsch",
+          "d": "Beet-based soup slow-simmered with tender beef, vegetables, sour cream.",
+          "price": 90000,
+          "img": "assets/dishes/borsch.webp",
+          "tags": [
+            "popular"
+          ],
+          "n_ru": "Борщ",
+          "d_ru": "Свекольный суп, томлёный с нежной говядиной и овощами, со сметаной."
+        },
+        {
+          "id": "solyanka",
+          "n": "Solyanka",
+          "d": "Rich tangy soup with smoked meats, pickles, olives and lemon.",
+          "price": 95000,
+          "img": "assets/dishes/solyanka.webp",
+          "n_ru": "Солянка",
+          "d_ru": "Насыщенный кисло-острый суп с копчёностями, огурцами, оливками и лимоном."
+        },
+        {
+          "id": "pelmeni",
+          "n": "Pelmeni",
+          "d": "Handmade meat dumplings — with sour cream or in clear broth.",
+          "img": "assets/dishes/pelmeni.webp",
+          "variants": [
+            {
+              "label": "15 pcs",
+              "price": 80000
+            },
+            {
+              "label": "25 pcs",
+              "price": 120000
+            }
+          ],
+          "tags": [
+            "popular"
+          ],
+          "n_ru": "Пельмени",
+          "d_ru": "Домашние мясные пельмени — со сметаной или в прозрачном бульоне."
+        }
+      ],
+      "c_ru": "Супы",
+      "c_id": "Sup"
+    },
+    {
+      "c": "Salads",
+      "items": [
+        {
+          "id": "crispy-eggplant",
+          "n": "Crispy Eggplant",
+          "d": "Deep-fried eggplant in sweet chili glaze, cilantro, sesame.",
+          "price": 110000,
+          "tags": [
+            "veg",
+            "spicy"
+          ],
+          "n_ru": "Хрустящие баклажаны",
+          "d_ru": "Жареные баклажаны в сладком чили, кинза, кунжут."
+        },
+        {
+          "id": "tuna-with-mango",
+          "n": "Tuna with Mango",
+          "d": "A vibrant stack of fresh tuna and mango.",
+          "price": 95000,
+          "n_ru": "Тунец с манго",
+          "d_ru": "Яркая башенка из свежего тунца и манго."
+        },
+        {
+          "id": "tuna-tartare",
+          "n": "Tuna Tartare",
+          "d": "Hand-chopped premium tuna, citrus, soy, served with avocado.",
+          "price": 145000,
+          "n_ru": "Тартар из тунца",
+          "d_ru": "Рубленый премиальный тунец, цитрус, соя, с авокадо."
+        },
+        {
+          "id": "achichuk",
+          "n": "Achichuk",
+          "d": "Uzbek salad of ripe tomatoes, onions and chili — pairs with Plov.",
+          "price": 80000,
+          "tags": [
+            "veg",
+            "spicy"
+          ],
+          "n_ru": "Ачичук",
+          "d_ru": "Узбекский салат из спелых томатов, лука и чили — к плову."
+        },
+        {
+          "id": "lebanon-eggplants",
+          "n": "Lebanon Eggplants",
+          "d": "Crispy fried eggplant drizzled with rich sesame sauce.",
+          "price": 105000,
+          "tags": [
+            "veg"
+          ],
+          "n_ru": "Ливанские баклажаны",
+          "d_ru": "Хрустящие жареные баклажаны в насыщенном кунжутном соусе."
+        }
+      ],
+      "c_ru": "Салаты",
+      "c_id": "Salad"
+    },
+    {
+      "c": "Mains",
+      "items": [
+        {
+          "id": "beshbarmak",
+          "n": "Beshbarmak",
+          "d": "Hand-rolled dough, slow-cooked Australian beef short ribs, onion glaze.",
+          "price": 250000,
+          "img": "assets/dishes/beshbarmak.webp",
+          "tags": [
+            "popular"
+          ],
+          "n_ru": "Бешбармак",
+          "d_ru": "Тесто ручной раскатки, томлёные говяжьи рёбра, луковая глазурь."
+        },
+        {
+          "id": "plov",
+          "n": "Plov",
+          "d": "Fragrant rice pilaf with beef brisket, sweet carrots and spices.",
+          "price": 130000,
+          "img": "assets/dishes/plov.webp",
+          "tags": [
+            "popular"
+          ],
+          "n_ru": "Плов",
+          "d_ru": "Ароматный рис с говяжьей грудинкой, сладкой морковью и специями."
+        },
+        {
+          "id": "chicken-schnitzel",
+          "n": "Chicken Schnitzel",
+          "d": "Golden-brown breaded chicken breast with mashed potato.",
+          "price": 105000,
+          "img": "assets/dishes/chicken-schnitzel.webp",
+          "n_ru": "Куриный шницель",
+          "d_ru": "Золотистая курица в панировке с картофельным пюре."
+        },
+        {
+          "id": "beef-stroganoff",
+          "n": "Beef Stroganoff",
+          "d": "Sautéed beef in a velvety sour cream and mushroom sauce.",
+          "price": 105000,
+          "img": "assets/dishes/beef-stroganoff.webp",
+          "n_ru": "Бефстроганов",
+          "d_ru": "Говядина в бархатистом соусе из сметаны и грибов."
+        },
+        {
+          "id": "mushroom-pasta",
+          "n": "Mushroom Chicken Creamy Pasta",
+          "d": "Pasta with juicy chicken and mushrooms in a cream sauce.",
+          "price": 95000,
+          "img": "assets/dishes/mushroom-pasta.webp",
+          "n_ru": "Паста с курицей и грибами",
+          "d_ru": "Паста с сочной курицей и грибами в сливочном соусе."
+        },
+        {
+          "id": "nasi-goreng",
+          "n": "Nasi Goreng",
+          "d": "Indonesian fried rice with chicken, vegetables and a fried egg.",
+          "price": 65000,
+          "img": "assets/dishes/nasi-goreng.webp",
+          "n_ru": "Наси горенг",
+          "d_ru": "Индонезийский жареный рис с курицей, овощами и яйцом."
+        },
+        {
+          "id": "chicken-liver",
+          "n": "Chicken Liver & Mash",
+          "d": "Golden chicken liver with velvet mash and garden herbs.",
+          "price": 90000,
+          "img": "assets/dishes/chicken-liver.webp",
+          "n_ru": "Куриная печень с пюре",
+          "d_ru": "Золотистая куриная печень с нежным пюре и зеленью."
+        },
+        {
+          "id": "tsomyan",
+          "n": "Tsomyan (Fried Lagman)",
+          "d": "Hand-stretched noodles wok-tossed with sliced beef and greens.",
+          "price": 110000,
+          "img": "assets/dishes/tsomyan.webp",
+          "n_ru": "Цомян (жареный лагман)",
+          "d_ru": "Вытяжная лапша вок с ломтиками говядины и зеленью."
+        },
+        {
+          "id": "manty",
+          "n": "Manty",
+          "d": "Steamed dumplings, meat & onion filling, 5 pcs. Preorder 60 mins.",
+          "price": 110000,
+          "img": "assets/dishes/manty.webp",
+          "n_ru": "Манты",
+          "d_ru": "Паровые манты с мясом и луком, 5 шт. Предзаказ 60 мин."
+        },
+        {
+          "id": "kazan-kebab",
+          "n": "Kazan Kebab",
+          "d": "Cauldron-fried beef and potatoes, cumin, fresh onion garnish.",
+          "price": 220000,
+          "img": "assets/dishes/kazan-kebab.webp",
+          "n_ru": "Казан-кебаб",
+          "d_ru": "Говядина с картофелем в казане, зира, свежий лук."
+        },
+        {
+          "id": "tuna-steak",
+          "n": "Tuna Steak",
+          "d": "Creamy mushroom style, or Sambal with onions and fresh chili.",
+          "price": 120000,
+          "img": "assets/dishes/tuna-steak.webp",
+          "tags": [
+            "spicy"
+          ],
+          "n_ru": "Стейк из тунца",
+          "d_ru": "В сливочно-грибном стиле или Самбал с луком и чили."
+        },
+        {
+          "id": "pepper-steak",
+          "n": "Pepper Steak",
+          "d": "Pepper-crusted beef steak with a buttery pepper sauce.",
+          "price": 250000,
+          "img": "assets/dishes/pepper-steak.webp",
+          "n_ru": "Перечный стейк",
+          "d_ru": "Стейк из говядины в перечной корке с масляным соусом."
+        },
+        {
+          "id": "shrimp-pasta",
+          "n": "Shrimp Pasta",
+          "d": "Juicy prawns and pasta in buttery garlic sauce, chili flakes.",
+          "price": 125000,
+          "img": "assets/dishes/shrimp-pasta.webp",
+          "n_ru": "Паста с креветками",
+          "d_ru": "Сочные креветки и паста в чесночно-масляном соусе, чили."
+        }
+      ],
+      "c_ru": "Основные",
+      "c_id": "Hidangan Utama"
+    },
+    {
+      "c": "Bowls",
+      "items": [
+        {
+          "id": "chicken-bowl",
+          "n": "Chicken Bowl",
+          "d": "Grilled chicken, avocado, edamame, cucumber, teriyaki glaze.",
+          "price": 85000,
+          "img": "assets/dishes/chicken-bowl.webp",
+          "n_ru": "Боул с курицей",
+          "d_ru": "Курица гриль, авокадо, эдамаме, огурец, глазурь терияки."
+        },
+        {
+          "id": "tuna-bowl",
+          "n": "Tuna Bowl",
+          "d": "Sashimi-grade tuna, radish, green onion, soy-sesame dressing.",
+          "price": 90000,
+          "img": "assets/dishes/tuna-bowl.webp",
+          "n_ru": "Боул с тунцом",
+          "d_ru": "Тунец сашими, редис, зелёный лук, соево-кунжутная заправка."
+        },
+        {
+          "id": "dragon-power",
+          "n": "Dragon Power",
+          "d": "Dragon fruit, banana, mixed berries, papaya, granola, chia.",
+          "price": 75000,
+          "img": "assets/dishes/dragon-power.webp",
+          "tags": [
+            "veg"
+          ],
+          "n_ru": "Dragon Power",
+          "d_ru": "Питахайя, банан, ягоды, папайя, гранола, чиа."
+        },
+        {
+          "id": "berries-smoothie",
+          "n": "Berries Smoothie",
+          "d": "Blueberries, banana, melon, papaya, granola, chia.",
+          "price": 75000,
+          "img": "assets/dishes/berries-smoothie.webp",
+          "tags": [
+            "veg"
+          ],
+          "n_ru": "Ягодный смузи",
+          "d_ru": "Черника, банан, дыня, папайя, гранола, чиа."
+        },
+        {
+          "id": "pure-sweetness",
+          "n": "Pure Sweetness",
+          "d": "Strawberry, banana, mango, melon, granola, chia.",
+          "price": 75000,
+          "img": "assets/dishes/pure-sweetness.webp",
+          "tags": [
+            "veg"
+          ],
+          "n_ru": "Pure Sweetness",
+          "d_ru": "Клубника, банан, манго, дыня, гранола, чиа."
+        }
+      ],
+      "c_ru": "Боулы",
+      "c_id": "Bowl"
+    },
+    {
+      "c": "Signature Coffee",
+      "items": [
+        {
+          "id": "betula-creamy-coffee",
+          "n": "Betula Creamy Coffee",
+          "d": "Espresso, fresh milk, rum syrup, brown sugar, ice.",
+          "price": 55000,
+          "img": "assets/dishes/betula-creamy-coffee.webp",
+          "n_ru": "Кремовый кофе Betula",
+          "d_ru": "Эспрессо, молоко, ромовый сироп, тростниковый сахар, лёд."
+        },
+        {
+          "id": "creamy-kintamani",
+          "n": "Creamy Kintamani",
+          "d": "Espresso, fresh milk, condensed milk, vanilla, ice.",
+          "price": 55000,
+          "img": "assets/dishes/creamy-kintamani.webp",
+          "n_ru": "Creamy Kintamani",
+          "d_ru": "Эспрессо, молоко, сгущёнка, ваниль, лёд."
+        },
+        {
+          "id": "sourbee-coffee",
+          "n": "SourBee Coffee",
+          "d": "Orange juice, honey, espresso, slice of orange.",
+          "price": 55000,
+          "img": "assets/dishes/sourbee-coffee.webp",
+          "n_ru": "SourBee Coffee",
+          "d_ru": "Апельсиновый сок, мёд, эспрессо, долька апельсина."
+        },
+        {
+          "id": "midnight-citrus",
+          "n": "Midnight Citrus",
+          "d": "Orange juice, honey, pineapple juice, espresso, ice.",
+          "price": 55000,
+          "img": "assets/dishes/midnight-citrus.webp",
+          "n_ru": "Midnight Citrus",
+          "d_ru": "Апельсиновый сок, мёд, ананасовый сок, эспрессо, лёд."
+        },
+        {
+          "id": "the-apple-of-ice",
+          "n": "The Apple of Ice",
+          "d": "Espresso, honey, apple juice, syrup, ice.",
+          "price": 40000,
+          "img": "assets/dishes/the-apple-of-ice.webp",
+          "n_ru": "The Apple of Ice",
+          "d_ru": "Эспрессо, мёд, яблочный сок, сироп, лёд."
+        }
+      ],
+      "c_ru": "Авторский кофе",
+      "c_id": "Kopi Spesial"
+    },
+    {
+      "c": "Coffee",
+      "items": [
+        {
+          "id": "espresso",
+          "n": "Espresso",
+          "d": "",
+          "price": 28000,
+          "n_ru": "Эспрессо"
+        },
+        {
+          "id": "americano",
+          "n": "Americano",
+          "d": "",
+          "variants": [
+            {
+              "label": "hot",
+              "price": 30000
+            },
+            {
+              "label": "iced",
+              "price": 33000
+            }
+          ],
+          "n_ru": "Американо"
+        },
+        {
+          "id": "macchiato",
+          "n": "Macchiato",
+          "d": "",
+          "price": 30000,
+          "n_ru": "Макиато"
+        },
+        {
+          "id": "piccolo",
+          "n": "Piccolo",
+          "d": "",
+          "price": 33000,
+          "n_ru": "Пикколо"
+        },
+        {
+          "id": "latte",
+          "n": "Latte",
+          "d": "",
+          "variants": [
+            {
+              "label": "hot",
+              "price": 35000
+            },
+            {
+              "label": "iced",
+              "price": 38000
+            }
+          ],
+          "n_ru": "Латте"
+        },
+        {
+          "id": "cappuccino",
+          "n": "Cappuccino",
+          "d": "",
+          "variants": [
+            {
+              "label": "hot",
+              "price": 35000
+            },
+            {
+              "label": "iced",
+              "price": 38000
+            }
+          ],
+          "n_ru": "Капучино"
+        },
+        {
+          "id": "flat-white",
+          "n": "Flat White",
+          "d": "",
+          "price": 35000,
+          "n_ru": "Флэт уайт"
+        },
+        {
+          "id": "mochaccino",
+          "n": "Mochaccino",
+          "d": "",
+          "variants": [
+            {
+              "label": "hot",
+              "price": 40000
+            },
+            {
+              "label": "iced",
+              "price": 43000
+            }
+          ],
+          "n_ru": "Мокачино"
+        },
+        {
+          "id": "frappuccino",
+          "n": "Frappuccino",
+          "d": "Coffee, choco, matcha or taro.",
+          "price": 45000,
+          "img": "assets/dishes/frappuccino.webp",
+          "n_ru": "Фраппучино",
+          "d_ru": "Кофе, шоколад, матча или таро."
+        },
+        {
+          "id": "ice-tea",
+          "n": "Ice Tea / Peach / Lychee",
+          "d": "",
+          "img": "assets/dishes/ice-tea.webp",
+          "variants": [
+            {
+              "label": "Ice Tea",
+              "price": 20000
+            },
+            {
+              "label": "Peach",
+              "price": 30000
+            },
+            {
+              "label": "Lychee",
+              "price": 30000
+            }
+          ],
+          "n_ru": "Айс-ти / Персик / Личи"
+        }
+      ],
+      "c_ru": "Кофе",
+      "c_id": "Kopi"
+    },
+    {
+      "c": "Non-coffee",
+      "items": [
+        {
+          "id": "matcha-latte",
+          "n": "Matcha Latte",
+          "d": "",
+          "variants": [
+            {
+              "label": "hot",
+              "price": 35000
+            },
+            {
+              "label": "iced",
+              "price": 38000
+            }
+          ],
+          "n_ru": "Матча латте"
+        },
+        {
+          "id": "chocolate",
+          "n": "Chocolate",
+          "d": "",
+          "variants": [
+            {
+              "label": "hot",
+              "price": 35000
+            },
+            {
+              "label": "iced",
+              "price": 38000
+            }
+          ],
+          "n_ru": "Горячий шоколад"
+        },
+        {
+          "id": "taro-latte",
+          "n": "Taro Latte",
+          "d": "",
+          "variants": [
+            {
+              "label": "hot",
+              "price": 35000
+            },
+            {
+              "label": "iced",
+              "price": 38000
+            }
+          ],
+          "n_ru": "Таро латте"
+        },
+        {
+          "id": "creamy-nusantara",
+          "n": "Creamy Nusantara",
+          "d": "",
+          "variants": [
+            {
+              "label": "hot",
+              "price": 35000
+            },
+            {
+              "label": "iced",
+              "price": 38000
+            }
+          ],
+          "n_ru": "Creamy Nusantara"
+        },
+        {
+          "id": "loose-leaf-tea",
+          "n": "Loose Leaf Tea",
+          "d": "English breakfast, earl grey, green, peppermint, chamomile.",
+          "price": 35000,
+          "n_ru": "Листовой чай",
+          "d_ru": "Английский завтрак, эрл грей, зелёный, мята, ромашка."
+        },
+        {
+          "id": "tashkent-tea",
+          "n": "Tashkent Tea",
+          "d": "Pot of spiced black tea.",
+          "price": 75000,
+          "n_ru": "Ташкентский чай",
+          "d_ru": "Чайник пряного чёрного чая."
+        },
+        {
+          "id": "mineral-water",
+          "n": "Mineral Water",
+          "d": "",
+          "price": 35000,
+          "n_ru": "Минеральная вода"
+        },
+        {
+          "id": "sparkling-water",
+          "n": "Sparkling Water",
+          "d": "",
+          "price": 40000,
+          "n_ru": "Газированная вода"
+        }
+      ],
+      "c_ru": "Не кофе",
+      "c_id": "Non-kopi"
+    },
+    {
+      "c": "Mocktails",
+      "items": [
+        {
+          "id": "yellow-frenzy",
+          "n": "Yellow Frenzy",
+          "d": "Pineapple, elderberry, peach, soda.",
+          "price": 35000,
+          "img": "assets/dishes/yellow-frenzy.webp",
+          "n_ru": "Yellow Frenzy",
+          "d_ru": "Ананас, бузина, персик, содовая."
+        },
+        {
+          "id": "red-spark",
+          "n": "Red Spark",
+          "d": "Strawberry, passion fruit, orange, soda.",
+          "price": 35000,
+          "img": "assets/dishes/red-spark.webp",
+          "n_ru": "Red Spark",
+          "d_ru": "Клубника, маракуйя, апельсин, содовая."
+        },
+        {
+          "id": "green-bali-betula",
+          "n": "Green Bali Betula",
+          "d": "Kiwi, jasmine, orange, soda.",
+          "price": 35000,
+          "img": "assets/dishes/green-bali-betula.webp",
+          "n_ru": "Green Bali Betula",
+          "d_ru": "Киви, жасмин, апельсин, содовая."
+        }
+      ],
+      "c_ru": "Безалкогольные коктейли",
+      "c_id": "Mocktail"
+    },
+    {
+      "c": "Soft Drinks",
+      "items": [
+        {
+          "id": "cola",
+          "n": "Cola",
+          "d": "",
+          "price": 25000,
+          "n_ru": "Кола"
+        },
+        {
+          "id": "cola-zero",
+          "n": "Cola Zero",
+          "d": "",
+          "price": 20000,
+          "n_ru": "Кола Зеро"
+        },
+        {
+          "id": "sprite",
+          "n": "Sprite",
+          "d": "",
+          "price": 25000,
+          "n_ru": "Спрайт"
+        },
+        {
+          "id": "bintang",
+          "n": "Bintang",
+          "d": "",
+          "price": 40000,
+          "n_ru": "Bintang"
+        },
+        {
+          "id": "black-sand-lager",
+          "n": "Black Sand Lager",
+          "d": "",
+          "price": 50000,
+          "n_ru": "Black Sand Lager"
+        },
+        {
+          "id": "black-sand-ipa",
+          "n": "Black Sand IPA",
+          "d": "",
+          "price": 75000,
+          "n_ru": "Black Sand IPA"
+        },
+        {
+          "id": "island-brewing",
+          "n": "Island Brewing",
+          "d": "",
+          "price": 50000,
+          "n_ru": "Island Brewing"
+        },
+        {
+          "id": "summer-pale-ale",
+          "n": "Summer Pale Ale",
+          "d": "",
+          "price": 50000,
+          "n_ru": "Summer Pale Ale"
+        },
+        {
+          "id": "everyday-weekend-mango",
+          "n": "Everyday Weekend — Mango & Passion",
+          "d": "",
+          "price": 40000,
+          "n_ru": "Everyday Weekend — Манго и маракуйя"
+        },
+        {
+          "id": "everyday-weekend-lime",
+          "n": "Everyday Weekend — Lime & Soda",
+          "d": "",
+          "price": 40000,
+          "n_ru": "Everyday Weekend — Лайм и содовая"
+        }
+      ],
+      "c_ru": "Напитки",
+      "c_id": "Minuman"
+    }
+  ]
+}

@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Bali Betula — QR table cards generator</title>
+<!-- QR rendered fully client-side (SVG, no data leaves the page). Dev tool, not deployed to prod. -->
+<script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Caprasimo&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root{ --forest:#1F3D2E; --cream:#F1ECE2; --rose:#E89BB0; --ink:#142A1F; }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Manrope',system-ui,sans-serif;background:#e7e2d6;color:var(--forest);padding:24px}
+  h1{font-family:'Caprasimo',serif;font-weight:400;font-size:30px;margin-bottom:4px}
+  .lede{font-size:14px;color:#5c6b60;margin-bottom:20px}
+
+  /* ---- controls (screen only) ---- */
+  .panel{
+    background:var(--cream);border-radius:14px;padding:20px;max-width:760px;
+    display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px;
+    box-shadow:0 10px 30px -18px rgba(0,0,0,.4);
+  }
+  .panel label{display:block;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:#7a8a7e;margin-bottom:6px}
+  .panel input,.panel textarea{
+    width:100%;padding:11px 13px;border:1.5px solid rgba(31,61,46,.25);border-radius:9px;
+    font:inherit;color:var(--forest);background:#fff;
+  }
+  .panel .full{grid-column:1 / -1}
+  .row{grid-column:1 / -1;display:flex;gap:10px;flex-wrap:wrap}
+  .btn{
+    padding:12px 22px;border:0;border-radius:9px;font:inherit;font-weight:700;cursor:pointer;
+    background:var(--forest);color:var(--cream);
+  }
+  .btn.alt{background:transparent;border:1.5px solid var(--forest);color:var(--forest)}
+  .hint{font-size:12.5px;color:#7a8a7e;grid-column:1 / -1}
+  .err{grid-column:1/-1;color:#a23b3b;font-size:13px;font-weight:600}
+
+  /* ---- printable grid of cards ---- */
+  .sheet{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;max-width:760px}
+  .card{
+    background:var(--cream);border:2px solid var(--forest);border-radius:18px;
+    padding:24px 20px 22px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:12px;
+    break-inside:avoid;
+  }
+  .card .brand{font-family:'Caprasimo',serif;font-size:22px;color:var(--forest);line-height:1}
+  .card .brand i{color:var(--rose);font-style:normal}
+  .card .qr{width:200px;height:200px;background:#fff;border-radius:10px;padding:10px}
+  .card .qr svg{width:100%!important;height:100%!important;display:block}
+  .card .tbl{font-family:'Caprasimo',serif;font-size:30px;color:var(--forest);line-height:1;margin-top:2px}
+  .card .cta{font-size:13px;font-weight:600;color:var(--ink);letter-spacing:.02em}
+  .card .url{font-size:10.5px;color:#9aa79d;word-break:break-all}
+
+  @media print{
+    @page{margin:12mm}
+    body{background:#fff;padding:0}
+    h1,.lede,.panel{display:none!important}
+    .sheet{max-width:none;gap:10mm}
+    .card{box-shadow:none}
+  }
+</style>
+</head>
+<body>
+  <h1>QR table cards</h1>
+  <div class="lede">Сгенерируй QR-карточки для столов Bali Betula. Каждый QR ведёт на меню с зашитым номером стола. «Generate» → «Print» → распечатать и поставить на столы.</div>
+
+  <div class="panel">
+    <div class="full">
+      <label>Base URL (адрес меню на проде)</label>
+      <input id="base" value="https://balibetula.com/" />
+    </div>
+    <div>
+      <label>Сколько столов (1…N)</label>
+      <input id="count" type="number" min="1" max="200" value="12" />
+    </div>
+    <div>
+      <label>Стартовый номер</label>
+      <input id="start" type="number" min="1" value="1" />
+    </div>
+    <div class="full">
+      <label>…или свой список номеров (через запятую) — приоритетнее</label>
+      <input id="custom" placeholder="напр. 1,2,3,5,Bar,VIP" />
+    </div>
+    <div class="row">
+      <button class="btn" id="gen">Generate</button>
+      <button class="btn alt" id="print">Print</button>
+    </div>
+    <div class="hint">Параметр стола: <code>?table=&lt;номер&gt;</code>. QR рисуется в SVG прямо здесь — чёткий при любом размере печати.</div>
+    <div class="err" id="err" hidden></div>
+  </div>
+
+  <div class="sheet" id="sheet"></div>
+
+<script>
+(function(){
+  var sheet=document.getElementById('sheet');
+  var err=document.getElementById('err');
+
+  function showErr(msg){ err.hidden=!msg; err.textContent=msg||''; }
+
+  function tablesFromInputs(){
+    var custom=document.getElementById('custom').value.trim();
+    if(custom){
+      return custom.split(',').map(function(s){return s.trim();}).filter(Boolean);
+    }
+    var count=parseInt(document.getElementById('count').value,10)||0;
+    var start=parseInt(document.getElementById('start').value,10)||1;
+    var out=[];
+    for(var i=0;i<count;i++) out.push(String(start+i));
+    return out;
+  }
+
+  function joinUrl(base,table){
+    var b=base.trim();
+    if(!/^https?:\/\//i.test(b)) b='https://'+b;
+    var sep;
+    if(b.indexOf('?')>=0) sep='&';              // base already has a query
+    else if(b.charAt(b.length-1)==='/') sep='?'; // .../  -> ...?table=N
+    else sep='/?';                               // ...   -> .../?table=N
+    return b+sep+'table='+encodeURIComponent(table);
+  }
+
+  function qrSvg(text){
+    // type 0 = auto-fit version, error-correction 'M' (good balance for print)
+    var qr=qrcode(0,'M');
+    qr.addData(text);
+    qr.make();
+    return qr.createSvgTag({scalable:true, margin:0});
+  }
+
+  function render(){
+    showErr('');
+    if(typeof qrcode==='undefined'){
+      showErr('QR-библиотека не загрузилась (нет интернета?). Открой страницу при подключении и нажми Generate снова.');
+      return;
+    }
+    var base=document.getElementById('base').value;
+    var tables=tablesFromInputs();
+    if(!tables.length){ showErr('Укажи число столов или свой список.'); return; }
+    sheet.innerHTML='';
+    tables.forEach(function(t){
+      var url=joinUrl(base,t);
+      var card=document.createElement('div');card.className='card';
+      card.innerHTML=
+        '<div class="brand">BALI <i>·</i> BETULA</div>'+
+        '<div class="qr">'+qrSvg(url)+'</div>'+
+        '<div class="tbl">Table '+escapeHtml(t)+'</div>'+
+        '<div class="cta">Scan · Browse · Order</div>'+
+        '<div class="url">'+escapeHtml(url)+'</div>';
+      sheet.appendChild(card);
+    });
+  }
+
+  function escapeHtml(s){return String(s).replace(/[&<>"]/g,function(c){return({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]);});}
+
+  document.getElementById('gen').addEventListener('click',render);
+  document.getElementById('print').addEventListener('click',function(){
+    if(!sheet.children.length) render();
+    window.print();
+  });
+  // first render on load (once lib is ready)
+  if(typeof qrcode!=='undefined') render();
+  else window.addEventListener('load',render);
+})();
+</script>
+</body>
+</html>

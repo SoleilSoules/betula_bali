@@ -263,7 +263,27 @@
     font-family:var(--sans);font-weight:600;font-size:15px;white-space:nowrap;cursor:pointer;
   }
   .menu-tab.on{background:var(--burgundy);color:#fff;border-color:var(--burgundy)}
+  /* language switcher */
+  .lang-switch{position:absolute;top:30px;right:62px;display:flex;gap:2px;background:rgba(42,31,26,.06);border-radius:999px;padding:3px;z-index:6}
+  .lang-switch button{border:0;background:transparent;color:#8a7563;font-family:var(--sans);font-weight:700;font-size:11px;padding:4px 8px;border-radius:999px;cursor:pointer;letter-spacing:.04em}
+  .lang-switch button.on{background:#1F3D2E;color:#F1ECE2}
   .menu-top::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:rgba(42,31,26,.14)}
+  /* table badge from QR (?table=N) */
+  .table-badge{
+    display:inline-flex;align-items:center;gap:7px;margin-top:12px;
+    padding:7px 14px;border-radius:999px;background:#1F3D2E;color:#F1ECE2;
+    font-family:var(--sans);font-weight:600;font-size:13px;letter-spacing:.04em;
+  }
+  .table-badge::before{content:"";width:7px;height:7px;border-radius:999px;background:#E89BB0;flex:0 0 auto}
+  .table-badge[hidden]{display:none}
+  /* call-waiter pill (shown only when a table is set) */
+  .call-waiter{
+    display:none;margin:12px 0 0 8px;align-items:center;gap:6px;vertical-align:top;
+    padding:7px 14px;border-radius:999px;border:1.5px solid #1F3D2E;background:transparent;
+    color:#1F3D2E;font-family:var(--sans);font-weight:600;font-size:13px;cursor:pointer;
+  }
+  .call-waiter.show{display:inline-flex}
+  .call-waiter[disabled]{opacity:.55;cursor:default}
   .menu-body{padding:0 22px}
   .menu-cat{padding-top:34px;scroll-margin-top:194px}
   .menu-cat h3{
@@ -284,6 +304,22 @@
   .dish-name{font-weight:700;font-size:19px;line-height:1.2;color:#2a1f1a}
   .dish-desc{margin-top:5px;font-size:13.5px;line-height:1.45;color:#8a7563}
   .dish-price{margin-top:8px;font-weight:700;font-size:15px;color:#2a1f1a}
+  /* per-variant rows (hot/iced, 15/25 pcs) — one add control each */
+  .variants{margin-top:10px;display:flex;flex-direction:column;gap:9px}
+  .vrow{display:flex;align-items:center;justify-content:space-between;gap:10px}
+  .vrow .vlabel{font-size:14px;color:#2a1f1a;display:flex;align-items:baseline;gap:8px;min-width:0}
+  .vrow .vlabel b{font-weight:700}
+  .vrow .vprice{color:#8a7563;font-weight:600;font-size:13px;white-space:nowrap}
+  /* sold out (86) */
+  .dish.sold{opacity:.5}
+  .dish.sold .dish-th{filter:grayscale(1)}
+  .sold-badge{margin-top:8px;display:inline-block;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#a23b3b}
+  /* dish tags (popular / veg / spicy / gf) */
+  .dish-tags{margin-top:8px;display:flex;flex-wrap:wrap;gap:6px}
+  .tag{font-size:11px;font-weight:600;padding:3px 8px;border-radius:999px;background:rgba(31,61,46,.08);color:#1F3D2E}
+  .tag-spicy{background:rgba(226,123,123,.16);color:#a23b3b}
+  .tag-popular{background:rgba(232,155,176,.18);color:#9c4f63}
+  .tag-veg{background:rgba(47,138,62,.12);color:#2f7a3a}
   .menu-note{text-align:center;font-size:13px;color:#8a7563;padding:34px 22px 8px;letter-spacing:.02em}
 
   /* ---------- CART (my order → show waiter) ---------- */
@@ -334,6 +370,27 @@
   .cs-act button{flex:1;padding:15px;border-radius:8px;border:0;font-weight:700;font-size:15px;cursor:pointer}
   .cs-clear{background:transparent;border:1.5px solid rgba(42,31,26,.3)!important;color:#2a1f1a}
   .cs-back{background:var(--burgundy);color:#fff}
+  /* order form + place-order states */
+  .cs-backlink{display:inline-flex;align-items:center;gap:6px;background:none;border:0;color:#8a7563;font-family:var(--sans);font-size:14px;font-weight:600;cursor:pointer;padding:0;margin-bottom:14px}
+  .cs-field{margin-top:14px}
+  .cs-field label{display:block;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.07em;color:#8a7563;margin-bottom:6px}
+  .cs-field input{width:100%;padding:13px 14px;border:1.5px solid rgba(42,31,26,.2);border-radius:10px;font-family:var(--sans);font-size:15px;color:#2a1f1a;background:#fff}
+  .cs-field input:focus{outline:none;border-color:var(--burgundy)}
+  .cs-hp{position:absolute!important;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none}
+  .cs-err{margin-top:14px;color:#a23b3b;font-size:14px;font-weight:600;text-align:center}
+  .cs-place{background:#1F3D2E;color:#F1ECE2}
+  .cs-place[disabled]{opacity:.55;cursor:default}
+  /* upsell on the order screen */
+  .cs-upsell{margin-top:18px}
+  .up-title{font-size:13px;font-weight:700;color:#2a1f1a;margin-bottom:8px}
+  .up-row{display:flex;flex-wrap:wrap;gap:8px}
+  .up-chip{padding:9px 13px;border-radius:999px;border:1.5px solid var(--burgundy);background:transparent;color:#2a1f1a;font-family:var(--sans);font-weight:600;font-size:13px;cursor:pointer}
+  .cs-done{padding:56px 22px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:14px}
+  .cs-done .ic{width:64px;height:64px;border-radius:999px;background:#1F3D2E;color:#fff;display:flex;align-items:center;justify-content:center;font-size:30px}
+  .cs-done h3{font-family:var(--groovy,'Caprasimo',serif);font-weight:400;font-size:34px;color:#1F3D2E;line-height:1}
+  .cs-done p{font-size:15px;color:#6f5d50;max-width:290px;line-height:1.5}
+  .cs-done button{margin-top:8px;padding:14px 28px;border:0;border-radius:10px;background:var(--burgundy);color:#fff;font-family:var(--sans);font-weight:700;font-size:15px;cursor:pointer}
+  .cs-done-sec{background:transparent!important;border:1.5px solid rgba(42,31,26,.3)!important;color:#2a1f1a!important}
 
   /* ========== GREEN WAVE — overrides ========== */
   :root { --groovy:'Caprasimo', serif; --hand:'Cormorant', Georgia, serif; }
@@ -684,11 +741,15 @@ croissant</h1><p>with ice latte · Rp 75k</p></div>
       <div class="menu-top">
         <button class="menu-x" id="menuClose" type="button" aria-label="Close menu">✕</button>
         <div class="wm2">Bali Betula</div>
-        <h2>Menu</h2>
+        <h2 id="menuTitle">Menu</h2>
+        <div class="lang-switch" id="langSwitch"><button type="button" data-l="en">EN</button><button type="button" data-l="ru">RU</button><button type="button" data-l="id">ID</button></div>
+        <span class="table-badge" id="tableBadge" hidden></span>
+        <button type="button" class="call-waiter" id="callWaiter">🔔 Call waiter</button>
+        <button type="button" class="call-waiter" id="requestBill">🧾 Bill</button>
         <div class="menu-tabs" id="menuTabs"></div>
       </div>
       <div class="menu-body" id="menuBody"></div>
-      <div class="menu-note">All prices in IDR · tax 10% · service 6%</div>
+      <div class="menu-note" id="menuNote">All prices in IDR · tax 10% · service 6%<br>Cash · Visa / Mastercard · QRIS (local wallets)</div>
     </div>
   </div>
 
@@ -783,167 +844,131 @@ croissant</h1><p>with ice latte · Rp 75k</p></div>
 </script>
 <script>
 (function(){
-  // Фото блюда: добавь поле img к пункту, напр. img:"assets/dishes/borsch.webp"
-  // Без img рисуется монограмма. Кроп квадрат ~400×400.
-  var MENU=[
-    {c:"Starters",items:[
-      {n:"Cheese Burger",d:"100% beef patty, double cheese, pickles on a soft bun.",p:"110000 IDR",img:"assets/dishes/cheese-burger.webp"},
-      {n:"Club Sandwich",d:"Grilled chicken, smoked bacon, egg, lettuce, tomato on toasted bread.",p:"85000 IDR",img:"assets/dishes/club-sandwich.webp"},
-      {n:"Cheburek",d:"Deep-fried turnover filled with juicy seasoned minced meat and herbs.",p:"70000 IDR",img:"assets/dishes/cheburek.webp"},
-      {n:"Syrniki",d:"Pan-fried cottage cheese pancakes, sour cream or berry jam.",p:"100000 IDR",img:"assets/dishes/syrniki.webp"}
-    ]},
-    {c:"Soups",items:[
-      {n:"Borsch",d:"Beet-based soup slow-simmered with tender beef, vegetables, sour cream.",p:"90000 IDR",img:"assets/dishes/borsch.webp"},
-      {n:"Solyanka",d:"Rich tangy soup with smoked meats, pickles, olives and lemon.",p:"95000 IDR",img:"assets/dishes/solyanka.webp"},
-      {n:"Pelmeni",d:"Handmade meat dumplings — with sour cream or in clear broth. 15 / 25 pcs.",p:"80000 / 120000 IDR",img:"assets/dishes/pelmeni.webp"}
-    ]},
-    {c:"Salads",items:[
-      {n:"Crispy Eggplant",d:"Deep-fried eggplant in sweet chili glaze, cilantro, sesame.",p:"110000 IDR"},
-      {n:"Tuna with Mango",d:"A vibrant stack of fresh tuna and mango.",p:"95000 IDR"},
-      {n:"Tuna Tartare",d:"Hand-chopped premium tuna, citrus, soy, served with avocado.",p:"145000 IDR"},
-      {n:"Achichuk",d:"Uzbek salad of ripe tomatoes, onions and chili — pairs with Plov.",p:"80000 IDR"},
-      {n:"Lebanon Eggplants",d:"Crispy fried eggplant drizzled with rich sesame sauce.",p:"105000 IDR"}
-    ]},
-    {c:"Mains",items:[
-      {n:"Beshbarmak",d:"Hand-rolled dough, slow-cooked Australian beef short ribs, onion glaze.",p:"250000 IDR",img:"assets/dishes/beshbarmak.webp"},
-      {n:"Plov",d:"Fragrant rice pilaf with beef brisket, sweet carrots and spices.",p:"130000 IDR",img:"assets/dishes/plov.webp"},
-      {n:"Chicken Schnitzel",d:"Golden-brown breaded chicken breast with mashed potato.",p:"105000 IDR",img:"assets/dishes/chicken-schnitzel.webp"},
-      {n:"Beef Stroganoff",d:"Sautéed beef in a velvety sour cream and mushroom sauce.",p:"105000 IDR",img:"assets/dishes/beef-stroganoff.webp"},
-      {n:"Mushroom Chicken Creamy Pasta",d:"Pasta with juicy chicken and mushrooms in a cream sauce.",p:"95000 IDR",img:"assets/dishes/mushroom-pasta.webp"},
-      {n:"Nasi Goreng",d:"Indonesian fried rice with chicken, vegetables and a fried egg.",p:"65000 IDR",img:"assets/dishes/nasi-goreng.webp"},
-      {n:"Chicken Liver & Mash",d:"Golden chicken liver with velvet mash and garden herbs.",p:"90000 IDR",img:"assets/dishes/chicken-liver.webp"},
-      {n:"Tsomyan (Fried Lagman)",d:"Hand-stretched noodles wok-tossed with sliced beef and greens.",p:"110000 IDR",img:"assets/dishes/tsomyan.webp"},
-      {n:"Manty",d:"Steamed dumplings, meat & onion filling, 5 pcs. Preorder 60 mins.",p:"110000 IDR",img:"assets/dishes/manty.webp"},
-      {n:"Kazan Kebab",d:"Cauldron-fried beef and potatoes, cumin, fresh onion garnish.",p:"220000 IDR",img:"assets/dishes/kazan-kebab.webp"},
-      {n:"Tuna Steak",d:"Creamy mushroom style, or Sambal with onions and fresh chili.",p:"120000 IDR",img:"assets/dishes/tuna-steak.webp"},
-      {n:"Pepper Steak",d:"Pepper-crusted beef steak with a buttery pepper sauce.",p:"250000 IDR",img:"assets/dishes/pepper-steak.webp"},
-      {n:"Shrimp Pasta",d:"Juicy prawns and pasta in buttery garlic sauce, chili flakes.",p:"125000 IDR",img:"assets/dishes/shrimp-pasta.webp"}
-    ]},
-    {c:"Bowls",items:[
-      {n:"Chicken Bowl",d:"Grilled chicken, avocado, edamame, cucumber, teriyaki glaze.",p:"85000 IDR",img:"assets/dishes/chicken-bowl.webp"},
-      {n:"Tuna Bowl",d:"Sashimi-grade tuna, radish, green onion, soy-sesame dressing.",p:"90000 IDR",img:"assets/dishes/tuna-bowl.webp"},
-      {n:"Dragon Power",d:"Dragon fruit, banana, mixed berries, papaya, granola, chia.",p:"75000 IDR",img:"assets/dishes/dragon-power.webp"},
-      {n:"Berries Smoothie",d:"Blueberries, banana, melon, papaya, granola, chia.",p:"75000 IDR",img:"assets/dishes/berries-smoothie.webp"},
-      {n:"Pure Sweetness",d:"Strawberry, banana, mango, melon, granola, chia.",p:"75000 IDR",img:"assets/dishes/pure-sweetness.webp"}
-    ]},
-    {c:"Signature Coffee",items:[
-      {n:"Betula Creamy Coffee",d:"Espresso, fresh milk, rum syrup, brown sugar, ice.",p:"55000 IDR",img:"assets/dishes/betula-creamy-coffee.webp"},
-      {n:"Creamy Kintamani",d:"Espresso, fresh milk, condensed milk, vanilla, ice.",p:"55000 IDR",img:"assets/dishes/creamy-kintamani.webp"},
-      {n:"SourBee Coffee",d:"Orange juice, honey, espresso, slice of orange.",p:"55000 IDR",img:"assets/dishes/sourbee-coffee.webp"},
-      {n:"Midnight Citrus",d:"Orange juice, honey, pineapple juice, espresso, ice.",p:"55000 IDR",img:"assets/dishes/midnight-citrus.webp"},
-      {n:"The Apple of Ice",d:"Espresso, honey, apple juice, syrup, ice.",p:"40000 IDR",img:"assets/dishes/the-apple-of-ice.webp"}
-    ]},
-    {c:"Coffee",items:[
-      {n:"Espresso",d:"",p:"28000 IDR"},
-      {n:"Americano",d:"hot / iced",p:"30000 / 33000 IDR"},
-      {n:"Macchiato",d:"",p:"30000 IDR"},
-      {n:"Piccolo",d:"",p:"33000 IDR"},
-      {n:"Latte",d:"hot / iced",p:"35000 / 38000 IDR"},
-      {n:"Cappuccino",d:"hot / iced",p:"35000 / 38000 IDR"},
-      {n:"Flat White",d:"",p:"35000 IDR"},
-      {n:"Mochaccino",d:"hot / iced",p:"40000 / 43000 IDR"},
-      {n:"Frappuccino",d:"Coffee, choco, matcha or taro.",p:"45000 IDR",img:"assets/dishes/frappuccino.webp"},
-      {n:"Ice Tea / Peach / Lychee",d:"",p:"20000 / 30000 / 30000 IDR",img:"assets/dishes/ice-tea.webp"}
-    ]},
-    {c:"Non-coffee",items:[
-      {n:"Matcha Latte",d:"hot / iced",p:"35000 / 38000 IDR"},
-      {n:"Chocolate",d:"hot / iced",p:"35000 / 38000 IDR"},
-      {n:"Taro Latte",d:"hot / iced",p:"35000 / 38000 IDR"},
-      {n:"Creamy Nusantara",d:"hot / iced",p:"35000 / 38000 IDR"},
-      {n:"Loose Leaf Tea",d:"English breakfast, earl grey, green, peppermint, chamomile.",p:"35000 IDR"},
-      {n:"Tashkent Tea",d:"Pot of spiced black tea.",p:"75000 IDR"},
-      {n:"Mineral Water",d:"",p:"35000 IDR"},
-      {n:"Sparkling Water",d:"",p:"40000 IDR"}
-    ]},
-    {c:"Mocktails",items:[
-      {n:"Yellow Frenzy",d:"Pineapple, elderberry, peach, soda.",p:"35000 IDR",img:"assets/dishes/yellow-frenzy.webp"},
-      {n:"Red Spark",d:"Strawberry, passion fruit, orange, soda.",p:"35000 IDR",img:"assets/dishes/red-spark.webp"},
-      {n:"Green Bali Betula",d:"Kiwi, jasmine, orange, soda.",p:"35000 IDR",img:"assets/dishes/green-bali-betula.webp"}
-    ]},
-    {c:"Soft Drinks",items:[
-      {n:"Cola",d:"",p:"25000 IDR"},
-      {n:"Cola Zero",d:"",p:"20000 IDR"},
-      {n:"Sprite",d:"",p:"25000 IDR"},
-      {n:"Bintang",d:"",p:"40000 IDR"},
-      {n:"Black Sand Lager",d:"",p:"50000 IDR"},
-      {n:"Black Sand IPA",d:"",p:"75000 IDR"},
-      {n:"Island Brewing",d:"",p:"50000 IDR"},
-      {n:"Summer Pale Ale",d:"",p:"50000 IDR"},
-      {n:"Everyday Weekend — Mango & Passion",d:"",p:"40000 IDR"},
-      {n:"Everyday Weekend — Lime & Soda",d:"",p:"40000 IDR"}
-    ]}
-  ];
-
   var tabsEl=document.getElementById('menuTabs');
   var bodyEl=document.getElementById('menuBody');
   var ov=document.getElementById('menuOv');
   if(!tabsEl||!bodyEl||!ov) return;
 
+  // ---- table from QR: ?table=N (persisted so it survives navigation) ----
+  function getTable(){
+    var m=(location.search||'').match(/[?&]table=([^&]+)/i);
+    var t=m?decodeURIComponent(m[1]).replace(/[^\w -]/g,'').trim().slice(0,16):'';
+    if(t){try{localStorage.setItem('bb_table',JSON.stringify({v:t,t:Date.now()}));}catch(e){}return t;}
+    // reuse a saved table only if it's fresh (<6h) — so a guest browsing at home isn't still "Table 5"
+    try{var s=JSON.parse(localStorage.getItem('bb_table')||'null');if(s&&s.v&&(Date.now()-s.t)<21600000)return s.v;}catch(e){}
+    return '';
+  }
+  var TABLE=getTable();
+  (function(){var tb=document.getElementById('tableBadge');if(tb&&TABLE){tb.textContent='Table '+TABLE;tb.hidden=false;}})();
+  // service buttons (call waiter / request bill) — only when seated at a table
+  function wireService(id,endpoint,sendingTxt,doneTxt){
+    var el=document.getElementById(id);
+    if(!el||!TABLE)return;
+    el.classList.add('show');
+    el.addEventListener('click',function(){
+      var orig=el.textContent;el.disabled=true;el.textContent=sendingTxt;
+      fetch(endpoint,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({table:TABLE})})
+        .then(function(r){return r.json().catch(function(){return {};});})
+        .then(function(d){el.textContent=(d&&d.ok)?doneTxt:'Try again';setTimeout(function(){el.textContent=orig;el.disabled=false;},3500);})
+        .catch(function(){el.textContent='Try again';setTimeout(function(){el.textContent=orig;el.disabled=false;},3500);});
+    });
+  }
+  // i18n-dependent init (labels, switcher, service buttons) runs below, after I18N is defined.
+
+  // ---- helpers ----
   function mono(name){
-    var w=name.replace(/[^A-Za-z ]/g,' ').trim().split(/\s+/);
+    var w=String(name).replace(/[^A-Za-z ]/g,' ').trim().split(/\s+/);
     return (((w[0]||'')[0]||'')+((w[1]||'')[0]||'')).toUpperCase();
   }
-
-  // ---- cart state ----
-  function unitPrice(p){var m=String(p).match(/\d[\d.,]*/);return m?parseInt(m[0].replace(/[.,]/g,''),10):0;}
   function fmt(n){return String(n).replace(/\B(?=(\d{3})+(?!\d))/g,',');}
-  var addEls={},byName={},cart={};
-  try{cart=JSON.parse(localStorage.getItem('bb_cart_v1')||'{}')||{};}catch(e){cart={};}
-  function saveCart(){try{localStorage.setItem('bb_cart_v1',JSON.stringify(cart));}catch(e){}}
-  function setQty(name,q){
-    if(q<=0)delete cart[name];else cart[name]=q;
-    saveCart();paintAdd(name);if(typeof renderBar==='function')renderBar();
+  var TAGLABEL={popular:'★ Popular',veg:'🌱 Veg',spicy:'🌶 Spicy',gf:'GF'};
+
+  // ---- i18n (EN / RU / ID). Server-returned messages stay EN. ----
+  var I18N={
+    en:{menu:'Menu',loading:'Loading menu…',loadFail:'Couldn’t load the menu — please refresh the page.',
+      inOrder:'in your order',review:'Review',yourOrder:'Your order',noTable:'No table set — scan the QR on your table',
+      noItems:'No items yet — tap + on dishes you want.',subtotal:'Subtotal',tax:'Tax',service:'Service',approxTotal:'Approx total',
+      approxNote:'Approximate — the final amount is confirmed on your bill.',backMenu:'Back to menu',clear:'Clear',placeOrder:'Place order',
+      sending:'Sending…',yourName:'Your name (optional)',comment:'Comment (optional)',namePh:'e.g. Anna',notePh:'No onions, extra spicy, allergies…',
+      addDrink:'Add a drink?',soldOut:'Sold out',callWaiter:'🔔 Call waiter',bill:'🧾 Bill',calling:'Calling…',onway:'✓ On the way',coming:'✓ Coming',tryAgain:'Try again',
+      orderSent:'Order sent!',waiterWay:'A waiter is on the way to Table ',gotOrder:'Thanks — we have your order.',orderNo:'Order №',again:'Order the same again',
+      pricesNote:'All prices in IDR · tax 10% · service 6%',payNote:'Cash · Visa / Mastercard · QRIS (local wallets)',
+      errEmpty:'Your order is empty — add a few dishes first.',errGeneric:'Something went wrong. Please try again.',errNet:'No connection — please try again, or show this screen to your waiter.'},
+    ru:{menu:'Меню',loading:'Загрузка меню…',loadFail:'Не удалось загрузить меню — обновите страницу.',
+      inOrder:'в заказе',review:'К заказу',yourOrder:'Ваш заказ',noTable:'Стол не указан — отсканируйте QR на столе',
+      noItems:'Пока пусто — нажмите + у блюд.',subtotal:'Подытог',tax:'Налог',service:'Сервис',approxTotal:'Примерно',
+      approxNote:'Примерно — точная сумма будет в счёте.',backMenu:'Назад в меню',clear:'Очистить',placeOrder:'Оформить заказ',
+      sending:'Отправка…',yourName:'Ваше имя (необязательно)',comment:'Комментарий (необязательно)',namePh:'например, Аня',notePh:'Без лука, поострее, аллергии…',
+      addDrink:'Добавить напиток?',soldOut:'Закончилось',callWaiter:'🔔 Официант',bill:'🧾 Счёт',calling:'Зовём…',onway:'✓ Идёт',coming:'✓ Несём',tryAgain:'Ещё раз',
+      orderSent:'Заказ отправлен!',waiterWay:'Официант идёт к столу ',gotOrder:'Спасибо — заказ принят.',orderNo:'Заказ №',again:'Повторить заказ',
+      pricesNote:'Все цены в IDR · налог 10% · сервис 6%',payNote:'Наличные · Visa / Mastercard · QRIS (локальные кошельки)',
+      errEmpty:'Заказ пуст — добавьте блюда.',errGeneric:'Что-то пошло не так. Попробуйте снова.',errNet:'Нет связи — попробуйте снова или покажите этот экран официанту.'},
+    id:{menu:'Menu',loading:'Memuat menu…',loadFail:'Gagal memuat menu — segarkan halaman.',
+      inOrder:'di pesanan',review:'Lihat',yourOrder:'Pesanan Anda',noTable:'Meja belum dipilih — pindai QR di meja Anda',
+      noItems:'Belum ada item — ketuk + pada hidangan.',subtotal:'Subtotal',tax:'Pajak',service:'Layanan',approxTotal:'Perkiraan',
+      approxNote:'Perkiraan — jumlah akhir tertera di bon.',backMenu:'Kembali ke menu',clear:'Hapus',placeOrder:'Pesan sekarang',
+      sending:'Mengirim…',yourName:'Nama Anda (opsional)',comment:'Komentar (opsional)',namePh:'mis. Budi',notePh:'Tanpa bawang, lebih pedas, alergi…',
+      addDrink:'Tambah minuman?',soldOut:'Habis',callWaiter:'🔔 Pelayan',bill:'🧾 Bon',calling:'Memanggil…',onway:'✓ Datang',coming:'✓ Datang',tryAgain:'Coba lagi',
+      orderSent:'Pesanan terkirim!',waiterWay:'Pelayan menuju Meja ',gotOrder:'Terima kasih — pesanan diterima.',orderNo:'Pesanan №',again:'Pesan lagi yang sama',
+      pricesNote:'Semua harga IDR · pajak 10% · layanan 6%',payNote:'Tunai · Visa / Mastercard · QRIS',
+      errEmpty:'Pesanan kosong — tambah hidangan dulu.',errGeneric:'Terjadi kesalahan. Coba lagi.',errNet:'Tidak ada koneksi — coba lagi, atau tunjukkan layar ini ke pelayan.'}
+  };
+  var LANG='en';try{var sl=localStorage.getItem('bb_lang');if(sl&&I18N[sl])LANG=sl;}catch(e){}
+  function t(k){return (I18N[LANG]&&I18N[LANG][k])||I18N.en[k]||k;}
+  function nameOf(it){return (LANG==='ru'&&it.n_ru)||(LANG==='id'&&it.n_id)||it.n;}
+  function descOf(it){return (LANG==='ru'&&it.d_ru)||(LANG==='id'&&it.d_id)||it.d||'';}
+  function catName(c){return (LANG==='ru'&&c.c_ru)||(LANG==='id'&&c.c_id)||c.c;}
+
+  // static labels + language switcher + service buttons (needs I18N/t defined above)
+  (function(){
+    var mt=document.getElementById('menuTitle');if(mt)mt.textContent=t('menu');
+    var mnn=document.getElementById('menuNote');if(mnn)mnn.innerHTML=t('pricesNote')+'<br>'+t('payNote');
+    var cwb=document.getElementById('callWaiter');if(cwb)cwb.textContent=t('callWaiter');
+    var rbb=document.getElementById('requestBill');if(rbb)rbb.textContent=t('bill');
+    var sw=document.getElementById('langSwitch');
+    if(sw)[].forEach.call(sw.children,function(btn){
+      if(btn.getAttribute('data-l')===LANG)btn.classList.add('on');
+      btn.addEventListener('click',function(){var l=btn.getAttribute('data-l');if(l!==LANG){try{localStorage.setItem('bb_lang',l);}catch(e){}location.reload();}});
+    });
+  })();
+  wireService('callWaiter','/api/call-waiter',t('calling'),t('onway'));
+  wireService('requestBill','/api/request-bill',t('sending'),t('coming'));
+  function unitOf(it){return it.variants?(it.variants[0].price||0):(it.price||0);}   // default unit price
+  function variantOf(it){return it.variants?(it.variants[0].label||''):'';}          // default variant label
+  function priceText(it){
+    if(it.variants)return it.variants.map(function(v){return fmt(v.price);}).join(' / ')+' IDR';
+    return fmt(it.price||0)+' IDR';
   }
-  function paintAdd(name){
-    var el=addEls[name];if(!el)return;
-    var q=cart[name]||0;el.innerHTML='';
+
+  // ---- cart state (keyed by stable dish id; bumped to v2 for the new shape) ----
+  var addEls={},byId={},cart={},MENU=[];
+  var TAX=0,SVC=0;
+  try{cart=JSON.parse(localStorage.getItem('bb_cart_v2')||'{}')||{};}catch(e){cart={};}
+  function saveCart(){try{localStorage.setItem('bb_cart_v2',JSON.stringify(cart));}catch(e){}}
+  function setQty(id,q){
+    if(q<=0)delete cart[id];else cart[id]=q;
+    saveCart();paintAdd(id);renderBar();
+  }
+  function paintAdd(id){
+    var el=addEls[id];if(!el)return;
+    var q=cart[id]||0;el.innerHTML='';
     if(q<=0){
       var b=document.createElement('button');b.type='button';b.className='add-btn';
-      b.textContent='+';b.setAttribute('aria-label','Add '+name);
-      b.onclick=function(){setQty(name,1);};el.appendChild(b);
+      b.textContent='+';b.setAttribute('aria-label','Add');
+      b.onclick=function(){setQty(id,1);};el.appendChild(b);
     }else{
       var s=document.createElement('div');s.className='stepper';
       var m=document.createElement('button');m.type='button';m.textContent='−';
-      m.setAttribute('aria-label','Less');m.onclick=function(){setQty(name,(cart[name]||0)-1);};
+      m.setAttribute('aria-label','Less');m.onclick=function(){setQty(id,(cart[id]||0)-1);};
       var c=document.createElement('b');c.textContent=q;
       var p=document.createElement('button');p.type='button';p.textContent='+';
-      p.setAttribute('aria-label','More');p.onclick=function(){setQty(name,(cart[name]||0)+1);};
+      p.setAttribute('aria-label','More');p.onclick=function(){setQty(id,(cart[id]||0)+1);};
       s.appendChild(m);s.appendChild(c);s.appendChild(p);el.appendChild(s);
     }
   }
 
-  MENU.forEach(function(cat,i){
-    var tab=document.createElement('button');
-    tab.type='button';
-    tab.className='menu-tab'+(i===0?' on':'');
-    tab.textContent=cat.c;
-    tab.dataset.i=i;
-    tabsEl.appendChild(tab);
-
-    var sec=document.createElement('div');
-    sec.className='menu-cat';
-    sec.id='mc'+i;
-    var h=document.createElement('h3');
-    h.textContent=cat.c;
-    sec.appendChild(h);
-    cat.items.forEach(function(it){
-      var row=document.createElement('div');row.className='dish';
-      var th=document.createElement('div');th.className='dish-th';
-      if(it.img){var di=document.createElement('img');di.src=it.img;di.alt=it.n;di.loading='lazy';di.decoding='async';di.onerror=function(){if(di.parentNode)th.removeChild(di);th.textContent=mono(it.n);};th.appendChild(di);}
-      else th.textContent=mono(it.n);
-      var mn=document.createElement('div');mn.className='dish-main';
-      var nm=document.createElement('div');nm.className='dish-name';nm.textContent=it.n;mn.appendChild(nm);
-      if(it.d){var de=document.createElement('div');de.className='dish-desc';de.textContent=it.d;mn.appendChild(de);}
-      var pr=document.createElement('div');pr.className='dish-price';pr.textContent=it.p;mn.appendChild(pr);
-      var ad=document.createElement('div');ad.className='dish-add';
-      addEls[it.n]=ad;byName[it.n]={p:it.p,u:unitPrice(it.p)};
-      paintAdd(it.n);
-      row.appendChild(th);row.appendChild(mn);row.appendChild(ad);sec.appendChild(row);
-    });
-    bodyEl.appendChild(sec);
-  });
-
-  function openMenu(e){if(e)e.preventDefault();ov.classList.add('open');document.body.classList.add('locked');ov.setAttribute('aria-hidden','false');ov.scrollTop=0;if(typeof renderBar==='function')renderBar();}
+  // ---- menu open/close (wired now, so it works even while data is loading) ----
+  function openMenu(e){if(e)e.preventDefault();ov.classList.add('open');document.body.classList.add('locked');ov.setAttribute('aria-hidden','false');ov.scrollTop=0;renderBar();}
   function closeMenu(){ov.classList.remove('open');document.body.classList.remove('locked');ov.setAttribute('aria-hidden','true');var cs=document.getElementById('cartSheet');if(cs)cs.classList.remove('open');var cb=document.getElementById('cartBar');if(cb)cb.classList.remove('show');}
   var ob=document.getElementById('openMenu');if(ob)ob.addEventListener('click',openMenu);
   document.getElementById('menuClose').addEventListener('click',closeMenu);
@@ -955,45 +980,74 @@ croissant</h1><p>with ice latte · Rp 75k</p></div>
     if(sec)sec.scrollIntoView({behavior:'smooth',block:'start'});
   });
 
-  // ---- cart bar + waiter summary ----
+  // ---- cart bar + order summary ----
   var cbar=document.createElement('div');cbar.className='cart-bar';cbar.id='cartBar';
-  cbar.innerHTML='<span class="cb-c"><span class="cb-n" id="cbN">0</span><span>in your order</span></span><span id="cbT">Show waiter →</span>';
+  cbar.innerHTML='<span class="cb-c"><span class="cb-n" id="cbN">0</span><span>'+t('inOrder')+'</span></span><span id="cbT">'+t('review')+' →</span>';
   ov.appendChild(cbar);
   var sheet=document.createElement('div');sheet.className='cart-sheet';sheet.id='cartSheet';
   var si=document.createElement('div');si.className='cs-inner';
-  si.innerHTML='<h3>Your order</h3><div class="cs-sub">Show this screen to your waiter</div><div class="cs-list" id="csList"></div><div class="cs-tot" id="csTot"></div><div class="cs-note">Approximate — the final amount is confirmed on your bill.</div>';
+  si.innerHTML='<button type="button" class="cs-backlink" id="csBack">&larr; '+t('backMenu')+'</button>'+
+    '<h3>'+t('yourOrder')+'</h3><div class="cs-sub"></div>'+
+    '<div class="cs-list" id="csList"></div><div class="cs-tot" id="csTot"></div>'+
+    '<div class="cs-upsell" id="csUpsell"></div>'+
+    '<div class="cs-field"><label for="csName">'+t('yourName')+'</label><input id="csName" type="text" autocomplete="name" maxlength="80" placeholder="'+t('namePh')+'"></div>'+
+    '<div class="cs-field"><label for="csNote">'+t('comment')+'</label><input id="csNote" type="text" maxlength="200" placeholder="'+t('notePh')+'"></div>'+
+    '<input class="cs-hp" id="csHp" tabindex="-1" autocomplete="off" aria-hidden="true" placeholder="Leave empty">'+
+    '<div class="cs-err" id="csErr" hidden></div>'+
+    '<div class="cs-note">'+t('approxNote')+'</div>';
   var sa=document.createElement('div');sa.className='cs-act';
-  sa.innerHTML='<button type="button" class="cs-clear" id="csClear">Clear</button><button type="button" class="cs-back" id="csBack">Back to menu</button>';
+  sa.innerHTML='<button type="button" class="cs-clear" id="csClear">'+t('clear')+'</button><button type="button" class="cs-place" id="csPlace">'+t('placeOrder')+' &rarr;</button>';
   sheet.appendChild(si);sheet.appendChild(sa);ov.appendChild(sheet);
 
   function cartCount(){var n=0;for(var k in cart)n+=cart[k];return n;}
-  function cartSubtotal(){var s=0;for(var k in cart){var b=byName[k];if(b)s+=b.u*cart[k];}return s;}
+  function cartSubtotal(){var s=0;for(var k in cart){var b=byId[k];if(b)s+=b.unit*cart[k];}return s;}
+  function grandTotal(sub){return Math.round(sub*(1+TAX+SVC));}
   function renderBar(){
     var n=cartCount(),sub=cartSubtotal();
-    document.getElementById('cbN').textContent=n;
-    document.getElementById('cbT').textContent=(sub?('~ '+fmt(Math.round(sub*1.16))+' IDR'):'Show waiter')+' →';
+    var cbN=document.getElementById('cbN'),cbT=document.getElementById('cbT');
+    if(cbN)cbN.textContent=n;
+    if(cbT)cbT.textContent=(sub?('~ '+fmt(grandTotal(sub))+' IDR'):t('review'))+' →';
     cbar.classList.toggle('show', ov.classList.contains('open') && n>0 && !sheet.classList.contains('open'));
   }
   function openSummary(){
     var list=document.getElementById('csList');list.innerHTML='';
+    var subEl=sheet.querySelector('.cs-sub');
+    if(subEl)subEl.textContent=TABLE?('Table '+TABLE):t('noTable');
     var keys=Object.keys(cart);
-    if(!keys.length){var em=document.createElement('div');em.className='cs-sub';em.style.padding='22px 0';em.textContent='No items yet — tap + on dishes you want.';list.appendChild(em);}
+    if(!keys.length){var em=document.createElement('div');em.className='cs-sub';em.style.padding='22px 0';em.textContent=t('noItems');list.appendChild(em);}
     keys.forEach(function(k){
-      var b=byName[k]||{p:'',u:0},q=cart[k];
+      var b=byId[k]||{n:k,unit:0,variant:''},q=cart[k];
       var r=document.createElement('div');r.className='cs-row';
       var L=document.createElement('div');
-      var qn=document.createElement('div');qn.className='qn';qn.textContent=q+' × '+k;
-      var qd=document.createElement('div');qd.className='qd';qd.textContent=b.p||'';
+      var qn=document.createElement('div');qn.className='qn';qn.textContent=q+' × '+b.n+(b.variant?(' ('+b.variant+')'):'');
+      var qd=document.createElement('div');qd.className='qd';qd.textContent=fmt(b.unit)+' IDR';
       L.appendChild(qn);L.appendChild(qd);
-      var R=document.createElement('div');R.className='qp';R.textContent=fmt(b.u*q)+' IDR';
+      var R=document.createElement('div');R.className='qp';R.textContent=fmt(b.unit*q)+' IDR';
       r.appendChild(L);r.appendChild(R);list.appendChild(r);
     });
     var sub=cartSubtotal();
     document.getElementById('csTot').innerHTML=
-      '<div class="ln"><span>Subtotal</span><span>'+fmt(sub)+' IDR</span></div>'+
-      '<div class="ln"><span>Tax 10%</span><span>'+fmt(Math.round(sub*0.10))+' IDR</span></div>'+
-      '<div class="ln"><span>Service 6%</span><span>'+fmt(Math.round(sub*0.06))+' IDR</span></div>'+
-      '<div class="gr"><span>Approx total</span><span>'+fmt(Math.round(sub*1.16))+' IDR</span></div>';
+      '<div class="ln"><span>'+t('subtotal')+'</span><span>'+fmt(sub)+' IDR</span></div>'+
+      '<div class="ln"><span>'+t('tax')+' '+Math.round(TAX*100)+'%</span><span>'+fmt(Math.round(sub*TAX))+' IDR</span></div>'+
+      '<div class="ln"><span>'+t('service')+' '+Math.round(SVC*100)+'%</span><span>'+fmt(Math.round(sub*SVC))+' IDR</span></div>'+
+      '<div class="gr"><span>'+t('approxTotal')+'</span><span>'+fmt(grandTotal(sub))+' IDR</span></div>';
+    var up=document.getElementById('csUpsell');
+    if(up){
+      up.innerHTML='';
+      var pool=[];
+      MENU.forEach(function(c){if(['Signature Coffee','Mocktails','Soft Drinks'].indexOf(c.c)>=0)(c.items||[]).forEach(function(it){if(!it.variants&&it.available!==false&&!cart[it.id])pool.push(it);});});
+      if(pool.length&&Object.keys(cart).length){
+        var ut=document.createElement('div');ut.className='up-title';ut.textContent=t('addDrink');up.appendChild(ut);
+        var ur=document.createElement('div');ur.className='up-row';
+        pool.slice(0,3).forEach(function(it){
+          var chip=document.createElement('button');chip.type='button';chip.className='up-chip';
+          chip.textContent='+ '+nameOf(it)+' · '+fmt(it.price);
+          chip.onclick=function(){setQty(it.id,(cart[it.id]||0)+1);openSummary();};
+          ur.appendChild(chip);
+        });
+        up.appendChild(ur);
+      }
+    }
     sheet.classList.add('open');renderBar();
   }
   cbar.addEventListener('click',openSummary);
@@ -1001,20 +1055,121 @@ croissant</h1><p>with ice latte · Rp 75k</p></div>
   document.getElementById('csClear').addEventListener('click',function(){
     cart={};saveCart();Object.keys(addEls).forEach(paintAdd);sheet.classList.remove('open');renderBar();
   });
+  document.getElementById('csPlace').addEventListener('click',placeOrder);
   renderBar();
 
-  var cats=[].slice.call(document.querySelectorAll('.menu-cat'));
-  var io=new IntersectionObserver(function(es){
-    es.forEach(function(en){
-      if(en.isIntersecting){
-        var i=en.target.id.replace('mc','');
-        [].forEach.call(tabsEl.children,function(b){b.classList.toggle('on',b.dataset.i===i);});
-        var on=tabsEl.querySelector('.menu-tab.on');
-        if(on)on.scrollIntoView({inline:'center',block:'nearest'});
-      }
+  // ---- place order → /api/order → Telegram (server recomputes the total) ----
+  function showErr(msg){var e=document.getElementById('csErr');if(e){e.hidden=!msg;e.textContent=msg||'';}}
+  function orderItems(){return Object.keys(cart).filter(function(key){return byId[key];}).map(function(key){var b=byId[key];return {id:b.id,qty:cart[key],variant:b.variant||undefined};});}
+  function placeOrder(){
+    if(!Object.keys(cart).length){showErr(t('errEmpty'));return;}
+    var btn=document.getElementById('csPlace');var orig=btn?btn.textContent:'';
+    if(btn){btn.disabled=true;btn.textContent=t('sending');}
+    showErr('');
+    function val(id){var el=document.getElementById(id);return el?el.value:'';}
+    var payload={table:TABLE,name:val('csName'),note:val('csNote'),_hp:val('csHp'),items:orderItems()};
+    fetch('/api/order',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)})
+      .then(function(r){return r.json().catch(function(e){console.warn('[order] bad JSON from /api/order',r.status,e);return {};}).then(function(d){return {ok:r.ok,d:d};});})
+      .then(function(res){
+        if(res.d&&res.d.ok){orderDone(res.d.id);return;}
+        showErr((res.d&&res.d.message)||t('errGeneric'));
+        if(btn){btn.disabled=false;btn.textContent=orig;}
+      })
+      .catch(function(){
+        showErr(t('errNet'));
+        if(btn){btn.disabled=false;btn.textContent=orig;}
+      });
+  }
+  function orderDone(id){
+    var last=JSON.stringify(cart);try{localStorage.setItem('bb_last',last);}catch(e){}
+    cart={};saveCart();Object.keys(addEls).forEach(paintAdd);renderBar();
+    var inner=sheet.querySelector('.cs-inner');
+    if(inner)inner.innerHTML='<div class="cs-done"><div class="ic">&#10003;</div><h3>'+t('orderSent')+'</h3><p>'+(TABLE?(t('waiterWay')+TABLE+'. '):(t('gotOrder')+' '))+t('orderNo')+id+'.</p><button type="button" id="csDone">'+t('backMenu')+'</button><button type="button" id="csAgain" class="cs-done-sec">'+t('again')+'</button></div>';
+    var act=sheet.querySelector('.cs-act');if(act)act.style.display='none';
+    var db=document.getElementById('csDone');if(db)db.addEventListener('click',function(){location.reload();});
+    var ag=document.getElementById('csAgain');if(ag)ag.addEventListener('click',function(){var c={};try{c=JSON.parse(last)||{};}catch(e){}cart=c;saveCart();location.reload();});
+  }
+
+  // ---- load menu data from menu.json (single source of truth, shared with /api/order) ----
+  bodyEl.innerHTML='<div class="menu-note">'+t('loading')+'</div>';
+  fetch('menu.json',{cache:'no-cache'})
+    .then(function(r){if(!r.ok)throw new Error('HTTP '+r.status);return r.json();})
+    .then(function(DATA){
+      TAX=(DATA&&DATA.taxRate)||0;SVC=(DATA&&DATA.serviceRate)||0;
+      renderMenu((DATA&&DATA.categories)||[]);
+      renderBar();
+    })
+    .catch(function(){
+      bodyEl.innerHTML='<div class="menu-note">'+t('loadFail')+'</div>';
     });
-  },{root:ov,rootMargin:'-188px 0px -62% 0px',threshold:0});
-  cats.forEach(function(c){io.observe(c);});
+
+  function renderMenu(M){
+    MENU=M;
+    tabsEl.innerHTML='';bodyEl.innerHTML='';addEls={};byId={};
+    MENU.forEach(function(cat,i){
+      var tab=document.createElement('button');
+      tab.type='button';tab.className='menu-tab'+(i===0?' on':'');
+      tab.textContent=catName(cat);tab.dataset.i=i;tabsEl.appendChild(tab);
+      var sec=document.createElement('div');sec.className='menu-cat';sec.id='mc'+i;
+      var h=document.createElement('h3');h.textContent=catName(cat);sec.appendChild(h);
+      (cat.items||[]).forEach(function(it){
+        var nme=nameOf(it),dsc=descOf(it);
+        var soldOut=it.available===false;
+        var row=document.createElement('div');row.className='dish'+(soldOut?' sold':'');
+        var th=document.createElement('div');th.className='dish-th';
+        if(it.img){var di=document.createElement('img');di.src=it.img;di.alt=nme;di.loading='lazy';di.decoding='async';di.onerror=function(){if(di.parentNode)th.removeChild(di);th.textContent=mono(nme);};th.appendChild(di);}
+        else th.textContent=mono(nme);
+        var mn=document.createElement('div');mn.className='dish-main';
+        var nm=document.createElement('div');nm.className='dish-name';nm.textContent=nme;mn.appendChild(nm);
+        if(dsc){var de=document.createElement('div');de.className='dish-desc';de.textContent=dsc;mn.appendChild(de);}
+        if(it.tags&&it.tags.length){var tgc=document.createElement('div');tgc.className='dish-tags';it.tags.forEach(function(tt){var sp=document.createElement('span');sp.className='tag tag-'+tt;sp.textContent=TAGLABEL[tt]||tt;tgc.appendChild(sp);});mn.appendChild(tgc);}
+        if(soldOut){
+          var so=document.createElement('div');so.className='sold-badge';so.textContent=t('soldOut');mn.appendChild(so);
+          row.appendChild(th);row.appendChild(mn);
+        }else if(it.variants&&it.variants.length){
+          // one add-control per variant; cart key = id + '::' + label
+          var vc=document.createElement('div');vc.className='variants';
+          it.variants.forEach(function(v){
+            var key=it.id+'::'+v.label;
+            var vr=document.createElement('div');vr.className='vrow';
+            var lab=document.createElement('div');lab.className='vlabel';
+            var b1=document.createElement('b');b1.textContent=v.label;
+            var pp=document.createElement('span');pp.className='vprice';pp.textContent=fmt(v.price)+' IDR';
+            lab.appendChild(b1);lab.appendChild(pp);
+            var ad=document.createElement('div');ad.className='dish-add';
+            addEls[key]=ad;byId[key]={id:it.id,n:nme,unit:v.price,variant:v.label};
+            paintAdd(key);
+            vr.appendChild(lab);vr.appendChild(ad);vc.appendChild(vr);
+          });
+          mn.appendChild(vc);
+          row.appendChild(th);row.appendChild(mn);
+        }else{
+          var pr=document.createElement('div');pr.className='dish-price';pr.textContent=priceText(it);mn.appendChild(pr);
+          var ad=document.createElement('div');ad.className='dish-add';
+          addEls[it.id]=ad;byId[it.id]={id:it.id,n:nme,unit:unitOf(it),variant:''};
+          paintAdd(it.id);
+          row.appendChild(th);row.appendChild(mn);row.appendChild(ad);
+        }
+        sec.appendChild(row);
+      });
+      bodyEl.appendChild(sec);
+    });
+    var cats=[].slice.call(document.querySelectorAll('.menu-cat'));
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(en){
+        if(en.isIntersecting){
+          var i=en.target.id.replace('mc','');
+          [].forEach.call(tabsEl.children,function(b){b.classList.toggle('on',b.dataset.i===i);});
+          var on=tabsEl.querySelector('.menu-tab.on');
+          if(on)on.scrollIntoView({inline:'center',block:'nearest'});
+        }
+      });
+    },{root:ov,rootMargin:'-188px 0px -62% 0px',threshold:0});
+    cats.forEach(function(c){io.observe(c);});
+    // drop cart entries whose dish/variant no longer exists (sold-out / removed / renamed)
+    var dirty=false;Object.keys(cart).forEach(function(k){if(!byId[k]){delete cart[k];dirty=true;}});
+    if(dirty){saveCart();renderBar();}
+  }
 })();
 </script>
 </body>
