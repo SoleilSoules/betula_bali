@@ -2,12 +2,13 @@
 <html lang="en">
 <head>
 <meta charset="utf-8" />
+<meta name="theme-color" content="#2F6DB5" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-<title>Bali Betula — Social Hideout &amp; Eatery</title>
-<meta name="description" content="Bali Betula — Social Hideout &amp; Eatery in Pererenan. Hand-rolled dumplings, slow-cooked stews, the Indian Ocean around the corner." />
-<meta property="og:title" content="Bali Betula" />
-<meta property="og:description" content="Social Hideout &amp; Eatery · Kerobokan, Bali" />
-<meta property="og:image" content="assets/hero-1.webp" />
+<title>La Betulla — Italian Bistro in Kerobokan, Bali</title>
+<meta name="description" content="La Betulla — Italian bistro in Kerobokan, Bali. Fresh pasta, stone-baked pizza, Italian breakfast and a green garden by the rice fields. Open daily 8:00–23:00, walk-ins welcome." />
+<meta property="og:title" content="La Betulla — Italian Bistro" />
+<meta property="og:description" content="Fresh pasta · stone-baked pizza · garden · Kerobokan, Bali" />
+<meta property="og:image" content="assets/pizza-spread.webp" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Caprasimo&family=Cormorant:ital,wght@0,600;0,700;1,500;1,600;1,700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -20,7 +21,7 @@
     --bg:#1F3D2E;          /* forest green */
     --cream:#F5F1E8;       /* cream text on forest */
     --card:#ECE3CC;        /* cream-warm placeholder */
-    --burgundy:#E89BB0;    /* matcha rose CTA */
+    --burgundy:#A9C6EA;    /* menu blue CTA */
     --gzhel:#C97A8A;       /* pink-deep accents */
     --sans:'Manrope',system-ui,-apple-system,sans-serif;
     --serif:'Cormorant',Georgia,serif;
@@ -372,7 +373,7 @@
     background:#F1ECE2; color:#1F3D2E;
   }
   .tile.right{
-    background:#E0B3B9; color:#1F3D2E;
+    background:#A9C6EA; color:#1F3D2E;
   }
   .tile .t-k{font-family:var(--sans); font-weight:600; font-size:11px; opacity:.7; text-transform:uppercase; letter-spacing:.14em; margin-bottom:6px}
   .tile .t-v{font-family:var(--groovy); font-weight:400; font-size:21px; letter-spacing:0; line-height:1.05; white-space:nowrap}
@@ -440,7 +441,7 @@
     display:flex; align-items:center; justify-content:center;
   }
   .sticky .s-menu{background:#F1ECE2; color:#1F3D2E}
-  .sticky .s-book{background:#E0B3B9; color:#1F3D2E}
+  .sticky .s-book{background:#A9C6EA; color:#1F3D2E}
 
   /* private hire CTA buttons */
   .private .cta a, .private a.btn{
@@ -449,7 +450,7 @@
     letter-spacing:0; text-transform:none;
   }
   .private .cta a:first-child, .private a.btn.menu{background:#F1ECE2; color:#1F3D2E}
-  .private .cta a:last-child, .private a.btn.book{background:#E0B3B9; color:#1F3D2E}
+  .private .cta a:last-child, .private a.btn.book{background:#A9C6EA; color:#1F3D2E}
 
   /* footer — forest with visible birch watermark */
   footer{background:linear-gradient(180deg, #1F3D2E 0%, #142A1F 150px) !important; border-top:1px dashed rgba(247,241,232,.28) !important; padding:88px 16px 82px; position:relative; overflow:hidden}
@@ -459,7 +460,7 @@
     top:0 !important; height:380px !important;
   }
   footer .slogan{font-family:var(--groovy); font-weight:400; font-size:36px; color:#fff; line-height:1}
-  footer .slogan i{color:#E89BB0}
+  footer .slogan i{color:#E2554A}
   footer .addr{color:rgba(255,255,255,.8) !important}
   footer .ig{color:rgba(255,255,255,.85) !important}
 
@@ -467,6 +468,15 @@
   .menu-top h2{font-family:var(--groovy); font-weight:400; font-size:58px; color:#1F3D2E; letter-spacing:-.01em}
   .menu-cat h3{font-family:var(--groovy); font-weight:400; font-size:30px; color:#1F3D2E}
   .menu-tab.on{background:#1F3D2E; border-color:#1F3D2E}
+  /* La Betulla: deeper menu-blue for contrast on cream */
+  .dish-th{color:#3D6FA8}
+  .add-btn{border-color:#3D6FA8;color:#3D6FA8}
+  .stepper{border-color:#3D6FA8}
+  .stepper button{color:#3D6FA8}
+  .cart-bar{background:#3D6FA8}
+  .cart-bar .cb-n{color:#3D6FA8}
+  .cs-inner h3,.cs-tot .gr{color:#3D6FA8}
+  .cs-back{background:#3D6FA8}
 
   /* hero text — анимация при переходе слайдов (groovy: мягкий подъём + пружинка) */
   .hero-copy h1, .hero-copy p{animation:none !important}
@@ -483,6 +493,41 @@
   @media(prefers-reduced-motion:reduce){
     .slide.anim .hero-copy h1, .slide.anim .hero-copy p{animation:none !important}
   }
+
+  /* ========== LA BETULLA — WHITE & BLUE THEME ========== */
+  :root{--bg:#FFFFFF; --navy:#1E3F73; --blue:#2F6DB5; --sky:#A9C6EA; --mist:#EEF4FB}
+  html,body{background:#E6EEF8}
+  body{color:var(--navy)}
+  .frame{background:#FFFFFF}
+  .sec-h h2{color:var(--navy)}
+  .sec-h .sub{color:rgba(30,63,115,.65)}
+  .tile.left{background:var(--mist); color:var(--navy)}
+  .tile.right{background:var(--blue); color:#fff}
+  .tile.right .t-k{opacity:.85}
+  .ig-follow{background:var(--mist); color:var(--navy)}
+  .sticky .s-menu{background:#fff; color:var(--navy); box-shadow:0 6px 18px -8px rgba(30,63,115,.45)}
+  .sticky .s-book{background:var(--blue); color:#fff}
+  .pcard,.ev{background:var(--mist)}
+  footer{background:linear-gradient(180deg, #2F6DB5 0%, #1E3F73 160px) !important; border-top:0 !important}
+  footer .slogan{color:#fff}
+  footer .slogan i{color:var(--sky)}
+  footer .addr,footer .ig{color:rgba(255,255,255,.9) !important}
+  footer .hours{color:rgba(255,255,255,.75)}
+  footer .birch{opacity:.12 !important}
+  .menu-ov,.menu-inner,.menu-top,.cart-sheet{background:#FFFFFF}
+  .menu-top h2,.menu-cat h3{color:var(--navy)}
+  .menu-top .wm2{color:var(--navy)}
+  .menu-tab{color:var(--navy); border-color:rgba(30,63,115,.25)}
+  .menu-tab.on{background:var(--blue); border-color:var(--blue); color:#fff}
+  .menu-cat h3::after{background:rgba(47,109,181,.35)}
+  .dish-th{background:var(--mist); color:var(--blue)}
+  .dish-name,.dish-price{color:var(--navy)}
+  .dish-desc,.menu-note{color:#5f7393}
+  .cs-act{background:linear-gradient(180deg,rgba(255,255,255,0),#fff 26%)}
+  /* new La Betulla wordmark logo */
+  .brand img.lb-logo{width:auto;height:46px;flex:0 0 auto;transform:none;filter:drop-shadow(0 1px 6px rgba(0,0,0,.55))}
+  .topbar{top:26px}
+  .hero-copy{top:104px}
 </style>
 </head>
 <body>
@@ -493,57 +538,49 @@
     <div class="track" id="track">
       <!-- slide template repeated -->
       <div class="slide">
-        <img src="assets/hero-1.webp" alt="Uzbek set" />
+        <img src="assets/pizza-spread.webp" alt="Seven pizzas" />
         <div class="topbar">
-          <div class="brand">
-            <img src="assets/logo.svg" alt="" />
-            <span class="wm"><b>BALI BETULA</b> <span> </span></span>
-          </div>
+          <div class="brand"><img class="lb-logo" src="assets/logo-labetulla-white.png" alt="La Betulla Italian Bistro" /></div>
           <span class="badge"><i></i> Open</span>
         </div>
-        <div class="hero-copy"><h1>Uzbek
-Set for
-two</h1><p>from Rp 295k</p></div>
+        <div class="hero-copy"><h1>Seven
+pizzas,
+one dough</h1><p>stone-baked daily · from Rp 70k</p></div>
       </div>
       <div class="slide">
-        <img src="assets/hero-2.webp" alt="Borscht" />
+        <img src="assets/pizza-funghi.webp" alt="Pizza al funghi" />
         <div class="topbar">
-          <div class="brand"><img src="assets/logo.svg" alt="" />
-            <span class="wm"><b>BALI BETULA</b> <span> </span></span></div>
+          <div class="brand"><img class="lb-logo" src="assets/logo-labetulla-white.png" alt="La Betulla Italian Bistro" /></div>
           <span class="badge"><i></i> Open</span>
         </div>
-        <div class="hero-copy"><h1>Borscht
-&amp; rye</h1><p>with sour cream · Rp 95k</p></div>
+        <div class="hero-copy"><h1 class="fit">Pizza
+al funghi</h1><p>mushroom, mozzarella, basil · Rp 85k</p></div>
       </div>
       <div class="slide">
-        <img src="assets/hero-3.webp" alt="Sunday feast" />
+        <img src="assets/egg-benny.webp" alt="Egg Benny" />
         <div class="topbar">
-          <div class="brand"><img src="assets/logo.svg" alt="" />
-            <span class="wm"><b>BALI BETULA</b> <span> </span></span></div>
+          <div class="brand"><img class="lb-logo" src="assets/logo-labetulla-white.png" alt="La Betulla Italian Bistro" /></div>
           <span class="badge"><i></i> Open</span>
         </div>
-        <div class="hero-copy"><h1>Sunday
-feast</h1><p>family table · Rp 220k/pp</p></div>
+        <div class="hero-copy"><h1>Egg
+Benny</h1><p>breakfast from 8:00 · Rp 80k</p></div>
       </div>
       <div class="slide">
-        <img src="assets/hero-4.webp" alt="Stroganoff" />
+        <img src="assets/pumpkin-soup.webp" alt="Pumpkin soup" />
         <div class="topbar">
-          <div class="brand"><img src="assets/logo.svg" alt="" />
-            <span class="wm"><b>BALI BETULA</b> <span> </span></span></div>
+          <div class="brand"><img class="lb-logo" src="assets/logo-labetulla-white.png" alt="La Betulla Italian Bistro" /></div>
           <span class="badge"><i></i> Open</span>
         </div>
-        <div class="hero-copy"><h1 class="fit">Stroganoff
-&amp; mash</h1><p>from Rp 165k</p></div>
+        <div class="hero-copy"><h1 class="fit">Pumpkin
+soup</h1><p>made for slowing down · Rp 50k</p></div>
       </div>
       <div class="slide">
-        <img src="assets/hero-5.webp" alt="Almond croissant" />
+        <img src="assets/pizza-pepperoni.webp" alt="Pepperoni pizza" />
         <div class="topbar">
-          <div class="brand"><img src="assets/logo.svg" alt="" />
-            <span class="wm"><b>BALI BETULA</b> <span> </span></span></div>
+          <div class="brand"><img class="lb-logo" src="assets/logo-labetulla-white.png" alt="La Betulla Italian Bistro" /></div>
           <span class="badge"><i></i> Open</span>
         </div>
-        <div class="hero-copy"><h1 class="fit">Almond
-croissant</h1><p>with ice latte · Rp 75k</p></div>
+        <div class="hero-copy"><h1>Pepperoni</h1><p>beef pepperoni, mozzarella · Rp 90k</p></div>
       </div>
     </div>
     <div class="dots" id="dots">
@@ -557,8 +594,8 @@ croissant</h1><p>with ice latte · Rp 75k</p></div>
     <a class="tile left" href="#" id="openMenu">
       <span class="t-k">Browse &amp; order</span><span class="t-v">Show menu</span>
     </a>
-    <a class="tile right" href="https://wa.me/+6287783977753?text=Hi%20Betula!%20I'd%20like%20to%20book%20a%20table%20for%20..." target="_blank" rel="noreferrer">
-      <span class="t-k">Via WhatsApp</span><span class="t-v">Reserve a table</span>
+    <a class="tile right" href="https://wa.me/6287783977753?text=Hi%20La%20Betulla!%20I'd%20like%20to%20book%20a%20table%20for%20..." target="_blank" rel="noreferrer">
+      <span class="t-k">Walk-ins welcome</span><span class="t-v">Reserve a table</span>
     </a>
   </div>
 
@@ -569,21 +606,21 @@ croissant</h1><p>with ice latte · Rp 75k</p></div>
       <div class="sub">What guests come back for</div>
     </div>
     <div class="grid sig">
-      <a class="pcard big" href="https://www.instagram.com/stories/highlights/18075678887580606/" target="_blank" rel="noreferrer">
-        <img src="assets/sig-syrniki.webp" alt="Syrniki" /><div class="v"></div>
-        <div class="cap"><b>Syrniki</b><em>Cottage cheese pancakes · Rp 75k</em></div>
+      <a class="pcard big" href="https://www.instagram.com/labetulla/" target="_blank" rel="noreferrer">
+        <img src="assets/pizza-pepperoni.webp" alt="Pepperoni pizza" /><div class="v"></div>
+        <div class="cap"><b>Pepperoni pizza</b><em>Beef pepperoni, tomato, mozzarella · Rp 90k</em></div>
       </a>
-      <a class="pcard" href="https://www.instagram.com/balibetula/" target="_blank" rel="noreferrer">
-        <img src="assets/sig-beshbarmak.webp" alt="Beshbarmak" /><div class="v"></div>
-        <div class="cap"><b>Beshbarmak</b><em>Noodles &amp; beef · Rp 145k</em></div>
+      <a class="pcard" href="https://www.instagram.com/labetulla/" target="_blank" rel="noreferrer">
+        <img src="assets/pizza-funghi.webp" alt="Pizza al funghi" /><div class="v"></div>
+        <div class="cap"><b>Al funghi</b><em>White sauce, mushroom · Rp 85k</em></div>
       </a>
-      <a class="pcard" href="https://www.instagram.com/balibetula/" target="_blank" rel="noreferrer">
-        <img src="assets/sig-borscht.webp" alt="Borscht" /><div class="v"></div>
-        <div class="cap"><b>Borscht</b><em>Sour cream &amp; rye · Rp 95k</em></div>
+      <a class="pcard" href="https://www.instagram.com/labetulla/" target="_blank" rel="noreferrer">
+        <img src="assets/egg-benny.webp" alt="Egg Benny" /><div class="v"></div>
+        <div class="cap"><b>Egg Benny</b><em>Croissant, poached egg · Rp 80k</em></div>
       </a>
-      <a class="pcard" href="https://www.instagram.com/balibetula/" target="_blank" rel="noreferrer" style="grid-column:1 / -1;grid-row:auto;min-height:204px">
-        <img src="assets/sig-manty.webp" alt="Manty" /><div class="v"></div>
-        <div class="cap"><b>Manty</b><em>Hand-folded daily · Rp 110k</em></div>
+      <a class="pcard" href="https://www.instagram.com/labetulla/" target="_blank" rel="noreferrer" style="grid-column:1 / -1;grid-row:auto;min-height:204px">
+        <img src="assets/big-breakfast.webp" alt="Loaded big breakfast" /><div class="v"></div>
+        <div class="cap"><b>Loaded big breakfast</b><em>Served daily from 8:00 · Rp 105k</em></div>
       </a>
     </div>
   </section>
@@ -592,20 +629,20 @@ croissant</h1><p>with ice latte · Rp 75k</p></div>
   <section>
     <div class="sec-h"><h2>Events</h2></div>
     <div class="ev-list">
-      <a class="ev" href="https://wa.me/+6287783977753?text=I'd%20like%20to%20join%20pelmeni%20night%20on%2021%20May" target="_blank" rel="noreferrer">
-        <img src="assets/ev-pelmeni.webp" alt="" /><div class="v"></div>
-        <div class="cap"><div class="when">Wed · 21 May · 7pm</div><b>Pelmeni night</b>
-          <em>Roll them together, eat them together. One shot of nastoyka on the house.</em></div>
+      <a class="ev" href="https://wa.me/6287783977753?text=Hi%20La%20Betulla!%20When%20is%20the%20next%20live%20music%20night%3F" target="_blank" rel="noreferrer">
+        <img src="assets/garden-lights.webp" alt="Garden with string lights" /><div class="v"></div>
+        <div class="cap"><div class="when">Every week · evenings</div><b>Live music</b>
+          <em>Live sets in the garden. Ask us on WhatsApp for this week's line-up.</em></div>
       </a>
-      <a class="ev" href="https://wa.me/+6287783977753?text=Booking%20a%20table%20for%20Borscht%20Friday" target="_blank" rel="noreferrer">
-        <img src="assets/ev-borscht.webp" alt="" /><div class="v"></div>
-        <div class="cap"><div class="when">Fri · 23 May · 12–10pm</div><b>Borscht Friday</b>
-          <em>Every kind of borscht — 60k IDR all day. Sour cream and salo on the side.</em></div>
+      <a class="ev" href="https://wa.me/6287783977753?text=Hi%20La%20Betulla!%20When%20is%20the%20next%20movie%20night%3F" target="_blank" rel="noreferrer">
+        <img src="assets/garden-night.webp" alt="Open-air cinema in the garden" /><div class="v"></div>
+        <div class="cap"><div class="when">Open-air cinema</div><b>Movie night</b>
+          <em>Beanbags on the grass, string lights above, pizza on the side.</em></div>
       </a>
-      <a class="ev" href="https://wa.me/+6287783977753?text=Booking%20Sunday%20brunch" target="_blank" rel="noreferrer">
-        <img src="assets/ev-brunch.webp" alt="" /><div class="v"></div>
-        <div class="cap"><div class="when">Sun · 25 May · 10am–2pm</div><b>Sunday brunch</b>
-          <em>Syrniki, eggs, fresh juices. Family-style on long tables.</em></div>
+      <a class="ev" href="https://wa.me/6287783977753?text=Hi%20La%20Betulla!%20When%20is%20the%20next%20karaoke%20night%3F" target="_blank" rel="noreferrer">
+        <img src="assets/avo-toast.webp" alt="" /><div class="v"></div>
+        <div class="cap"><div class="when">Karaoke night</div><b>Sing it out</b>
+          <em>Bring your friends, pick your song. Message us for dates.</em></div>
       </a>
     </div>
   </section>
@@ -617,46 +654,26 @@ croissant</h1><p>with ice latte · Rp 75k</p></div>
       <div class="sub">Make the place yours</div>
     </div>
     <div class="grid ph">
-      <a class="pcard" href="https://wa.me/+6287783977753?text=I'd%20like%20to%20book%20the%20big%20table" target="_blank" rel="noreferrer">
-        <img src="assets/ph-table.webp" alt="" /><div class="v"></div>
-        <div class="cap"><b>Big table for a group</b><em>Up to 12 people · family-style dinner with a tasting set</em></div>
+      <a class="pcard" href="https://wa.me/6287783977753?text=Hi%20La%20Betulla!%20I'd%20like%20to%20book%20a%20big%20table" target="_blank" rel="noreferrer">
+        <img src="assets/pizza-spread.webp" alt="" /><div class="v"></div>
+        <div class="cap"><b>Big table for a group</b><em>Up to 12 people · pizza &amp; pasta sharing dinner</em></div>
       </a>
-      <a class="pcard" href="https://wa.me/+6287783977753?text=I'd%20like%20to%20rent%20the%20venue" target="_blank" rel="noreferrer">
-        <img src="assets/ph-venue.webp" alt="" /><div class="v"></div>
-        <div class="cap"><b>Whole-venue hire</b><em>Birthdays, team off-sites — the place is yours for the evening</em></div>
+      <a class="pcard" href="https://wa.me/6287783977753?text=Hi%20La%20Betulla!%20I'd%20like%20to%20book%20the%20venue" target="_blank" rel="noreferrer">
+        <img src="assets/garden-night.webp" alt="La Betulla garden" /><div class="v"></div>
+        <div class="cap"><b>Garden for your event</b><em>Birthdays, team dinners, private movie nights — the garden is yours</em></div>
       </a>
     </div>
   </section>
 
-  <!-- ===== LIFE AT BETULA (Instagram) ===== -->
+  <!-- ===== LIFE AT LA BETULLA (Instagram) ===== -->
   <section>
     <div class="sec-h">
-      <h2>Life at Betula</h2>
-      <div class="sub">Latest from Instagram</div>
+      <h2>Life at La Betulla</h2>
+      <div class="sub">Garden, music &amp; pizza nights</div>
     </div>
-    <div class="ig-embeds">
-      <blockquote class="instagram-media" data-instgrm-captioned
-        data-instgrm-permalink="https://www.instagram.com/p/DYWf8jGNN4a/"
-        style="background:#FFF;border:0;border-radius:3px;margin:0;padding:0;width:100%">
-        <a href="https://www.instagram.com/balibetula/" target="_blank" rel="noreferrer"
-           class="ig-fallback">View @balibetula on Instagram →</a>
-      </blockquote>
-      <blockquote class="instagram-media" data-instgrm-captioned
-        data-instgrm-permalink="https://www.instagram.com/p/DVdTD9YDf7W/"
-        style="background:#FFF;border:0;border-radius:3px;margin:0;padding:0;width:100%">
-        <a href="https://www.instagram.com/balibetula/" target="_blank" rel="noreferrer"
-           class="ig-fallback">View @balibetula on Instagram →</a>
-      </blockquote>
-      <blockquote class="instagram-media" data-instgrm-captioned
-        data-instgrm-permalink="https://www.instagram.com/p/DTyMY5oiCyK/"
-        style="background:#FFF;border:0;border-radius:3px;margin:0;padding:0;width:100%">
-        <a href="https://www.instagram.com/balibetula/" target="_blank" rel="noreferrer"
-           class="ig-fallback">View @balibetula on Instagram →</a>
-      </blockquote>
-    </div>
-    <a class="ig-follow" href="https://www.instagram.com/balibetula/" target="_blank" rel="noreferrer">
+    <a class="ig-follow" href="https://www.instagram.com/labetulla/" target="_blank" rel="noreferrer">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
-      Follow @balibetula
+      Follow @labetulla
     </a>
   </section>
 
@@ -665,14 +682,14 @@ croissant</h1><p>with ice latte · Rp 75k</p></div>
     <img class="birch l" src="assets/birch.svg" alt="" aria-hidden="true" />
     <img class="birch r" src="assets/birch.svg" alt="" aria-hidden="true" />
     <div class="fc">
-      <div class="slogan">good food <i>·</i> good people <i>·</i> good vibes</div>
-      <a class="addr" href="https://www.google.com/maps/search/?api=1&amp;query=Bali+Betula+Kerobokan" target="_blank" rel="noreferrer">
+      <div class="slogan">pizza <i>·</i> pasta <i>·</i> good vibes</div>
+      <a class="addr" href="https://maps.app.goo.gl/z98sXUyyLqf25c5q7" target="_blank" rel="noreferrer">
         Jl. Raya Kesambi, Kerobokan, Bali 80361
       </a>
-      <div class="hours">Open daily · 12:00 AM – 12:00 PM</div>
-      <a class="ig" href="https://www.instagram.com/balibetula/" target="_blank" rel="noreferrer">
+      <div class="hours">Open daily · 8:00 – 23:00 · walk-ins welcome</div>
+      <a class="ig" href="https://www.instagram.com/labetulla/" target="_blank" rel="noreferrer">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
-        balibetula
+        labetulla
       </a>
     </div>
 
@@ -683,7 +700,7 @@ croissant</h1><p>with ice latte · Rp 75k</p></div>
     <div class="menu-inner">
       <div class="menu-top">
         <button class="menu-x" id="menuClose" type="button" aria-label="Close menu">✕</button>
-        <div class="wm2">Bali Betula</div>
+        <div class="wm2">La Betulla · Italian Bistro</div>
         <h2>Menu</h2>
         <div class="menu-tabs" id="menuTabs"></div>
       </div>
@@ -696,11 +713,10 @@ croissant</h1><p>with ice latte · Rp 75k</p></div>
 
 <!-- ===== STICKY CTA (fixed, outside .frame so it never clips) ===== -->
 <div class="sticky" id="sticky">
-  <a class="s-menu" href="assets/bali-betula-menu.pdf" target="_blank" rel="noreferrer">View PDF menu</a>
-  <a class="s-book" href="https://wa.me/+6287783977753?text=Hi%20Betula!%20I'd%20like%20to%20book%20a%20table%20for%20..." target="_blank" rel="noreferrer">Reserve a table</a>
+  <a class="s-menu" href="https://piersidang.my.canva.site/la-betulla-italian-bistro-menu" target="_blank" rel="noreferrer">Full menu</a>
+  <a class="s-book" href="https://wa.me/6287783977753?text=Hi%20La%20Betulla!%20I'd%20like%20to%20book%20a%20table%20for%20..." target="_blank" rel="noreferrer">Reserve a table</a>
 </div>
 
-<script async src="//www.instagram.com/embed.js"></script>
 <script>
   (function(){
     var track=document.getElementById('track');
@@ -765,16 +781,16 @@ croissant</h1><p>with ice latte · Rp 75k</p></div>
     window.addEventListener('scroll',onScroll,{passive:true});
     onScroll();
 
-    // OPEN / CLOSED badge — Bali time (UTC+8), open daily 12:00–23:00
+    // OPEN / CLOSED badge — Bali time (UTC+8), open daily 8:00–23:00
     function setOpen(){
       var n=new Date();
       var bali=new Date(n.getTime()+n.getTimezoneOffset()*60000+8*3600000);
       var h=bali.getHours()+bali.getMinutes()/60;
-      var open=h>=12 && h<23;
+      var open=h>=8 && h<23;
       var bs=document.querySelectorAll('.badge');
       for(var i=0;i<bs.length;i++){
         bs[i].classList.toggle('closed',!open);
-        bs[i].innerHTML='<i></i> '+(open?'Open till 12:00 PM':'Opens at 12:00 AM');
+        bs[i].innerHTML='<i></i> '+(open?'Open till 23:00':'Opens at 8:00');
       }
     }
     setOpen();
@@ -783,94 +799,79 @@ croissant</h1><p>with ice latte · Rp 75k</p></div>
 </script>
 <script>
 (function(){
-  // Фото блюда: добавь поле img к пункту, напр. img:"assets/dishes/borsch.webp"
+  // Фото блюда: добавь поле img к пункту, напр. img:"assets/dishes/pizza-funghi.webp"
   // Без img рисуется монограмма. Кроп квадрат ~400×400.
+  // Menu source: La Betulla blue menu (Canva). Prices in IDR, +10% tax +6% service.
   var MENU=[
-    {c:"Starters",items:[
-      {n:"Cheese Burger",d:"100% beef patty, double cheese, pickles on a soft bun.",p:"110000 IDR",img:"assets/dishes/cheese-burger.webp"},
-      {n:"Club Sandwich",d:"Grilled chicken, smoked bacon, egg, lettuce, tomato on toasted bread.",p:"85000 IDR",img:"assets/dishes/club-sandwich.webp"},
-      {n:"Cheburek",d:"Deep-fried turnover filled with juicy seasoned minced meat and herbs.",p:"70000 IDR",img:"assets/dishes/cheburek.webp"},
-      {n:"Syrniki",d:"Pan-fried cottage cheese pancakes, sour cream or berry jam.",p:"100000 IDR",img:"assets/dishes/syrniki.webp"}
+    {c:"Breakfast",items:[
+      {n:"Avocado Toast",d:"Sourdough, smashed avocado, soft boiled egg, feta, sunflower seeds, coriander oil.",p:"55000 IDR",img:"assets/dishes/avo-toast.webp"},
+      {n:"Omelette",d:"Cheese, ham, vegetable or mixed omelette, sourdough, green salad.",p:"75000 IDR"},
+      {n:"Egg Any Way",d:"Omelette, scrambled, boiled or poached egg, bacon, sautéed mushroom, green salad. Contains pork.",p:"75000 IDR"},
+      {n:"Croissant Breakfast Sandwich",d:"Croissant, prosciutto, fried egg, garlic aioli, wild rocket, basil pesto, cherry tomato. Contains pork.",p:"80000 IDR"},
+      {n:"Egg Benny",d:"Croissant, tuna, poached egg, hollandaise sauce, wild rocket.",p:"80000 IDR",img:"assets/dishes/egg-benny.webp"},
+      {n:"Loaded Big Breakfast",d:"Omelette, chicken sausage, baby potato, kale, baked beans, sour cream, cherry tomato, mushroom, avocado, sourdough. Contains pork.",p:"105000 IDR",img:"assets/dishes/big-breakfast.webp"}
     ]},
-    {c:"Soups",items:[
-      {n:"Borsch",d:"Beet-based soup slow-simmered with tender beef, vegetables, sour cream.",p:"90000 IDR",img:"assets/dishes/borsch.webp"},
-      {n:"Solyanka",d:"Rich tangy soup with smoked meats, pickles, olives and lemon.",p:"95000 IDR",img:"assets/dishes/solyanka.webp"},
-      {n:"Pelmeni",d:"Handmade meat dumplings — with sour cream or in clear broth. 15 / 25 pcs.",p:"80000 / 120000 IDR",img:"assets/dishes/pelmeni.webp"}
+    {c:"Antipasti",items:[
+      {n:"Sicilian Steamed Salad",d:"Steamed cauliflower, broccoli, carrots, cherry tomato, olives, citrus dressing.",p:"70000 IDR"},
+      {n:"Niçoise Salad",d:"Potato purée, cherry tomato, anchovies, tuna, black olive, quail egg, artichoke, wild rocket.",p:"95000 IDR"},
+      {n:"Pumpkin Feta Salad",d:"Roasted pumpkin, wild rocket, orange, apple, balsamic dressing, feta cheese.",p:"145000 IDR"},
+      {n:"Wine Platter",d:"Prosciutto crudo, salami, blue cheese, parmesan, pear, grapes, olives, walnuts, honey. Serves 2.",p:"165000 IDR"}
     ]},
-    {c:"Salads",items:[
-      {n:"Crispy Eggplant",d:"Deep-fried eggplant in sweet chili glaze, cilantro, sesame.",p:"110000 IDR"},
-      {n:"Tuna with Mango",d:"A vibrant stack of fresh tuna and mango.",p:"95000 IDR"},
-      {n:"Tuna Tartare",d:"Hand-chopped premium tuna, citrus, soy, served with avocado.",p:"145000 IDR"},
-      {n:"Achichuk",d:"Uzbek salad of ripe tomatoes, onions and chili — pairs with Plov.",p:"80000 IDR"},
-      {n:"Lebanon Eggplants",d:"Crispy fried eggplant drizzled with rich sesame sauce.",p:"105000 IDR"}
+    {c:"Zuppe",items:[
+      {n:"Pumpkin Soup",d:"Creamy pumpkin soup, garlic bread.",p:"50000 IDR",img:"assets/dishes/pumpkin-soup.webp"},
+      {n:"Minestrone",d:"Carrot, potato, string bean, macaroni, bacon, tomato broth, garlic bread.",p:"55000 IDR"},
+      {n:"Mushroom Soup",d:"Creamy mushroom soup, truffle oil, garlic bread.",p:"60000 IDR"},
+      {n:"Seafood Chowder",d:"Creamy seafood soup, corn, garlic bread.",p:"95000 IDR"}
     ]},
-    {c:"Mains",items:[
-      {n:"Beshbarmak",d:"Hand-rolled dough, slow-cooked Australian beef short ribs, onion glaze.",p:"250000 IDR",img:"assets/dishes/beshbarmak.webp"},
-      {n:"Plov",d:"Fragrant rice pilaf with beef brisket, sweet carrots and spices.",p:"130000 IDR",img:"assets/dishes/plov.webp"},
-      {n:"Chicken Schnitzel",d:"Golden-brown breaded chicken breast with mashed potato.",p:"105000 IDR",img:"assets/dishes/chicken-schnitzel.webp"},
-      {n:"Beef Stroganoff",d:"Sautéed beef in a velvety sour cream and mushroom sauce.",p:"105000 IDR",img:"assets/dishes/beef-stroganoff.webp"},
-      {n:"Mushroom Chicken Creamy Pasta",d:"Pasta with juicy chicken and mushrooms in a cream sauce.",p:"95000 IDR",img:"assets/dishes/mushroom-pasta.webp"},
-      {n:"Nasi Goreng",d:"Indonesian fried rice with chicken, vegetables and a fried egg.",p:"65000 IDR",img:"assets/dishes/nasi-goreng.webp"},
-      {n:"Chicken Liver & Mash",d:"Golden chicken liver with velvet mash and garden herbs.",p:"90000 IDR",img:"assets/dishes/chicken-liver.webp"},
-      {n:"Tsomyan (Fried Lagman)",d:"Hand-stretched noodles wok-tossed with sliced beef and greens.",p:"110000 IDR",img:"assets/dishes/tsomyan.webp"},
-      {n:"Manty",d:"Steamed dumplings, meat & onion filling, 5 pcs. Preorder 60 mins.",p:"110000 IDR",img:"assets/dishes/manty.webp"},
-      {n:"Kazan Kebab",d:"Cauldron-fried beef and potatoes, cumin, fresh onion garnish.",p:"220000 IDR",img:"assets/dishes/kazan-kebab.webp"},
-      {n:"Tuna Steak",d:"Creamy mushroom style, or Sambal with onions and fresh chili.",p:"120000 IDR",img:"assets/dishes/tuna-steak.webp"},
-      {n:"Pepper Steak",d:"Pepper-crusted beef steak with a buttery pepper sauce.",p:"250000 IDR",img:"assets/dishes/pepper-steak.webp"},
-      {n:"Shrimp Pasta",d:"Juicy prawns and pasta in buttery garlic sauce, chili flakes.",p:"125000 IDR",img:"assets/dishes/shrimp-pasta.webp"}
+    {c:"Pasta",items:[
+      {n:"Aglio e Olio",d:"Garlic chips, olive oil, parsley, chilli flakes, pangrattato, parmesan, basil.",p:"65000 IDR"},
+      {n:"Classic Mac & Cheese",d:"Macaroni, creamy sauce, mozzarella, parsley, parmesan.",p:"75000 IDR"},
+      {n:"Bolognese",d:"Beef sauce, pangrattato, parmesan, basil.",p:"85000 IDR"},
+      {n:"Carbonara",d:"Prosciutto, bacon, creamy sauce, egg yolk, pangrattato, parmesan, basil. Contains pork.",p:"95000 IDR"},
+      {n:"Truffle Cream Mushroom",d:"Mushroom cream sauce, truffle oil, pangrattato, parmesan, basil.",p:"95000 IDR"},
+      {n:"Lasagna al Forno",d:"Layered pasta, slow-cooked beef ragù, béchamel, basil, mozzarella, parmesan.",p:"95000 IDR"},
+      {n:"Frutti di Mare",d:"Clams, prawn, squid, tomato sauce, cherry tomato, pangrattato, parmesan, basil.",p:"125000 IDR"}
     ]},
-    {c:"Bowls",items:[
-      {n:"Chicken Bowl",d:"Grilled chicken, avocado, edamame, cucumber, teriyaki glaze.",p:"85000 IDR",img:"assets/dishes/chicken-bowl.webp"},
-      {n:"Tuna Bowl",d:"Sashimi-grade tuna, radish, green onion, soy-sesame dressing.",p:"90000 IDR",img:"assets/dishes/tuna-bowl.webp"},
-      {n:"Dragon Power",d:"Dragon fruit, banana, mixed berries, papaya, granola, chia.",p:"75000 IDR",img:"assets/dishes/dragon-power.webp"},
-      {n:"Berries Smoothie",d:"Blueberries, banana, melon, papaya, granola, chia.",p:"75000 IDR",img:"assets/dishes/berries-smoothie.webp"},
-      {n:"Pure Sweetness",d:"Strawberry, banana, mango, melon, granola, chia.",p:"75000 IDR",img:"assets/dishes/pure-sweetness.webp"}
+    {c:"Pizza",items:[
+      {n:"Margherita",d:"House-made dough, tomato sauce, mozzarella, sliced tomato, basil.",p:"70000 IDR"},
+      {n:"Pizza al Funghi",d:"House-made dough, white sauce, mozzarella, button mushroom, parmesan, basil.",p:"85000 IDR",img:"assets/dishes/pizza-funghi.webp"},
+      {n:"Pepperoni",d:"Beef pepperoni, tomato, mozzarella, chilli.",p:"90000 IDR",img:"assets/dishes/pizza-pepperoni.webp"},
+      {n:"Pollo BBQ",d:"Chicken, BBQ sauce, mozzarella, red onion.",p:"90000 IDR"},
+      {n:"Pera e Formaggio Blu",d:"Blue cheese, mozzarella, pear, walnuts, honey.",p:"115000 IDR"},
+      {n:"Prosciutto e Rucola",d:"Prosciutto crudo, wild rocket, mozzarella, shaved parmesan. Contains pork.",p:"105000 IDR"},
+      {n:"Frutti di Mare",d:"Prawn, squid, mussel, tomato, garlic, parsley.",p:"125000 IDR"}
     ]},
-    {c:"Signature Coffee",items:[
-      {n:"Betula Creamy Coffee",d:"Espresso, fresh milk, rum syrup, brown sugar, ice.",p:"55000 IDR",img:"assets/dishes/betula-creamy-coffee.webp"},
-      {n:"Creamy Kintamani",d:"Espresso, fresh milk, condensed milk, vanilla, ice.",p:"55000 IDR",img:"assets/dishes/creamy-kintamani.webp"},
-      {n:"SourBee Coffee",d:"Orange juice, honey, espresso, slice of orange.",p:"55000 IDR",img:"assets/dishes/sourbee-coffee.webp"},
-      {n:"Midnight Citrus",d:"Orange juice, honey, pineapple juice, espresso, ice.",p:"55000 IDR",img:"assets/dishes/midnight-citrus.webp"},
-      {n:"The Apple of Ice",d:"Espresso, honey, apple juice, syrup, ice.",p:"40000 IDR",img:"assets/dishes/the-apple-of-ice.webp"}
+    {c:"Dolci",items:[
+      {n:"Brownies",d:"Fudge almond brownies, whipped cream, strawberry.",p:"50000 IDR"},
+      {n:"Lava Cake",d:"Molten lava cake, whipped cream, strawberry, vanilla ice cream.",p:"55000 IDR"},
+      {n:"Banana Fritta",d:"Crisp fried banana, vanilla ice cream, chocolate sauce, coconut crumble, almond.",p:"55000 IDR"},
+      {n:"S’mores & Ice Cream Sandwich",d:"Crackers, chocolate sauce, strawberry, vanilla ice cream, toasted marshmallow.",p:"60000 IDR"},
+      {n:"Choco Banana Pizza",d:"House-made pizza dough, Nutella, banana, strawberry.",p:"70000 IDR",img:"assets/dishes/pizza-spread.webp"}
     ]},
     {c:"Coffee",items:[
-      {n:"Espresso",d:"",p:"28000 IDR"},
-      {n:"Americano",d:"hot / iced",p:"30000 / 33000 IDR"},
-      {n:"Macchiato",d:"",p:"30000 IDR"},
-      {n:"Piccolo",d:"",p:"33000 IDR"},
-      {n:"Latte",d:"hot / iced",p:"35000 / 38000 IDR"},
-      {n:"Cappuccino",d:"hot / iced",p:"35000 / 38000 IDR"},
-      {n:"Flat White",d:"",p:"35000 IDR"},
-      {n:"Mochaccino",d:"hot / iced",p:"40000 / 43000 IDR"},
-      {n:"Frappuccino",d:"Coffee, choco, matcha or taro.",p:"45000 IDR",img:"assets/dishes/frappuccino.webp"},
-      {n:"Ice Tea / Peach / Lychee",d:"",p:"20000 / 30000 / 30000 IDR",img:"assets/dishes/ice-tea.webp"}
+      {n:"Americano",d:"hot / iced",p:"25000 / 28000 IDR"},
+      {n:"Spanish Latte",d:"hot / iced",p:"30000 / 35000 IDR"},
+      {n:"Caffè Latte",d:"hot / iced",p:"30000 / 35000 IDR"},
+      {n:"Cappuccino",d:"hot / iced",p:"30000 / 35000 IDR"},
+      {n:"Frappuccino",d:"",p:"40000 IDR",img:"assets/dishes/frappuccino.webp"},
+      {n:"Syrup",d:"Vanilla, caramel or hazelnut.",p:"+5000 IDR"}
     ]},
     {c:"Non-coffee",items:[
+      {n:"Ice Original Tea",d:"",p:"20000 IDR",img:"assets/dishes/ice-tea.webp"},
+      {n:"Ice Lychee / Peach / Strawberry Tea",d:"",p:"28000 IDR"},
       {n:"Matcha Latte",d:"hot / iced",p:"35000 / 38000 IDR"},
       {n:"Chocolate",d:"hot / iced",p:"35000 / 38000 IDR"},
       {n:"Taro Latte",d:"hot / iced",p:"35000 / 38000 IDR"},
-      {n:"Creamy Nusantara",d:"hot / iced",p:"35000 / 38000 IDR"},
-      {n:"Loose Leaf Tea",d:"English breakfast, earl grey, green, peppermint, chamomile.",p:"35000 IDR"},
-      {n:"Tashkent Tea",d:"Pot of spiced black tea.",p:"75000 IDR"},
-      {n:"Mineral Water",d:"",p:"35000 IDR"},
-      {n:"Sparkling Water",d:"",p:"40000 IDR"}
+      {n:"Loose Leaf Tea",d:"",p:"35000 IDR"},
+      {n:"Sparkling Water",d:"",p:"40000 IDR"},
+      {n:"Mineral Water",d:"",p:"40000 IDR"}
     ]},
-    {c:"Mocktails",items:[
-      {n:"Yellow Frenzy",d:"Pineapple, elderberry, peach, soda.",p:"35000 IDR",img:"assets/dishes/yellow-frenzy.webp"},
-      {n:"Red Spark",d:"Strawberry, passion fruit, orange, soda.",p:"35000 IDR",img:"assets/dishes/red-spark.webp"},
-      {n:"Green Bali Betula",d:"Kiwi, jasmine, orange, soda.",p:"35000 IDR",img:"assets/dishes/green-bali-betula.webp"}
-    ]},
-    {c:"Soft Drinks",items:[
-      {n:"Cola",d:"",p:"25000 IDR"},
+    {c:"Soft Drinks & Beer",items:[
       {n:"Cola Zero",d:"",p:"20000 IDR"},
+      {n:"Cola",d:"",p:"25000 IDR"},
       {n:"Sprite",d:"",p:"25000 IDR"},
       {n:"Bintang",d:"",p:"40000 IDR"},
-      {n:"Black Sand Lager",d:"",p:"50000 IDR"},
-      {n:"Black Sand IPA",d:"",p:"75000 IDR"},
-      {n:"Island Brewing",d:"",p:"50000 IDR"},
-      {n:"Summer Pale Ale",d:"",p:"50000 IDR"},
-      {n:"Everyday Weekend — Mango & Passion",d:"",p:"40000 IDR"},
-      {n:"Everyday Weekend — Lime & Soda",d:"",p:"40000 IDR"}
+      {n:"Black Sand Lager",d:"",p:"50000 IDR"}
     ]}
   ];
 
@@ -888,8 +889,8 @@ croissant</h1><p>with ice latte · Rp 75k</p></div>
   function unitPrice(p){var m=String(p).match(/\d[\d.,]*/);return m?parseInt(m[0].replace(/[.,]/g,''),10):0;}
   function fmt(n){return String(n).replace(/\B(?=(\d{3})+(?!\d))/g,',');}
   var addEls={},byName={},cart={};
-  try{cart=JSON.parse(localStorage.getItem('bb_cart_v1')||'{}')||{};}catch(e){cart={};}
-  function saveCart(){try{localStorage.setItem('bb_cart_v1',JSON.stringify(cart));}catch(e){}}
+  try{cart=JSON.parse(localStorage.getItem('lb_cart_v1')||'{}')||{};}catch(e){cart={};}
+  function saveCart(){try{localStorage.setItem('lb_cart_v1',JSON.stringify(cart));}catch(e){}}
   function setQty(name,q){
     if(q<=0)delete cart[name];else cart[name]=q;
     saveCart();paintAdd(name);if(typeof renderBar==='function')renderBar();
