@@ -5,7 +5,7 @@
 <meta name="theme-color" content="#2F6DB5" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <title>La Betulla — Italian Bistro in Kerobokan, Bali</title>
-<meta name="description" content="La Betulla — Italian bistro in Kerobokan, Bali. Fresh pasta, stone-baked pizza, Italian breakfast and a green garden by the rice fields. Open daily 8:00–23:00, walk-ins welcome." />
+<meta name="description" content="La Betulla — Italian bistro in Kerobokan, Bali. Fresh pasta, stone-baked pizza, Italian breakfast and a green garden by the rice fields. Open Tuesday–Sunday 8:00–23:00 (closed Mondays), walk-ins welcome." />
 <meta property="og:title" content="La Betulla — Italian Bistro" />
 <meta property="og:description" content="Fresh pasta · stone-baked pizza · garden · Kerobokan, Bali" />
 <meta property="og:image" content="assets/pizza-spread.webp" />
@@ -620,7 +620,7 @@ soup</h1><p>made for slowing down · Rp 50k</p></div>
       </a>
       <a class="pcard" href="https://www.instagram.com/labetulla/" target="_blank" rel="noreferrer" style="grid-column:1 / -1;grid-row:auto;min-height:204px">
         <img src="assets/big-breakfast.webp" alt="Loaded big breakfast" /><div class="v"></div>
-        <div class="cap"><b>Loaded big breakfast</b><em>Served daily from 8:00 · Rp 105k</em></div>
+        <div class="cap"><b>Loaded big breakfast</b><em>Served from 8:00 · Rp 105k</em></div>
       </a>
     </div>
   </section>
@@ -686,7 +686,7 @@ soup</h1><p>made for slowing down · Rp 50k</p></div>
       <a class="addr" href="https://maps.app.goo.gl/z98sXUyyLqf25c5q7" target="_blank" rel="noreferrer">
         Jl. Raya Kesambi, Kerobokan, Bali 80361
       </a>
-      <div class="hours">Open daily · 8:00 – 23:00 · walk-ins welcome</div>
+      <div class="hours">Tue – Sun · 8:00 – 23:00 · Closed Mondays · walk-ins welcome</div>
       <a class="ig" href="https://www.instagram.com/labetulla/" target="_blank" rel="noreferrer">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
         labetulla
@@ -781,16 +781,17 @@ soup</h1><p>made for slowing down · Rp 50k</p></div>
     window.addEventListener('scroll',onScroll,{passive:true});
     onScroll();
 
-    // OPEN / CLOSED badge — Bali time (UTC+8), open daily 8:00–23:00
+    // OPEN / CLOSED badge — Bali time (UTC+8), Tue–Sun 8:00–23:00, closed Mondays
     function setOpen(){
       var n=new Date();
       var bali=new Date(n.getTime()+n.getTimezoneOffset()*60000+8*3600000);
       var h=bali.getHours()+bali.getMinutes()/60;
-      var open=h>=8 && h<23;
+      var dow=bali.getDay(); var open=dow!==1 && h>=8 && h<23;
+      var nextOpen=(dow===1||(dow===0&&h>=23))?'Opens Tuesday 8:00':'Opens at 8:00';
       var bs=document.querySelectorAll('.badge');
       for(var i=0;i<bs.length;i++){
         bs[i].classList.toggle('closed',!open);
-        bs[i].innerHTML='<i></i> '+(open?'Open till 23:00':'Opens at 8:00');
+        bs[i].innerHTML='<i></i> '+(open?'Open till 23:00':nextOpen);
       }
     }
     setOpen();
