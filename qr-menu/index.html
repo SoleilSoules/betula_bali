@@ -15,6 +15,43 @@
 <meta name="theme-color" content="#2F6DB5" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <title>La Betulla — Italian Bistro in Kerobokan, Bali</title>
+<link rel="canonical" href="https://www.balibetula.com/" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Restaurant",
+  "name": "La Betulla Italian Bistro",
+  "url": "https://www.balibetula.com/",
+  "image": "https://www.balibetula.com/assets/pizza-spread.webp",
+  "logo": "https://www.balibetula.com/assets/logo-labetulla-white.png",
+  "telephone": "+62 877-8397-7753",
+  "email": "info@balibetula.com",
+  "servesCuisine": ["Italian", "Pizza", "Pasta", "Brunch"],
+  "priceRange": "IDR 25,000 - 150,000",
+  "acceptsReservations": true,
+  "hasMenu": "https://www.balibetula.com/#menu",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Jl. Raya Kesambi",
+    "addressLocality": "Kerobokan",
+    "addressRegion": "Bali",
+    "postalCode": "80361",
+    "addressCountry": "ID"
+  },
+  "openingHoursSpecification": [{
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+    "opens": "10:00",
+    "closes": "23:00"
+  }],
+  "sameAs": [
+    "https://www.instagram.com/labetulla/",
+    "https://www.tripadvisor.com/Restaurant_Review-g608486-d34756955-Reviews-La_Betulla_Italian_Bistro-Kerobokan_North_Kuta_Badung_Regency_Bali.html",
+    "https://maps.app.goo.gl/z98sXUyyLqf25c5q7"
+  ]
+}
+</script>
+
 <meta name="description" content="La Betulla — Italian bistro in Kerobokan, Bali. Fresh pasta, stone-baked pizza, Italian breakfast and a green garden by the rice fields. Open Tuesday–Sunday 10:00–23:00 (closed Mondays), walk-ins welcome." />
 <meta property="og:title" content="La Betulla — Italian Bistro" />
 <meta property="og:description" content="Fresh pasta · stone-baked pizza · garden · Kerobokan, Bali" />
@@ -554,6 +591,8 @@
   .brand img.lb-logo{width:auto;height:46px;flex:0 0 auto;transform:none;filter:drop-shadow(0 1px 6px rgba(0,0,0,.55))}
   .topbar{top:26px}
   .hero-copy{top:104px}
+  /* events feed link */
+  .ev-all{display:block;margin-top:14px;text-align:center;border:1.5px solid var(--sky);border-radius:999px;padding:14px;font-family:var(--sans);font-weight:700;font-size:15px;color:var(--navy);text-decoration:none}
 </style>
 </head>
 <body>
@@ -620,7 +659,7 @@ soup</h1><p>made for slowing down · Rp 50k</p></div>
     <a class="tile left" href="#" id="openMenu">
       <span class="t-k">Browse &amp; order</span><span class="t-v">Show menu</span>
     </a>
-    <a class="tile right" href="https://wa.me/6287783977753?text=Hi%20La%20Betulla!%20I'd%20like%20to%20book%20a%20table%20for%20..." target="_blank" rel="noreferrer">
+    <a class="tile right" data-book="tile" href="https://wa.me/6287783977753?text=Hi%20La%20Betulla!%20I'd%20like%20to%20book%20a%20table%20for%20..." target="_blank" rel="noreferrer">
       <span class="t-k">Walk-ins welcome</span><span class="t-v">Reserve a table</span>
     </a>
   </div>
@@ -652,9 +691,9 @@ soup</h1><p>made for slowing down · Rp 50k</p></div>
   </section>
 
   <!-- ===== EVENTS ===== -->
-  <section>
-    <div class="sec-h"><h2>Events</h2></div>
-    <div class="ev-list">
+  <section id="events">
+    <div class="sec-h"><h2>Events</h2><div class="sub">Promos &amp; what's on this week</div></div>
+    <div class="ev-list" data-lb-home-events>
       <a class="ev" href="https://wa.me/6287783977753?text=Hi%20La%20Betulla!%20When%20is%20the%20next%20live%20music%20night%3F" target="_blank" rel="noreferrer">
         <img src="assets/ev-live-music.webp" alt="Sunset over the rice fields from the veranda" /><div class="v"></div>
         <div class="cap"><div class="when">Every week · evenings</div><b>Live music</b>
@@ -671,10 +710,11 @@ soup</h1><p>made for slowing down · Rp 50k</p></div>
           <em>Bring your friends, pick your song. Message us for dates.</em></div>
       </a>
     </div>
+    <a class="ev-all" href="/events">All events, promos &amp; past nights →</a>
   </section>
 
   <!-- ===== PRIVATE HIRE ===== -->
-  <section>
+  <section id="private-hire">
     <div class="sec-h">
       <h2>Private hire</h2>
       <div class="sub">Make the place yours</div>
@@ -701,6 +741,7 @@ soup</h1><p>made for slowing down · Rp 50k</p></div>
       <a class="c-row" href="tel:+6287783977753"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg><div class="c-t"><div class="c-k">Phone</div><div class="c-v">+62 877-8397-7753</div></div></a>
       <a class="c-row" href="https://wa.me/6287783977753" target="_blank" rel="noreferrer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-12.6 7.3L3 20l1.3-5.1A8.4 8.4 0 1 1 21 11.5z"/></svg><div class="c-t"><div class="c-k">WhatsApp</div><div class="c-v sm">Message us to book a table or event</div></div></a>
       <a class="c-row" href="mailto:info@balibetula.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg><div class="c-t"><div class="c-k">Email</div><div class="c-v">info@balibetula.com</div></div></a>
+      <a class="c-row" href="https://r.grab.com/o/UIoqiFkc" target="_blank" rel="noreferrer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17h14l-1.5-7h-11z"/><circle cx="8" cy="19" r="1.6"/><circle cx="16" cy="19" r="1.6"/><path d="M9 10V7a3 3 0 0 1 6 0v3"/></svg><div class="c-t"><div class="c-k">Delivery</div><div class="c-v">Order on Grab</div></div></a>
       <a class="c-row" href="https://maps.app.goo.gl/z98sXUyyLqf25c5q7" target="_blank" rel="noreferrer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><div class="c-t"><div class="c-k">Address</div><div class="c-v sm">Jl. Raya Kesambi, Kerobokan, Bali 80361</div></div></a>
       <div class="c-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><div class="c-t"><div class="c-k">Hours</div><div class="c-v sm">Tue – Sun · 10:00 – 23:00 · Closed Mondays</div></div></div>
       <div class="ta-box">
@@ -762,7 +803,7 @@ soup</h1><p>made for slowing down · Rp 50k</p></div>
 <!-- ===== STICKY CTA (fixed, outside .frame so it never clips) ===== -->
 <div class="sticky" id="sticky">
   <a class="s-menu" href="https://piersidang.my.canva.site/la-betulla-italian-bistro-menu" target="_blank" rel="noreferrer">Full menu</a>
-  <a class="s-book" href="https://wa.me/6287783977753?text=Hi%20La%20Betulla!%20I'd%20like%20to%20book%20a%20table%20for%20..." target="_blank" rel="noreferrer">Reserve a table</a>
+  <a class="s-book" data-book="sticky" href="https://wa.me/6287783977753?text=Hi%20La%20Betulla!%20I'd%20like%20to%20book%20a%20table%20for%20..." target="_blank" rel="noreferrer">Reserve a table</a>
 </div>
 
 <script>
@@ -995,6 +1036,8 @@ soup</h1><p>made for slowing down · Rp 50k</p></div>
 
   function openMenu(e){if(e)e.preventDefault();ov.classList.add('open');document.body.classList.add('locked');ov.setAttribute('aria-hidden','false');ov.scrollTop=0;if(typeof renderBar==='function')renderBar();}
   function closeMenu(){ov.classList.remove('open');document.body.classList.remove('locked');ov.setAttribute('aria-hidden','true');var cs=document.getElementById('cartSheet');if(cs)cs.classList.remove('open');var cb=document.getElementById('cartBar');if(cb)cb.classList.remove('show');}
+  function __menuHash(){if(location.hash==='#menu')openMenu();}
+  window.addEventListener('load',__menuHash);window.addEventListener('hashchange',__menuHash);
   var ob=document.getElementById('openMenu');if(ob)ob.addEventListener('click',openMenu);
   document.getElementById('menuClose').addEventListener('click',closeMenu);
   document.addEventListener('keydown',function(e){if(e.key==='Escape'&&ov.classList.contains('open'))closeMenu();});
@@ -1074,8 +1117,10 @@ document.addEventListener('click',function(e){
   var h=a.getAttribute('href')||'';
   if(h.indexOf('tel:')===0) gtag('event','click_call',{link_url:h});
   else if(h.indexOf('wa.me')>-1) gtag('event','click_whatsapp',{link_url:h.split('?')[0],link_text:(a.innerText||'').trim().slice(0,60)});
+  else if(h.indexOf('r.grab.com')>-1) gtag('event','click_grab');
   else if(h.indexOf('maps.app.goo.gl')>-1||h.indexOf('google.com/maps')>-1) gtag('event','click_directions');
 },true);
 </script>
+<script src="assets/lb-extras.js" defer></script>
 </body>
 </html>

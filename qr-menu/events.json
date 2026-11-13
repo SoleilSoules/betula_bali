@@ -1,0 +1,58 @@
+{
+  "_howto": "Add events to 'events' (date YYYY-MM-DD, time HH:MM, Bali time). Past dates move to the archive automatically. Promos show while today is between start and end.",
+  "promos": [
+    {
+      "id": "oyster-hour",
+      "title": "Oyster Hour",
+      "line": "6 large fresh oysters",
+      "price": "79K",
+      "old_price": "99K",
+      "when": "Daily from 18:00 until closing · closed Mondays",
+      "short": "Daily from 18:00",
+      "start": "2026-11-14",
+      "end": "2026-12-14",
+      "image": "assets/promo-oyster-hour.webp",
+      "url": "/oysters"
+    }
+  ],
+  "events": [
+    {
+      "id": "improv-2026-11-15",
+      "title": "Improv Jam",
+      "date": "2026-11-15",
+      "time": "13:00",
+      "duration": 180,
+      "price": "300K",
+      "desc": "An afternoon of improv games in the garden. No experience needed.",
+      "image": "assets/garden-lights.webp"
+    },
+    {
+      "id": "mafia-2026-11-14",
+      "title": "Mafia Night",
+      "date": "2026-11-14",
+      "time": "19:00",
+      "duration": 180,
+      "price": "200K",
+      "desc": "The classic social deduction game with a host. All levels welcome.",
+      "image": "assets/ev-mafia.webp"
+    },
+    {
+      "id": "boardgames-2026-11-13",
+      "title": "Board Games Night",
+      "date": "2026-11-13",
+      "time": "19:00",
+      "duration": 180,
+      "desc": "Alias, Bunker, Svintus and pizza on the side.",
+      "image": "assets/garden-night.webp"
+    },
+    {
+      "id": "movie-2026-11-12",
+      "title": "Movie Night: New Releases",
+      "date": "2026-11-12",
+      "time": "19:00",
+      "duration": 150,
+      "desc": "Open-air cinema in the garden. Beanbags, string lights and pizza.",
+      "image": "assets/ev-movie-night.webp"
+    }
+  ]
+}
